@@ -1,0 +1,305 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
+    <title>医生主页</title>
+    <link href="../../static/css/public.css?v=1.0" rel="stylesheet">
+    <link rel="stylesheet" href="../../static/css/home/doc_page.css" />
+    <link href="/static/css/swiper.min.css?v=1.0" rel="stylesheet">
+    <link rel="stylesheet" href="../../static/css/ydui.css" />
+    <script src="../../static/js/webpack/reset.js"></script>
+    <script type="text/javascript" src="../../static/js/webpack/ydui.flexible.js"></script>
+</head>
+<body>
+    <div class='header'>
+        <header>
+            <img class="prev-icon" src="/static/images/prev-icon.png" alt="">
+            <span>医生主页</span>
+        </header>
+        <div class='top-img'>
+
+        </div>
+        <div class='doc-cont'>
+            <div class='doc-tit doctor-info-page'>
+
+            </div>
+            <div class='price online-div'>
+
+            </div>
+        </div>
+        <div class='tit-text font24'>
+            <text class='text'>医生将在24小时内与您通过图文、电话、视频交流，辩证开方</text>
+        </div>
+    </div>
+    <div class='item down-cloud'>
+
+    </div>
+    <div class='item doctor-gg-list'>
+
+    </div>
+    <div class='item'>
+        <div class='top'>
+            <text class='line mr15'></text>擅长调理
+        </div>
+        <div class='box'>
+            <div class='class shanchang-list'>
+
+            </div>
+        </div>
+    </div>
+    <div class='item  search-list'>
+
+    </div>
+    <div class='item doctor-dynamic-list'>
+
+    </div>
+    <div class='item doctor-comment-list'>
+
+    </div>
+
+    <div class="doctor-page">
+
+    </div>
+
+    <div style="display: none" class="query-bg"></div>
+    <div style="display: none" class='query-bg-info'>
+        <div class="swiper-container index-container">
+            <div class="swiper-wrapper swiper-ad-list query-list">
+                <div class="swiper-slide">
+                </div>
+            </div>
+            <div class="swiper-pagination"></div>
+        </div>
+    </div>
+    <script src="../../static/js/webpack/jquery-2.1.4.min.js"></script>
+    <script src="../../static/js/webpack/modal.js"></script>
+    <script src="../../static/js/webpack/request.js"></script>
+    <script src="../../static/js/webpack/common.js"></script>
+    <script src="../../static/js/webpack/ydui.js"></script>
+    <script src="../../static/js/webpack/template.js"></script>
+    <script src="/static/js/webpack/swiper.min.js"></script>
+    <script src="../../static/js/webrequest/all/doc_page.js"></script>
+    <script type="text/html" id="diseaselist-div">
+        {{if list===null||list.length===0}}
+        {{else}}
+        {{each list as item }}
+        <a href='/pages/home/doctor/doctor?types=keshi&id={{item.departId}}&name={{item.departName}}' class='nav'>
+            <img class='img' src='{{item.diseasePic}}' />
+            <span class='font28'>{{item.diseaseName}}</span>
+        </a>
+        {{/each}}
+        {{/if}}
+    </script>
+
+    <script type="text/html" id="doctor-info-div">
+        {{if item===null||item.length===0}}
+        {{else}}
+        <div class='doc-box'>
+            <div class='span'>{{item.doctordepartment}}</div>
+            <image class='doc-img' src='{{item.doctorAvatar}}'></image>
+            <div class='font30 name mt20'>
+                {{item.doctorName}}
+                <text class='font26 ml10'>{{item.doctorJob}}</text>
+                <text class='label font18 ml10' style="display:{{item.doctorisRec?"block":"none"}}">推荐</text>
+            </div>
+            <div class='addr mt20'>医院机构：{{item.doctormedicalInstitutions}}</div>
+            <div class='info font20 mt20'>
+                <text class='label'>付款人数{{item.doctorpayNum}}人</text>
+                <text class='label'>{{item.doctorRediagnosisRate}}复诊率</text>
+            </div>
+        </div>
+        {{/if}}
+    </script>
+
+    <!--背景层+关注按钮-->
+    <script type="text/html" id="doctor-follower-div">
+        {{if item===null||item.length===0}}
+        {{else}}
+        <image class='tit-img' src='../../static/images/doc-bg.png'></image>
+        <div class='star-icon-w active' data-isfollower="0" onclick="onclickFollower()">
+            {{item.isFollow?"已关注":"关注"}}
+        </div>
+        {{/if}}
+    </script>
+
+    <!--在线问诊费用-按钮-->
+    <script type="text/html" id="doctor-online-div">
+        {{if item===null||item.length===0}}
+        {{else}}
+        <div>
+            <div class='color'>
+                <text class='font36'>{{item.doctorFee}}</text>元/次
+            </div>图文、语音
+        </div>
+        <div onclick="getOnlineClick()" class='btn {{item.doctorisonlineConsultation?"on":""}}'>
+            <img class='icon mr15' src='../../static/images/message-icon-c.png' />在线问诊
+        </div>
+        {{/if}}
+    </script>
+
+    <!--约见线下面诊-->
+    <script type="text/html" id="doctor-down-div">
+        {{if item===null||item.length===0}}
+        {{else}}
+        <div class='tit doctorisLinebelowdiagnosis' onclick="downClick()">
+            <div>
+                <image class='icon mr15' src='../../static/images/hostp-icon.png'></image>约见线下面诊
+            </div>
+            <image class='next' src='../../static/images/next-icon.png'></image>
+        </div>
+        {{/if}}
+    </script>
+
+    <!--医生公告-->
+    <script type="text/html" id="doctor-gg-div">
+        {{if item===null||item.length===0}}
+        {{else}}
+        <div class='tit doctor-gg'>
+            <div>
+                <img class='icon mr15' src='../../static/images/doc-message.png' />医生公告
+            </div>
+            <image class='next' src='../../static/images/next-icon.png'></image>
+        </div>
+        <div class='item-cont'>
+            <div class='title font30'></div>
+            <div class='time font22 mt10'>{{item.announcementTime}}</div>
+            <div class='text mt10'>{{item.announcementContent}}</div>
+        </div>
+        {{/if}}
+    </script>
+
+    <!--擅长调理-->
+    <script type="text/html" id="doctor-shanchang-div">
+        {{if item===null||item.length===0}}
+        {{else}}
+        {{item}}
+        {{each item.diseaseExpertise as p i }}
+        <div class="p-true" style="display:{{item.moreShow?"block":"none"}}">
+            <span class='label'>{{p}}</span>
+        </div>
+        {{/each}}
+        {{each item.allList as p i}}
+        <div class="p-false" style="display:{{item.moreShow?"none":"block"}}">
+            <span class='label'>{{p}}</span>
+        </div>
+        {{/each}}
+        <span class='label more' onclick="shanchangMore(this)" style="display:{{item.moreShow?"block":"none"}}">查看更多</span>
+        {{/if}}
+    </script>
+
+    <!--医生简介-->
+    <script type="text/html" id="doctor-searchdesc-div">
+        {{if item===null||item.length===0}}
+        {{else}}
+        <div class='top search-tit'>
+            <div>
+                <text class='line mr15'></text>医生简介
+            </div>
+            <div class='search-view' onclick='doctorQuery()'>医生资质查询</div>
+        </div>
+        <div class='doc-cont'>
+            <div class='text'>
+                <div class="index-swiper">
+                    <div class="swiper-container index-container-1">
+                        <div class="swiper-wrapper swiper-ad-list">
+                            {{each item.jobPhotos as p }}
+                            <div class="swiper-slide">
+                                <img src="{{p}}" class="slide-image" />
+                            </div>
+                            {{/each}}
+                        </div>
+                        <div class="swiper-pagination"></div>
+
+                        <div class="swiper-pagination"></div>
+                    </div>
+                </div>
+
+                <div class='more-text {{item.moreText?"":"active"}}'>
+                    {{item.introduce}}
+                </div>
+            </div>
+            <div class='more doctor-desc' data-moreText="{{item.moreText}}" onclick="doctorDescMore()">
+                <span class="choose-open">查看更多</span>
+                <image class='icon {{item.moreText?"":"active"}}' src='../../static/images/more-c-icon.png'></image>
+            </div>
+        </div>
+        {{/if}}
+    </script>
+
+    <!--医生动态-->
+    <script type="text/html" id="doctor-dynamic-div">
+        {{if item===null||item.length===0}}
+        {{else}}
+        <div class='top'>
+            <text class='line mr15'></text>医生动态
+        </div>
+        <div class='doc-news'>
+            {{each item.articles as p}}
+            <div class='list' onclick="doctordynamic('{{p.id}}')" data-id='{{p.id}}'>
+                <div class='title font30'>{{p.title}}</div>
+                <div class='time font22 mt10 c888'>{{p.time}}</div>
+                <div class='mt10 c888'></div>
+            </div>
+            {{/each}}
+        </div>
+        <div class='more-btn c888' onclick='navUrlArticleMore()'>查看更多</div>
+        {{/if}}
+    </script>
+
+    <!--全部评论-->
+    <script type="text/html" id="doctor-comment-div">
+        <div class='top'>
+            <text class='line mr15'></text>全部评价（{{list==null?0:list.length}}条）
+        </div>
+        <div class='discuss'>
+            {{if list===null||list.length===0}}
+            {{else}}
+            <div class='discuss'>
+                {{each list as item p}}
+                <div class='list'>
+                    <div class='title font24'>
+                        <text>{{item.name}}</text>
+                        <text>{{item.time}}</text>
+                    </div>
+                    <div class='cont-bg'>
+                        <div class='text font22 c888'>对医生的评价</div>
+                        <div class='star'>
+                            {{each item.items as c}}
+                            <div class='star-list'>
+                                <text class='mr20 font24'>{{c.item}}</text>
+                                <div>
+                                    {{each [1,2,3,4,5] as i }}
+                                    <text class='icon star-icon  {{c.score>=i?"active":""}}'></text>
+                                    {{/each}}
+                                </div>
+                            </div>
+                            {{/each}}
+                        </div>
+                    </div>
+                </div>
+                {{/each}}
+            </div>
+            {{/if}}
+        </div>
+
+    </script>
+
+    <script type="text/html" id="query-div">
+        {{if list===null||list.length===0}}
+        {{else}}
+        {{each list as item}}
+        <div class="swiper-slide">
+            <img src="{{item}}" class="slide-image query-img" />
+        </div>
+        {{/each}}
+        {{/if}}
+    </script>
+
+</body>
+</html>
+
+<!--
+
+
+-->

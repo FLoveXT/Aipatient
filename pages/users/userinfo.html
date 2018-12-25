@@ -1,0 +1,55 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
+    <title>我的-个人资料</title>
+    <link href="../../static/css/public.css?v=1.0" rel="stylesheet">
+    <link href="../../static/css/swiper.min.css?v=1.0" rel="stylesheet">
+    <link rel="stylesheet" href="../../static/css/ydui.css" />
+    <link rel="stylesheet" href="../../static/css/users/userinfo.css" />
+    <script src="../../static/js/webpack/reset.js"></script>
+    <script type="text/javascript" src="../../static/js/webpack/ydui.flexible.js"></script>
+</head>
+<body>
+    <header>
+        <img class="prev-icon" src="/static/images/prev-icon.png" alt="">
+        <span>个人资料</span>
+    </header>
+    <div class='img-header'>
+        <img src="" id="avatar_info" class="user req-avatar" />
+        <div class='font30 req-name'>{{name}}</div>
+        <div class='font20 upload' onclick="onclickInfo(this,'fileupload','avatar_info')">
+            <input class="" type="file" name="fileupload" id="fileupload" accept="image/*" />
+            <img src="../../static/images/photo-icon.png" />
+            上传头像
+        </div>
+    </div>
+    <div class='form font28'>
+        <div class='list'>
+            <span class='font28'>姓名：</span>
+            <input placeholder='请输入姓名' value='' id="inputName" type="text" />
+        </div>
+        <div class='list'>
+            <span class='font28'>性别：</span>
+            <label onclick="checkAttr(this,0)"><input class="checkbox" type="radio" name="inputSex" value="男">男</label>
+            <label onclick="checkAttr(this,1)"><input class="checkbox" type="radio" value="女" name="inputSex">女</label>
+        </div>
+        <div class='list'><span class='font28'>年龄：</span> <input placeholder='请输入年龄' value='' type="number" id="inputNum" /></div>
+    </div>
+    <div class='bbtn padd30'>
+        <button onclick="commitUserInfo()">提交</button>
+    </div>
+    <script src="../../static/js/webpack/jquery-2.1.4.min.js"></script>
+    <script src="../../static/js/webpack/modal.js"></script>
+    <script src="../../static/js/webpack/request.js"></script>
+    <script src="../../static/js/webpack/common.js"></script>
+    <script src="../../static/js/webpack/ydui.js"></script>
+    <script src="../../static/js/webpack/FileUpload/js/vendor/jquery.ui.widget.js"></script>
+    <script src="../../static/js/webpack/FileUpload/js/jquery.iframe-transport.js"></script>
+    <script src="../../static/js/webpack/FileUpload/js/jquery.fileupload.js"></script>
+    <script src="../../static/js/webrequest/all/userinfo.js"></script>
+</body>
+</html>
+
+

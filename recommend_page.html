@@ -1,0 +1,63 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
+    <title>我的-推荐我们</title>
+    <link href="../../static/css/public.css?v=1.0" rel="stylesheet">
+    <link href="../../static/css/swiper.min.css?v=1.0" rel="stylesheet">
+    <link href="../../static/css/users/recommend_page.css" rel="stylesheet" />
+    <link href="../../static/css/share.css" rel="stylesheet" />
+    <link rel="stylesheet" href="../../static/css/ydui.css" />
+    <script src="../../static/js/webpack/reset.js"></script>
+    <script type="text/javascript" src="../../static/js/webpack/ydui.flexible.js"></script>
+    <style>
+        body{
+            padding: .3rem 0;
+            text-align: center;
+        }
+        .tit{
+            width: 5.35rem;
+            height: .75rem;
+            margin: .3rem 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img class="prev-icon" src="/static/images/prev-icon.png" alt="">
+        <span>推荐我们</span>
+    </header>
+    <div class="page-info" id="id"></div>
+
+    <script src="../../static/js/webpack/jquery-2.1.4.min.js"></script>
+    <script src="../../static/js/webpack/modal.js"></script>
+    <script src="../../static/js/webpack/request.js"></script>
+    <script src="../../static/js/webpack/common.js"></script>
+    <script src="../../static/js/webpack/ydui.js"></script>
+    <script src="../../static/js/webrequest/user/recommend_page.js"></script>
+    <script src="../../static/js/webpack/template.js"></script>
+    <script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+    <script src="/static/js/webpack/image/fly-zoom.js"></script>
+    <script type="text/html" id="page-div">
+        {{if list===null}}
+        {{else}}
+        <div>
+            <img class='tit hide' src='/static/images/tit-img.png'>
+            <img class='share' src='{{list.imageUrl}}'>
+            <image class='logo' src='/static/images/share-postion.png'></image>
+        </div>
+        <div class='bbtn'>
+            <button onclick="recUS()">推荐我们</button>
+        </div>
+        {{/if}}
+    </script>
+    <script type="text/javascript">
+        $(function () {
+            $(".footer-info").remove();
+       
+        })
+    </script>
+
+</body>
+</html>

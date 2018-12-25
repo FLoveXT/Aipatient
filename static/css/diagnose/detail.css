@@ -1,0 +1,65 @@
+﻿/* pages/diagnose/detail/detail.wxss */
+.item {
+    background: #fff;
+    padding: .30rem 0;
+}
+
+    .item .title .line {
+        display: inline-block;
+        width: .04rem;
+        height: .40rem;
+        background: #bc9761;
+        margin-right: .26rem;
+    }
+
+    .item .title {
+        display: flex;
+        align-items: center;
+    }
+
+    .item .cont {
+        padding: 0 .30rem;
+    }
+
+        .item .cont .user-info {
+            line-height: .50rem;
+        }
+
+        .item .cont .user-cont {
+            line-height: .50rem;
+        }
+
+        .item .cont .img-wrap .img {
+            width: 1.35rem;
+            height: 1.35rem;
+            border-radius: .05rem;
+            margin: .10rem .20rem .10rem 0;
+        }
+
+    .item .list-wrap .title {
+        background: #faf5dc;
+        line-height: 1.00rem;
+        text-align: center;
+        display: block;
+        margin-top: .30rem;
+    }
+
+    .item .list-wrap .list .label-cont .labl {
+        display: inline-block;
+        font-size: .24rem;
+        border: .02rem solid #e8e8e8;
+        line-height: .45rem;
+        border-radius: .45rem;
+        text-align: center;
+        padding: 0 .30rem;
+        margin: .10rem .20rem .10rem 0;
+    }
+
+    .item .list-wrap .cont-list {
+        border-bottom: .02rem solid #e8e8e8;
+        padding-bottom: .20rem;
+    }
+
+        .item .list-wrap .cont-list:last-child {
+            border: none;
+        }

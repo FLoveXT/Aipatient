@@ -1,0 +1,72 @@
+﻿<!doctype html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+	<title>医生推荐列表</title>
+	<link href="../../static/css/public.css?v=1.0" rel="stylesheet">
+	<link rel="stylesheet" href="../../static/css/home/doc_recommend.css" />
+	<link rel="stylesheet" href="../../static/css/ydui.css" />
+	<script src="../../static/js/webpack/reset.js"></script>
+	<script type="text/javascript" src="../../static/js/webpack/ydui.flexible.js"></script>
+</head>
+
+<body>
+
+    <header>
+        <img class="prev-icon" src="/static/images/prev-icon.png" alt="">
+        <span>医生推荐列表</span>
+    </header>
+    <div class='focus-doc doc-list'>
+
+
+    </div>
+    <div class='btn' style='' id='div_scroll'>
+        <button class='loading-btn' onclick='scrollLoading(this)'>加载更多</button>
+    </div>
+
+    <script src="../../static/js/webpack/jquery-2.1.4.min.js"></script>
+    <script src="../../static/js/webpack/modal.js"></script>
+    <script src="../../static/js/webpack/request.js"></script>
+    <script src="../../static/js/webpack/common.js"></script>
+    <script src="../../static/js/webpack/ydui.js"></script>
+    <script src="../../static/js/webpack/template.js"></script>
+    <script src="../../static/js/webrequest/all/doc_recommend.js"></script>
+
+    <!--加载医生推荐列表的数据-->
+    <script type="text/html" id="doc-recommend-div">
+        {{if list===null||list.length===0}}
+        {{else}}
+        {{each list as item }}
+        <div class='item' data-value='{{item.id}}' onclick='imageClick("{{item.id}}")'>
+            <div class='top'>
+                <img src="{{item.image}}" class="user" data-url='../../static/images/default-avatar.png' />
+                <div class='right'>
+                    <div class='info'>
+                        <div class='font30'>
+                            {{item.name}}
+                            <span class='font26'>{{item.titles}}</span>
+                        </div>
+                        <span class='span'>{{item.depart}}</span>
+                    </div>
+                    <div class='mid'>医院机构：{{item.medicalInstitutions}}</div>
+                    <div class='bottom'>
+                        擅长：
+                        {{each item.diseaseExpertise as cell }}
+                        <span class='label'>{{cell}}</span>
+                        {{/each}}
+                    </div>
+                </div>
+            </div>
+            <div class='btn'>
+                <div class='font30 mid'>
+                    <image class='icon mr10' src='../../static/images/message-b-icon.png'></image>{{item.fee}}元/次
+                </div>
+            </div>
+        </div>
+        {{/each}}
+        {{/if}}
+    </script>
+</body>
+</html>

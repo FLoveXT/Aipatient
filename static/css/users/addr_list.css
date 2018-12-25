@@ -1,0 +1,72 @@
+﻿
+.page {
+    padding: 30rpx;
+}
+
+.item {
+    background: #fff;
+    margin-bottom: 30rpx;
+    border-radius: 10rpx;
+}
+
+    .item .bottom .right .icon {
+        width: 24rpx;
+        height: 24rpx;
+    }
+
+    .item .top {
+        padding: 30rpx;
+        border-bottom: 2rpx solid #e8e8e8;
+        color: #999;
+        line-height: 40rpx;
+    }
+
+        .item .top .name {
+            color: #333;
+            font: 28rpx;
+            margin-right: 30rpx;
+        }
+
+    .item .bottom {
+        padding: 0 30rpx;
+        display: flex;
+        justify-content: space-between;
+        height: 80rpx;
+        align-items: center;
+    }
+
+        .item .bottom .t-icon {
+            display: inline-block;
+            width: 36rpx;
+            height: 36rpx;
+            background-size: cover;
+            background-position: -34rpx 0;
+        }
+
+            .item .bottom .t-icon.active {
+                background-position: 0 0;
+            }
+
+        .item .bottom .left {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+        }
+
+        .item .bottom .right {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+        }
+
+            .item .bottom .right .del {
+                margin-left: 40rpx;
+            }
+
+.btn button {
+    height: 90rpx;
+    line-height: 90rpx;
+    color: #fff;
+    background: #bc9761;
+    font-size: 30rpx;
+}

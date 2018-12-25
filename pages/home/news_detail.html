@@ -1,0 +1,95 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
+    <title>医生动态详情</title>
+    <link href="../../static/css/public.css?v=1.0" rel="stylesheet">
+    <link rel="stylesheet" href="../../static/css/home/news_detail.css" />
+    <link rel="stylesheet" href="../../static/css/ydui.css" />
+    <link href="../../static/css/share.css" rel="stylesheet" />
+    <script src="../../static/js/webpack/reset.js"></script>
+    <script type="text/javascript" src="../../static/js/webpack/ydui.flexible.js"></script>
+</head>
+
+<body>
+    <header>
+        <img class="prev-icon" src="/static/images/prev-icon.png" alt="">
+        <span>医生动态详情</span>
+    </header>
+    <div class="item-content">
+
+    </div>
+
+    <script src="../../static/js/webpack/jquery-2.1.4.min.js"></script>
+    <script src="../../static/js/webpack/modal.js"></script>
+    <script src="../../static/js/webpack/request.js"></script>
+    <script src="../../static/js/webpack/common.js"></script>
+    <script src="../../static/js/webpack/ydui.js"></script>
+    <script src="../../static/js/webpack/template.js"></script>
+    <script src="../../static/js/webrequest/home/news_detail.js"></script>
+    <script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+    <script type="text/html" id="list-div">
+        {{if list===null||list.length===0}}
+        {{else}}
+        <div class='top'>
+            <div class='font36'>{{list.title}}</div>
+            <div class='font22 time mt10 c888'>{{list.time}}</div>
+            <div class='cont mt20'>
+                <div>
+                    {{#list.content}}
+                </div>
+                <div>
+                    <div class='img-list'>
+                        {{if list.pics.length>0}}
+                        {{each list.pics as p}}
+                        <img src='{{p}}' mode="widthFix" />
+                        {{/each}}
+                        {{/if}}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class='news-mid'>
+            <div class='doc-card'>
+                <div class='item'>
+                    <div class='top'>
+                        <img class='user' src='{{list.userInfo.avatar}}' />
+                        <div class='right'>
+                            <div class='info'>
+                                <div class='font30'>
+                                    {{list.userInfo.username}}
+                                    <text class='font26'>{{list.userInfo.jobName}}</text>
+                                </div>
+                                <text class='span'>{{list.userInfo.depart}}</text>
+                            </div>
+                            <div class='mid'>医院机构：{{list.userInfo.medicalInstitutions}}</div>
+                            <div class='bottom'>
+                                擅长：
+                                {{if list.userInfo.diseaseExpertise.length>0}}
+                                {{each list.userInfo.diseaseExpertise as p}}
+                                <text class='label'>{{p}}</text>
+                                {{/each}}
+                                {{/if}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class='btn'>
+                        <div class='font30 mid'>
+                            <img class='icon mr10' src='../../static/images/hos-icon.png' />{{list.userInfo.fee}}元/次
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class='news-btn'>
+            <text class='btn' onclick='btngozixun()'>在线问诊预约</text>
+            <text class='btn appoint' onclick='btnyuyue()'>线下面诊预约</text>
+        </div>
+        {{/if}}
+    </script>
+</body>
+
+</html>

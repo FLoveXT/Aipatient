@@ -1,0 +1,118 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
+    <title>预约</title>
+    <link href="../../static/css/public.css?v=1.0" rel="stylesheet">
+    <link href="../../static/css/swiper.min.css?v=1.0" rel="stylesheet">
+    <link href="../../static/css/users/appoint.css" rel="stylesheet" />
+    <link rel="stylesheet" href="../../static/css/ydui.css" />
+    <script src="../../static/js/webpack/reset.js"></script>
+    <script type="text/javascript" src="../../static/js/webpack/ydui.flexible.js"></script>
+</head>
+
+<body>
+    <header>
+        <img class="prev-icon if-ai" src="/static/images/prev-icon.png" alt="">
+        <span>我的-预约</span>
+    </header>
+    <!--pages/user/appoint/appoint.wxml-->
+    <div class='tabs'>
+        <div class='tab active' data-value="new">
+            <span class='text'>最新预约</span>
+        </div>
+        <div class='tab' data-value="record">
+            <span class='text'>预约记录</span>
+        </div>
+    </div>
+
+    <div class="list01 list-item">
+
+    </div>
+    <div class="list02 list-item">
+
+    </div>
+    <script src="../../static/js/webpack/jquery-2.1.4.min.js"></script>
+    <script src="../../static/js/webpack/modal.js"></script>
+    <script src="../../static/js/webpack/request.js"></script>
+    <script src="../../static/js/webpack/common.js"></script>
+    <script src="../../static/js/webpack/ydui.js"></script>
+    <script src="../../static/js/webrequest/user/appoint.js"></script>
+    <script src="../../static/js/webpack/template.js"></script>
+    <script src="../../static/js/webpack/vconsole/dist/vconsole.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $(".prev-icon").click(function () {
+                window.location.href = "/pages/users/my.html";
+            });
+        })
+    </script>
+    <script type="text/html" id="list01-div">
+        {{if list===null||list.length===0}}
+        {{else}}
+        {{each list as item}}
+        <div class='new-appoint'>
+            <div class='item font24'>
+                <div class='top'>
+                    <div class='list'>预约医生：{{item.name}}</div>
+                    <div class='list'>预约时间：{{item.time}}</div>
+                    <div class='list'>预约地点：{{item.address}}</div>
+                    <div class='info' style="{{item.status==1?"display:block":"display:none"}}">
+                        <div class='list'>
+                            订单状态：未支付
+                            <span class='color'>{{item.countdown}}</span>
+                        </div>
+                        <div class='list'>
+                            温馨提醒：该专家预约人数较多，为了您能顺利预约成功，请在15分钟内支付完成，未支付的预约将被取消。
+                        </div>
+                    </div>
+                    <div class='info' style="{{item.status==0?"display:block":"display:none"}}">
+                        <view class='list '>订单状态：已支付 </view>
+                    </div>
+                </div>
+                <div class='btn'>
+                    {{if item.status==1}}
+                    <span class='pay button' data-index="{{index}}" data-businessId="{{item.id}}" onclick='goPay("{{item.id}}")'>去支付</span>
+                    <span class='cancel button' data-index="{{index}}" data-businessId="{{item.id}}" onclick='goCancelPay("{{item.id}}")'>取消支付</span>
+                    {{/if}}
+                    {{if item.status==0}}
+                    <span class='cancel button' data-index="{{index}}" data-name='{{item.name}}' data-time='{{item.time}}' style='display:{{item.status==0?"block":"none"}}' data-businessId="{{item.id}}" onclick='goCancelAppint(this,"{{item.name}}","{{item.time}}","{{item.id}}")'>取消预约</span>
+                    {{/if}}
+
+                </div>
+            </div>
+        </div>
+        {{/each}}
+        {{/if}}
+    </script>
+
+    <script type="text/html" id="list02-div">
+        {{if list===null||list.length===0}}
+        {{else}}
+        {{each list as item}}
+        <div class='new-appoint'>
+            <div class='item font24'>
+                <div class='top'>
+                    <div class='list'>预约医生：{{item.name}}</div>
+                    <div class='list'>预约时间：{{item.time}}</div>
+                    <div class='list'>预约地点：{{item.address}}</div>
+                </div>
+                <div class='bottom'>
+                    <text>{{item.status=="CANCEL_ORDER"?"已取消预约":item.status=="COMPLETE"?"已完成预约":item.status=="CANCEL_PAY"?"已过期预约":""}}</text>
+                </div>
+            </div>
+        </div>
+        {{/each}}
+        {{/if}}
+    </script>
+
+    <script type="text/javascript">
+        var vConsole = new VConsole();
+        vConsole.setOption({ maxLogNumber: 5000 });
+        console.log("Hello World");
+    </script>
+</body>
+
+</html>

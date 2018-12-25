@@ -1,0 +1,19 @@
+/* pages/home/doc_news/doc_news.wxss */
+body{
+    padding-top: .20rem;
+}
+.list {
+    padding: .30rem;
+    background: #fff;
+    border-top: 1px solid #e8e8e8;
+}
+.list .img-cont{
+    display: flex;
+    justify-content: space-between;   
+    flex-wrap: wrap; 
+}
+.list .img-cont .img{
+    width: 2.20rem;
+    height: 1.60rem;
+    margin-bottom: .2rem;
+}

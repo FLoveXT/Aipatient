@@ -1,0 +1,163 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
+    <title>爱尚中医</title>
+    <link href="/static/css/public.css?v=1.0" rel="stylesheet">
+    <link href="/static/css/swiper.min.css?v=1.0" rel="stylesheet">
+    <link href="/static/css/index.css" rel="stylesheet" />
+    <script src="/static/js/webpack/reset.js"></script>
+    <link rel="stylesheet" href="/static/css/ydui.css" />
+    <script type="text/javascript" src="/static/js/webpack/ydui.flexible.js"></script>
+</head>
+
+<body>
+    <header>
+        <span>爱尚中医</span>
+    </header>
+    <div class='banner'>
+        <div class="index-swiper">
+            <div class="swiper-container index-container">
+                <div class="swiper-wrapper swiper-ad-list">
+
+                </div>
+                <div class="swiper-pagination"></div>
+            </div>
+        </div>
+        <div class='banner-message' onclick="MessageInfo()">
+            <span class='message-num'></span>
+            <img src="../static/images/message-icon.png" class="icon" />
+        </div>
+    </div>
+    <div class='banner-img' onclick='FindDoctorInfo()'>
+        <img class='img' src="../static/images/index-banner-img.png" />
+    </div>
+    <div class='index-item01 mt25'>
+        <div class='tabs font26 tab-list'>
+            <div class='tab' onclick="getClickListShow(0)">
+                <span>按不适的</span>
+            </div>
+            <div class='tab' onclick="getClickListShow(1)">
+                <span>按科室的</span>
+            </div>
+        </div>
+    </div>
+    <div class='index-item02 clearfix' data-index="0" style="display:none">
+        <div class="index-item02-list-diseaes">
+
+        </div>
+        <a class='list' href="javascript:void(0)" onclick="QueryMoreClick(1)">
+            <img class='img' src="../static/images/more-menuicon.png" />
+            <span class='list-text'>更多分类</span>
+        </a>
+
+    </div>
+    <div class='index-item02 clearfix' data-index="1" style="display:none">
+        <div class="index-item02-list-departs">
+
+        </div>
+        <a class='list' onclick="QueryMoreClick(2)">
+            <img class='img' src="../static/images/more-menuicon.png" />
+            <span class='list-text'>更多分类</span>
+        </a>
+    </div>
+    <div class='index-item03 mt25'>
+        <a class='tit' href="/pages/home/doc_recommend.html">
+            <span class='font30'>名医推荐</span>
+            <div class='right font24'>
+                更多医生
+                <img class='icon' src="../static/images/next-icon.png" />
+            </div>
+        </a>
+        <div class="doctor-list">
+
+        </div>
+    </div>
+    <image class='robot-img' onclick='FindDoctorInfo()' src='../static/images/robot-icon.png'></image>
+
+    <script src="/static/js/webpack/jquery-2.1.4.min.js"></script>
+    <script src="/static/js/webpack/layer/layer.js"></script>
+    <script src="/static/js/webpack/modal.js"></script>
+    <script src="/static/js/webpack/request.js"></script>
+    <script src="/static/js/webpack/common.js"></script>
+    <script src="/static/js/webpack/ydui.js"></script>
+    <script src="/static/js/webpack/template.js"></script>
+    <script src="/static/js/webpack/swiper.min.js"></script>
+    <script src="/static/js/webrequest/all/index.js"></script>
+
+
+
+
+    <!--swiper-轮播图-->
+    <script type="text/html" id="swiper-div">
+        {{if list===null||list.length===0}}
+        {{else}}
+        {{each list as item }}
+        <div class="swiper-slide" onclick="swiper_url(this)" data-url="{{item.url}}">
+            <img src="{{item.imagesUrl}}" class="slide-image" />
+        </div>
+        {{/each}}
+        {{/if}}
+    </script>
+
+    <!--疾病列表-->
+    <script type="text/html" id="diseaes-div">
+        {{if list===null||list.length===0}}
+        {{else}}
+        {{each list as item }}
+        <a class='list' href="javascript:void(0)" onclick="diseaseClick(this,'{{item.diseaseId}}','{{item.diseaseName}}')">
+            <img class='img' src="{{item.diseasePic}}" />
+            <span class='list-text'>{{item.diseaseName}}</span>
+        </a>
+        {{/each}}
+        {{/if}}
+    </script>
+
+    <!--科室列表-->
+    <script type="text/html" id="departs-div">
+        {{if list===null||list.length===0}}
+        {{else}}
+        {{each list as item }}
+        <a class='list' href="javascript:void(0)" onclick="departClick(this,'{{item.departId}}','{{item.departName}}')">
+            <img class='img' src="{{item.departUrl}}" />
+            <span class='list-text'>{{item.departName}}</span>
+        </a>
+        {{/each}}
+        {{/if}}
+    </script>
+
+    <script type="text/html" id="doctorlist-div">
+        {{if list===null||list.length===0}}
+        {{else}}
+        {{each list as item }}
+        <div class='list' onclick="navigatorDoctor('{{item.id}}')">
+            <img src='{{item.image}}' class='img' data-url='../../static/images/default-avatar.png' />
+            <div class='right'>
+                <div class='title'>
+                    <div>
+                        <span class='font30'>{{item.name}}</span>
+                        <span class='font26 ml15'>{{item.titles}}</span>
+                    </div>
+                    <span class='label font20'>{{item.depart}}</span>
+                </div>
+                <div class='font26 addr'>医院机构：{{item.medicalInstitutions}}</div>
+                <div class='mvp'>
+                    <span class='font26'>擅长：</span>
+                    {{each item.diseaseExpertise as Expertise}}
+                    <span class='span font22'>{{Expertise}}</span>
+                    {{/each}}
+                </div>
+                <div class='price'>
+                    <img class='icon' src="../static/images/message-b-icon.png" />
+                    <span class='font30'>{{item.fee}}元/次</span>
+                </div>
+            </div>
+        </div>
+        {{/each}}
+        {{/if}}
+    </script>
+</body>
+
+</html>

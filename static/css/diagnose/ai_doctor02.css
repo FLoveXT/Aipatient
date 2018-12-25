@@ -1,0 +1,146 @@
+﻿/* pages/diagnose/ai_doctor02/ai_doctor02.wxss */
+
+body {
+    padding: .30rem;
+    box-sizing: border-box;
+}
+
+.header .info {
+    width: 100%;
+    line-height: .85rem;
+    background: #bc9761;
+    color: #fff;
+    font-size: .26rem;
+    text-align: center;
+    border-radius: .10rem;
+    margin-top: .30rem;
+}
+
+.header .wrap {
+    background: #fff;
+    border-radius: .10rem;
+    margin-top: .10rem;
+    border-radius: .10rem;
+    padding: .30rem;
+    border: .02rem solid #e8e8e8;
+}
+
+    .header .wrap .list {
+        margin-top: .12rem;
+        color: #666;
+    }
+
+    .header .wrap .top {
+        margin-bottom: .25rem;
+    }
+
+    .header .wrap.detail {
+        background: #f1f4fb;
+        color: #4a73d2;
+    }
+
+        .header .wrap.detail .list {
+            color: #4a73d2;
+        }
+
+.cont .tit {
+    margin: .30rem 0;
+}
+
+.index-item03 .tit .icon {
+    width: .13rem;
+    height: .24rem;
+    margin-left: .15rem;
+}
+
+.index-item03 > .tit {
+    display: flex;
+    height: 1.00rem;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 .30rem;
+    background: #fff;
+}
+
+.index-item03 .tit .right {
+    display: flex;
+    align-items: center;
+}
+
+.index-item03 .list {
+    padding: .30rem;
+    background: #fff;
+    display: flex;
+    justify-content: space-between;
+    border-radius: .15rem;
+    margin-bottom: .25rem;
+}
+
+    .index-item03 .list > .img {
+        width: 1.00rem;
+        height: 1.00rem;
+        border-radius: 100%;
+    }
+
+    .index-item03 .list .right {
+        flex: 1;
+        padding-left: .30rem;
+    }
+
+    .index-item03 .list .icon {
+        width: .30rem;
+        height: .28rem;
+        margin-right: .10rem;
+    }
+
+    .index-item03 .list .title {
+        display: flex;
+        justify-content: space-between;
+    }
+
+        .index-item03 .list .title .label {
+            display: inline-block;
+            border: .02rem solid #bc9761;
+            color: #bc9761;
+            line-height: .35rem;
+            border-radius: .30rem;
+            padding: 0 .15rem;
+            height: 0.35rem;
+        }
+
+    .index-item03 .list .right .addr {
+        color: #666;
+        margin: .15rem 0;
+    }
+
+    .index-item03 .list .right .mvp {
+        color: #666;
+    }
+
+        .index-item03 .list .right .mvp .span {
+            display: inline-block;
+            background: #eff1f6;
+            color: #2e488e;
+            line-height: .40rem;
+            padding: 0 .20rem;
+            border-radius: .40rem;
+            margin: 0 .05rem;
+        }
+
+    .index-item03 .list .right .price {
+        color: #ff7e00;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+    }
+
+.more {
+    width: 100%;
+    line-height: .90rem;
+    border-radius: .12rem;
+    background-color: #fff;
+    color: #333;
+    text-align: center;
+    display: block;
+    font-size: .28rem;
+}

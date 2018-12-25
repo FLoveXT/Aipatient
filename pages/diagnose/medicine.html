@@ -1,0 +1,301 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
+    <title>购买中药调理服务</title>
+    <link href="../../static/css/public.css?v=1.0" rel="stylesheet">
+    <link href="../../static/css/swiper.min.css?v=1.0" rel="stylesheet">
+    <link href="../../static/css/diagnose/medicine.css" rel="stylesheet" />
+    <link rel="stylesheet" href="../../static/css/ydui.css" />
+    <script src="../../static/js/webpack/reset.js"></script>
+    <script type="text/javascript" src="../../static/js/webpack/ydui.flexible.js"></script>
+</head>
+
+<body>
+
+    <header>
+        <img class="prev-icon" src="/static/images/prev-icon.png" alt="">
+        <span>购买中药调理服务</span>
+    </header>
+    <div class="medicine-list">
+        <div class='deatail-tit'>
+
+        </div>
+
+        <div class="item-list">
+
+        </div>
+
+
+
+
+        <div class='item single dj-list'>
+
+        </div>
+
+        <div class='item fee-list'>
+
+        </div>
+
+
+        <div class='item addr-list'>
+
+        </div>
+        <div class='item tickets-list'>
+
+        </div>
+        <div class='item bbtn payment-item'>
+
+        </div>
+
+    </div>
+
+
+
+    <div class="m-actionsheet">
+        <a href="javascript:void(0)" onclick="actionSheetClick('Y')" class="actionsheet-item">是</a>
+        <a href="javascript:void(0)" onclick="actionSheetClick('N')" class="actionsheet-item">否</a>
+        <a href="javascript:;" class="actionsheet-action" onclick="actionsheetClose()">取消</a>
+    </div>
+
+    <script src="../../static/js/webpack/jquery-2.1.4.min.js"></script>
+    <script src="../../static/js/webpack/modal.js"></script>
+    <script src="../../static/js/webpack/request.js"></script>
+    <script src="../../static/js/webpack/common.js"></script>
+    <script src="../../static/js/webpack/ydui.js"></script>
+    <script src="../../static/js/webpack/template.js"></script>
+    <script type="text/javascript" src="../../static/js/webpack/layer/layer.js"></script>
+    <script type="text/javascript" src="../../static/js/webrequest/diagnose/medicine.js?v=3"></script>
+    <script id="script5" src="/static/js/webpack/vconsole/dist/vconsole.min.js"></script>
+    <script type="text/javascript">
+        var vConsole = new VConsole();
+        vConsole.setOption({ maxLogNumber: 5000 });
+        console.log("Hello World");
+    </script>
+    <script id="addr-div" type="text/html">
+        {{if list===null}}
+        {{else}}
+        <div class='tit'>
+            <div>
+                <span class='line'></span> 配送地址
+                <span class='flag font20'>默认配送地址</span>
+            </div>
+            <div class='add font24' onclick='addressInfo()'>添加新地址</div>
+        </div>
+
+        {{if list.addressId!=""}}
+        <div class='padd30'>
+            <div class='user-box'>
+                <div class='bottom'>
+                    <div class='mr50 mt25'>
+                        <image class='name mr10' src='/static/images/man-icon.png'></image>{{list.consignee}}
+                    </div>
+                    <div class='mt25'>
+                        <image class='tel mr10' src='/static/images/tel-icon.png'></image>{{list.consigneeTel}}
+                    </div>
+                </div>
+                <div class='text mt15'>{{list.address}}</div>
+            </div>
+        </div>
+        {{/if}}
+        {{/if}}
+    </script>
+
+    <script type="text/html" id="user-div">
+        {{if list===null}}
+        {{else}}
+        <div class='info'>
+            <div class='tit font28 mb15'>基本信息</div>
+            <div class='cont font24'>
+                <div class='list col'>
+                    <span class='text'>姓名：</span>{{list.name}}
+                </div>
+                <div class='list col'>
+                    <span class='text'>性别：</span>{{list.sex}}
+                </div>
+                <div class='list col'>
+                    <span class='text'>年龄：</span>{{list.age}}
+                </div>
+                <div class='list col'>
+                    <span class='text'>手机：</span>{{list.phoneNumber}}
+                </div>
+                <div class='list'>
+                    <span class='text'>既往病史：</span>{{list.medicalHistory}}
+                </div>
+                <div class='list'>
+                    <span class='text'>补充描述：</span>{{list.remarks}}
+                </div>
+                <div class='list'>
+                    <span class='text'>就诊时间：</span>{{list.applyTime}}
+                </div>
+                <div class='list'>
+                    <span class='text'>支付时限：</span>{{list.limitTime}}
+                </div>
+                <div class='list'>
+                    <span class='text'>病症简述：</span>{{list.diseaseDescribe}}
+                </div>
+                <div class='list'>
+                    <span class='text'>诊断建议：</span>{{list.adviceDiacrisis}}
+                </div>
+            </div>
+        </div>
+        {{/if}}
+    </script>
+
+
+    <script type="text/html" id="item-div">
+        {{if list===null}}
+        {{else}}
+        {{each list.drugs as item}}
+        <div class='item'>
+            <div class='tit'>
+                <div>
+                    <span class='line'></span> {{item.drugType}}
+                </div>
+                {{if  item.drugType!="新特药"}}
+                <div>
+                    共
+                    <span class='color'>{{item.drugNum}}</span>味，每贴
+                    <span class='color'>{{item.weight}}g</span>
+                </div>
+                {{/if}}
+
+            </div>
+            <div class='cont'>
+                <div>
+                    {{if item.drugTemps!=null}}
+                    {{each item.drugTemps as cell}}
+                    <div class='list'>{{cell.name}}： {{cell.num}}{{cell.unit}}</div>
+                    {{/each}}
+                    {{/if}}
+                </div>
+                <div class='tit'>
+                    <div>药品制作：{{item.supplier}}</div>
+                    {{if  item.drugType!="新特药"}}
+                    <div>
+                        共
+                        <span class='color'>{{item.plaster}}</span>贴
+                    </div>
+                    {{/if}}
+
+                </div>
+                {{if  item.drugType!="新特药"}}
+                <div class='info'>
+                    用法用量： {{item.userMethod}} {{item.takingTime}}
+                </div>
+                {{/if}}
+
+                {{if  item.drugType=="新特药"}}
+                <div class='info'>
+                    用法用量：
+                    {{if item.specialUsemethod!=null}}
+                    {{each item.specialUsemethod as cell}}
+                    <div>{{cell}}</div>
+                    {{/each}}
+                    {{/if}}
+                </div>
+                {{/if}}
+
+            </div>
+        </div>
+        {{/each}}
+        {{/if}}
+    </script>
+
+    <script type="text/html" id="dj-div">
+        {{if list===null}}
+        {{else}}
+        {{if list.haveDaiJian}}
+        <div class='tit yn-api' onclick="actionsheetOpen()">
+            <div>
+                <span class='line'></span> 是否代煎
+            </div>
+            <div>
+                <span class="is-daijian">否</span>
+                <image class='icon ml10' src='/static/images/next-icon.png'></image>
+            </div>
+        </div>
+        {{/if}}
+        {{/if}}
+    </script>
+
+    <script type="text/html" id="fee-div">
+        {{if list===null}}
+        {{else}}
+        <div class='tit'>
+            <div>
+                <span class='line'></span> 订单金额
+            </div>
+            <div></div>
+        </div>
+        <div class='cont'>
+            <div class='num'>
+                <div>诊 金： </div>
+                <div>
+                    <span class='color'>{{list.diagnosisFee}}</span>元
+                </div>
+            </div>
+            <div class='num'>
+                <div>药 费： </div>
+                <div>
+                    <span class='color'>{{list.drugFee}}</span>元
+                </div>
+            </div>
+            <div class='num'>
+                <div>制作费： </div>
+                <div>
+                    <span class='color'>{{list.makeFee}}</span>元
+                </div>
+            </div>
+            <div class='num'>
+                <div>运 费：</div>
+                <div>
+                    <span class='color'>{{list.expressFee}}</span>元
+                </div>
+            </div>
+        </div>
+        {{/if}}
+    </script>
+
+    <script type="text/html" id="ticket-div">
+        {{if item===null}}
+        {{else}}
+        <div class='tit'>
+            <div class='font28'>
+                优惠券
+            </div>
+            <div class='font24 c888' onclick='tocketChange()'>
+                <div>
+                    {{if item.id==""}}
+                    <span style=""><span class='color'>{{item.num}}</span>张可用</span>
+                    {{/if}}
+                    {{if item.id!=""}}
+                    <text class='color'>{{item.name}}</text>
+                    {{/if}}
+                    <image class='next ml20' src="/static/images/next-icon.png"></image>
+                </div>
+            </div>
+        </div>
+        {{/if}}
+    </script>
+
+    <script type="text/html" id="payment-div">
+        {{if list===null}}
+        {{else}}
+        <div class='flex'>
+            <div>
+                本次实付
+                <span class='color'>{{list.totalFee}}</span>元
+            </div>
+            <div class='font24 c888'>
+                <span class='button' onclick='weixinPay()'>微信支付</span>
+            </div>
+        </div>
+        {{/if}}
+    </script>
+
+</body>
+
+</html>

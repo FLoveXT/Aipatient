@@ -1,0 +1,128 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
+    <title>我的优惠券</title>
+    <link href="../../static/css/public.css?v=1.0" rel="stylesheet">
+    <link href="../../static/css/swiper.min.css?v=1.0" rel="stylesheet">
+    <link href="../../static/css/users/ticket.css" rel="stylesheet" />
+    <script src="../../static/js/webpack/reset.js"></script>
+    <link rel="stylesheet" href="../../static/css/ydui.css" />
+    <script type="text/javascript" src="../../static/js/webpack/ydui.flexible.js"></script>
+</head>
+<body>
+    <header>
+        <img class="prev-icon" src="/static/images/prev-icon.png" alt="">
+        <span>我的优惠券</span>
+    </header>
+    <div class='rule font22 ruleinfo'>
+        <img class="icon mr10" src="../../static/images/help-icon.png" />
+        <div class="">使用规则</div>
+    </div>
+    <div class='tabs tab-list'>
+        <div class='tab active' data-value='0' onclick="ticketClick(0)">
+            <span class='text'>未使用优惠券</span>
+        </div>
+        <div onclick="ticketClick(1)" class='tab' data-value='1'>
+            <span class='text'>已过期优惠券</span>
+        </div>
+    </div>
+
+    <div class='ticket no-list' data-index="0" style="display:none">
+
+    </div>
+
+    <div class='ticket past yes-list' data-index="1" style="display:none">
+
+    </div>
+
+    <script src="../../static/js/webpack/jquery-2.1.4.min.js"></script>
+    <script src="../../static/js/webpack/modal.js"></script>
+    <script src="../../static/js/webpack/request.js"></script>
+    <script src="../../static/js/webpack/common.js"></script>
+    <script src="../../static/js/webpack/ydui.js"></script>
+    <script src="../../static/js/webrequest/all/ticket.js"></script>
+    <script src="../../static/js/webpack/template.js"></script>
+    <script src="../../static/js/webpack/layer/layer.js"></script>
+    <script type="text/html" id="no-div">
+        {{if list===null||list.length===0}}
+        {{else}}
+        {{each list as item }}
+        <div class='list'>
+            <div class='left'>
+                <image class='img' src='../../static//images/tiket.png'></image>
+                <div class='text'>
+                    <div class='top font60'>
+                        <span class='font36'>￥</span>{{item.money}}
+                    </div>
+                    <div class='font22'>满{{item.minMoney}}使用</div>
+                </div>
+            </div>
+            <div class='right'>
+                <image class='img' src='../../static//images/tiket-r.png'></image>
+                <div class='text'>
+                    <div class='font28'>{{item.name}}</div>
+                    <div class='font22 mt15 mb15'>{{item.type}}</div>
+                    <div class='font22'>{{item.startTime}}至{{item.endTime}} </div>
+                </div>
+            </div>
+        </div>
+        {{/each}}
+        {{/if}}
+    </script>
+
+    <script type="text/html" id="yes-div">
+        {{if list===null||list.length===0}}
+        {{else}}
+        {{each list as item }}
+        <div class='list'>
+            <div class='left'>
+                <image class='img' src='../../static//images/tiket-f.png'></image>
+                <div class='text'>
+                    <div class='top font60'>
+                        <span class='font36'>￥</span>{{item.money}}
+                    </div>
+                    <div class='font22'>满{{item.minMoney}}使用</div>
+                </div>
+            </div>
+            <div class='right'>
+                <image class='img' src='../../static//images/tiket-r-f.png'></image>
+                <div class='text'>
+                    <div class='font28'>{{item.name}}</div>
+                    <div class='font22 mt15 mb15'>{{item.type}}</div>
+                    <div class='font22'>{{item.startTime}}至{{item.endTime}} </div>
+                </div>
+            </div>
+        </div>
+        {{/each}}
+        {{/if}}
+    </script>
+
+    <script type="text/javascript">
+        $(function () {
+            $(".ruleinfo").click(function () {
+                var url = '/pages/H5/ticket_rule.html';
+                layer.open({
+                    type: 2,
+                    title: false,
+                    shadeClose: true,
+                    closeBtn: 1, //不显示关闭按钮
+                    area: ['90%', '90%'],
+                    anim: 2,
+                    scrollbar: false,
+                    btn:["确定"],
+                    content: [url], //iframe的url，no代表不显示滚动条
+                });
+            });
+        })
+    </script>
+
+    <style>
+        .layui-layer-setwin .layui-layer-close2 {
+            background-position: -154px -25px;
+        }
+    </style>
+
+</body>
+</html>

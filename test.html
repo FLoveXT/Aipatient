@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>测试</title>
+    <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" name="viewport" />
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+    <meta content="telephone=no" name="format-detection" />
+    <link href="static/css/ydui.css" rel="stylesheet" />
+</head>
+
+<body>
+    <input type="button" onclick="testError()" value="错误" />
+    <input type="button" onclick="testSuccess()" value="成功" />
+    <input type="button" onclick="testLoading()" value="加载" />
+    <input type="button" onclick="getApi()" value="测试GET-API" />
+    <input type="button" onclick="getQueryName()" value="获取URL参数" />
+    <div id="verf-div" style="width: 200px;height: 50px;"></div>
+    <input type="text" id='input_verf' value="" />
+    <input type='button' value="验证" id='btnverf' />
+    <a data-url='' href="javascript:void(0)">跳转到百度</a>
+
+
+
+
+
+
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+     	<script src="static/js/webpack/layer/layer.js"></script> 
+   <script src="static/js/webpack/modal.js"></script>
+    <script src="static/js/webpack/request.js"></script>
+    <script src="static/js/webpack/common.js"></script>
+    <script src="static/js/webpack/verify.js"></script>
+
+    <script src="static/js/webpack/ydui.js"></script>
+
+    <script type="text/javascript">
+        function testError() {
+            //errorToast("错误提示")
+            errorMsg("错误提示");
+            return false;
+        }
+
+        function testSuccess() {
+            successMsg("成功提示")
+            return false;
+        }
+
+        function testLoading() {
+            loadingToast("加载提示")
+            return false;
+        }
+
+        function getApi() {
+            var token =
+                "eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE1MzM3OTg5MjIsInN1YiI6IjE1MjE3NzM5ODI2IiwiZXhwIjoxNTM0NDAzNzIyfQ.9CnmaU9K8rrLExF--MTBc5NYGRlzNtq-MyHPbCPZhyrggOnBwOTclt2ZUGUnO8zLoSuehoWp6VEIgK46CEGmKQ";
+            localStorage.setItem("token", token)
+            new getRequest({
+                url: "/api/user/user_info.json",
+                isShowLoader: true,
+                callBack(res) {
+                    console.log(res);
+                }
+            })
+        }
+
+        function getQueryName() {
+            var strings = getQueryString("name");
+            alert(strings);
+
+        }
+
+        //$(function () {
+        //    //var verfcode = new GVerify("verf-div");
+        //    //$("#btnverf").click(function () {
+        //    //    var input = $("#input_verf").val();
+        //    //    if (verfcode.validate(input)) {
+        //    //        alert("验证success");
+        //    //    }
+        //    //    else {
+        //    //        alert("验证error");
+        //    //    }
+        //    //});
+        //})
+     
+    </script>
+</body>
+
+
+
+
+
+</html>

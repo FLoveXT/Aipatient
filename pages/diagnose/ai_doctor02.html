@@ -1,0 +1,94 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
+    <title>智能导医-找到主治医师</title>
+    <link href="../../static/css/public.css?v=1.0" rel="stylesheet">
+    <link href="../../static/css/swiper.min.css?v=1.0" rel="stylesheet">
+    <link href="../../static/css/diagnose/ai_doctor02.css" rel="stylesheet" />
+    <link rel="stylesheet" href="../../static/css/ydui.css" />
+    <script src="../../static/js/webpack/reset.js"></script>
+    <script type="text/javascript" src="../../static/js/webpack/ydui.flexible.js"></script>
+</head>
+<body>
+    <header>
+        <img class="prev-icon" src="/static/images/prev-icon.png" alt="">
+        <span>智能导医-找到主治医师</span>
+    </header>
+    <div class='header mt30'>
+        <div class='tit'>
+            <text class='font30'>
+                我的症状：
+                <span class="my-dis"></span>
+            </text>
+        </div>
+        <div class='info'>是啥疾病？</div>
+        <div class='wrap diseases-list'>
+
+        </div>
+        <div class='wrap detail'>
+            <div class='font26 top'>声明：</div>
+            <div class='list font26'>以上疾病是计算机智能技术结合医疗大数据运算分析而来，仅供参考！请最终以医生诊断为准！</div>
+        </div>
+    </div>
+    <div class='cont'>
+        <div class='font30 tit'>专家推荐</div>
+        <div class='index-item03 mt25'>
+            <div class="doctor-list">
+
+            </div>
+            <div class="is-more" style="display:none">
+                <a class='fr more' href='/pages/home/doctor.html?types=disease'>点击查看更多</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="../../static/js/webpack/jquery-2.1.4.min.js"></script>
+    <script src="../../static/js/webpack/modal.js"></script>
+    <script src="../../static/js/webpack/request.js"></script>
+    <script src="../../static/js/webpack/common.js"></script>
+    <script src="../../static/js/webpack/ydui.js"></script>
+    <script src="../../static/js/webpack/template.js"></script>
+    <script src="../../static/js/webrequest/diagnose/ai_doctor02.js"></script>
+    <script type="text/html" id="doctor-div">
+        {{if list===null||list.length===0}}
+        {{else}}
+        {{each list as item }}
+        <div class='list' onclick="navigatorDoctor('{{item.doctorId}}')">
+            <image class='img' src='{{item.image}}'></image>
+            <div class='right'>
+                <div class='title'>
+                    <div>
+                        <text class='font30'>{{item.name}}</text>
+                        <text class='font26 ml15'>{{item.titles}}</text>
+                    </div>
+                    <text class='label font20'>{{item.depart}}</text>
+                </div>
+                <div class='font26 addr'>医院机构：{{item.medicalInstitutions}}</div>
+                <div class='mvp'>
+                    <text class='font26'>擅长：</text>
+                    {{each item.diseaseExpertise as cell }}
+                    <text class='span font22'>{{cell}}</text>
+                    {{/each}}
+                </div>
+                <div class='price'>
+                    <image class='icon' src='../../static/images/icon.png'></image>
+                    <text class='font30'>{{item.fee}}元/次</text>
+                </div>
+            </div>
+        </div>
+        {{/each}}
+        {{/if}}
+    </script>
+
+    <script type="text/html" id="diseases-div">
+        {{if list===null||list.length===0}}
+        {{else}}
+        {{each list as item }}
+        <div class='font30 top'>{{item}}</div>
+        {{/each}}
+        {{/if}}
+    </script>
+</body>
+</html>

@@ -1,0 +1,64 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
+    <title>智能导医-输入症状</title>
+    <link href="../../static/css/public.css?v=1.0" rel="stylesheet">
+    <link href="../../static/css/swiper.min.css?v=1.0" rel="stylesheet">
+    <link href="../../static/css/diagnose/ai_doctor01.css" rel="stylesheet" />
+    <link rel="stylesheet" href="../../static/css/ydui.css" />
+    <script src="../../static/js/webpack/reset.js"></script>
+    <script type="text/javascript" src="../../static/js/webpack/ydui.flexible.js"></script>
+    <style>
+        [contenteditable = "true"], input, textarea {
+            -webkit-user-select: auto!important;
+            -khtml-user-select: auto!important;
+            -moz-user-select: auto!important;
+            -ms-user-select: auto!important;
+            -o-user-select: auto!important;
+            user-select: auto!important;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img class="prev-icon" src="/static/images/prev-icon.png" alt="">
+        <span>智能导医-输入症状</span>
+    </header>
+    <div class='header mt30'>
+
+        <div class='tit'>
+            <text class='font30'>我的症状：<span class="my-diaspone"></span></text>
+            <div class='font24 mt15 text'>请输入您的主诉或症状名称：</div>
+        </div>
+        <div class='mid'>
+            <text class='btn font26 complete-commit' style="display:none" onclick='completeCommit()'>完成提交</text>
+            <text class='btn font26 clear-record' onclick="clearText()" style="display:none">清除记录</text>
+        </div>
+    </div>
+    <div class='cont font26'>
+        <label><input value='' class="search-input" /></label>
+        <div class='options option-list' style="display:none">
+
+        </div>
+    </div>
+
+
+    <script src="../../static/js/webpack/jquery-2.1.4.min.js"></script>
+    <script src="../../static/js/webpack/modal.js"></script>
+    <script src="../../static/js/webpack/request.js"></script>
+    <script src="../../static/js/webpack/common.js"></script>
+    <script src="../../static/js/webpack/ydui.js"></script>
+    <script src="../../static/js/webpack/template.js"></script>
+    <script src="../../static/js/webrequest/diagnose/ai_doctor01.js"></script>
+    <script type="text/html" id="item-div">
+        {{if list===null||list.length===0}}
+        {{else}}
+        {{each list as item }}
+        <div class='list' onclick="clickSelected(this)" data-value='{{item}}'>{{item}}</div>
+        {{/each}}
+        {{/if}}
+    </script>
+</body>
+</html>

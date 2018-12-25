@@ -1,0 +1,76 @@
+﻿body {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    font-size: .28rem
+}
+
+.flex {
+    flex: 1;
+}
+
+.top {
+    margin-top: .20rem;
+    background: #fff;
+    padding: 0 .30rem .30rem;
+}
+
+.top .tit {
+    display: flex;
+    justify-content: space-between;
+    height: 1.00rem;
+    align-items: center;
+}
+
+.top textarea {
+    width: 100%;
+    box-sizing: border-box;
+    height: 1.80rem;
+}
+
+.img-cont {
+    padding: .30rem .20rem;
+}
+
+.img-cont .box {
+    margin: .30rem 0;
+}
+
+.img-cont .img {
+    width: 1.35rem;
+    height: 1.35rem;
+    border-radius: .05rem;
+    margin: .10rem;
+}
+
+.img-wrap {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.img-wrap .img.box {
+    position: relative;
+}
+
+.img-wrap .img.box input {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    z-index: 2;
+}
+
+.img-wrap .img.box .img-close {
+    width: .30rem;
+    height: .30rem;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.img-wrap .img.box .c-img {
+    width: 1.36rem;
+    height: 1.36rem;
+}

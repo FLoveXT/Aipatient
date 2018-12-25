@@ -1,0 +1,88 @@
+﻿
+.doc-card {
+    margin-top: .20rem;
+}
+
+    .doc-card .item .top {
+        padding-bottom: .30rem;
+    }
+
+.item .tit {
+    padding: 0 .30rem;
+    height: .90rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: .02rem solid #e8e8e8;
+}
+
+    .item .tit .line {
+        display: inline-block;
+        width: .06rem;
+        height: .24rem;
+        background: #bc9761;
+    }
+
+    .item .tit .next {
+        width: .13rem;
+        height: .24rem;
+    }
+
+    .item .tit .more {
+        width: .30rem;
+        height: .30rem;
+    }
+
+.mid .item {
+    background: #fff;
+    margin-top: .20rem;
+}
+
+.wrap .item {
+    background: #fff;
+    margin-top: .20rem;
+}
+.wrap .item.payment-item{
+    width: 100%;
+    padding-bottom: 1.3rem;
+}
+
+
+.item .time-cont {
+    padding: .30rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+.item .color {
+    color: #ff7e00;
+}
+
+.item .doc-cont {
+    padding: .30rem;
+    line-height: .48rem;
+}
+
+.item.btn .tit {
+    border: none;
+    height: 1.20rem;
+}
+
+.item.btn .button {
+    width: 3.35rem;
+    height: .80rem;
+    display: inline-block;
+    background: #4aa84b;
+    color: #fff;
+    text-align: center;
+    line-height: .80rem;
+    border-radius: .10rem;
+}
+
+.color {
+    color: #FFB77D;
+}
+.patientList-list{
+    height: 4.5rem;
+    overflow-y: auto;
+}

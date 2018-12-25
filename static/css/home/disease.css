@@ -1,0 +1,28 @@
+﻿
+body {
+    padding: .30rem 0;
+   
+}
+.con {
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+}
+
+.nav {
+    box-sizing: border-box;
+    display: inline-block;
+    width: 33.3334%;
+    height: 2.50rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: #fff;
+    border: .01rem solid #e8e8e8;
+}
+
+    .nav .img {
+        width: .96rem;
+        height: .96rem;
+    }

@@ -1,0 +1,72 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
+    <title>收货人信息</title>
+    <link href="../../static/css/public.css?v=1.0" rel="stylesheet">
+    <link href="../../static/css/swiper.min.css?v=1.0" rel="stylesheet">
+    <link href="../../static/css/users/addr.css" rel="stylesheet" />
+    <link rel="stylesheet" href="../../static/css/ydui.css" />
+    <script src="../../static/js/webpack/reset.js"></script>
+    <script type="text/javascript" src="../../static/js/webpack/ydui.flexible.js"></script>
+</head>
+
+<body>
+    <header>
+        <img class="prev-icon" src="/static/images/prev-icon.png" alt="">
+        <span>收货地址</span>
+    </header>
+    <div class='page'>
+
+        <div class="addr-list">
+
+        </div>
+
+        <div class='bbtn'>
+            <button onclick='addAddress()'>增加收货人</button>
+        </div>
+    </div>
+
+
+    <script src="/static/js/webpack/jquery-2.1.4.min.js"></script>
+    <script src="/static/js/webpack/modal.js"></script>
+    <script src="/static/js/webpack/request.js"></script>
+    <script src="/static/js/webpack/common.js"></script>
+    <script src="/static/js/webpack/ydui.js"></script>
+    <script src="/static/js/webrequest/user/addr.js"></script>
+    <script src="/static/js/webpack/template.js"></script>
+    <script type="text/html" id="addr-div">
+        {{if list===null}}
+        {{else}}
+        {{each list.List as item}}
+        <div class='item'  onclick="divClick(this)" data-id='{{item.addressId}}'  data-name='{{item.name}}'
+                 data-phone='{{item.phoneNumber}}' data-address='{{item.provinceName}}{{item.cityName}}{{item.countyName}}{{item.townsName}}{{item.address}}'>
+            <div class='top'>
+                <span class='font26 name'>{{item.name}}</span>
+                <span class='font24'>{{item.phoneNumber}}</span>
+                <div>{{item.provinceName}}{{item.cityName}}{{item.countyName}}{{item.townsName}}{{item.address}}</div>
+            </div>
+            <div class='bottom'>
+                <div class='left'>
+                    <span onclick='setActiveInfo(this, "{{item.preferred}}","{{item.addressId}}")' class='t-icon {{item.preferred=="Y"?"active":""}} mr15'></span>设为默认
+                </div>
+                <div class='right'>
+                    <div class='edit' onclick="editInfo(this,'{{item.addressId}}','{{item.preferred}}')">
+                        <img class='icon mr10' src='/static/images/edit-c-icon.png'>编辑
+                    </div>
+                    <div class='del' onclick='DeleteBtn(this,"{{item.addressId}}")' data-id='{{item.addressId}}'>
+                        <img class='icon mr10' src='/static/images/del-cicon.png'>删除
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{/each}}
+        {{/if}}
+    </script>
+</body>
+<!---
+
+    -->
+</html>

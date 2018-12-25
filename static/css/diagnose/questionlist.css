@@ -1,0 +1,45 @@
+﻿body {
+ font-size:0.28rem;
+}
+.wrap {
+    background: #fff;
+}
+
+    .wrap .list {
+        padding: 0 .30rem;
+        border-top: .02rem solid #e8e8e8;
+        display: flex;
+        height: 1.30rem;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+        .wrap .list .add {
+            color: #ff7e00;
+        }
+
+    .wrap .tit {
+        height: .90rem;
+        line-height: .90rem;
+        text-align: center;
+    }
+
+.color-black {
+    color: #000;
+}
+
+.margin10 {
+    margin-top: .10rem;
+}
+
+.color-ddd {
+    color: #CACACA;
+}
+
+.color-red {
+    color: red;
+}
+
+.queryinfo-list .active {
+    background-color: #ddd;
+}

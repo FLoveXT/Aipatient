@@ -1,0 +1,374 @@
+body{
+	font-size:0.25rem
+}
+.header {
+    background: #fff;
+    border-bottom: .02rem solid #e8e8e8;
+}
+
+.doc-tit {
+    position: relative;
+    box-shadow: 0 .20rem .20rem .01rem #ebedf1;
+    border-radius: .30rem;
+}
+
+.doc-cont {
+    padding: 0 .30rem .20rem;
+}
+
+.header .tit-text {
+    padding: 0 .30rem;
+}
+
+.header .tit-text .text {
+    background: #fef6c7;
+    color: #c19a48;
+    line-height: .60rem;
+    display: inline-block;
+    border-radius: .10rem;
+    padding: 0 .20rem;
+    margin: .20rem 0;
+}
+
+.doc-cont .price {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: .50rem;
+}
+
+.doc-cont .price .color {
+    color: #ff7e00;
+    display: inline-block;
+    margin-right: .30rem;
+}
+
+.doc-cont .btn {
+    display: inline-block;
+    width: 2.00rem;
+    height: .70rem;
+    background: #ddd;
+}
+
+.doc-cont .btn.on {
+    background-color: #4a73d2;
+}
+
+.doc-cont .btn .icon {
+    width: .30rem;
+    height: .28rem;
+    vertical-align: middle;
+}
+
+.doc-cont .btn {
+    border-radius: .15rem;
+    text-align: center;
+    line-height: .70rem;
+    color: #fff;
+}
+
+.top-img {
+    position: relative;
+}
+
+.top-img .star-icon-w {
+    display: block;
+    background: #fff;
+    background-size: cover;
+    position: absolute;
+    right: .60rem;
+    top: 2.55rem;
+    line-height: .50rem;
+    height: .50rem;
+    border: .02rem solid #ff7e00;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 .20rem;
+    border-radius: .10rem;
+    z-index: 2;
+    color: #ff7e00;
+}
+
+.top-img .star-icon-w.active {
+    background: #ff7e00;
+    color: #fff;
+}
+
+.top-img .tit-img {
+    width: 100%;
+    height: 2.76rem;
+}
+
+.doc-box {
+    text-align: center;
+    background: #fff;
+    border-radius: .15rem;
+    margin-top: -1.30rem;
+    height: 3.20rem;
+    position: relative;
+}
+
+.doc-box .span {
+    position: absolute;
+    background: #bc9761;
+    display: inline-block;
+    right: 0;
+    top: .25rem;
+    font-size: .20rem;
+    padding: 0 .20rem;
+    line-height: .35rem;
+    border-radius: .35rem 0 0 .35rem;
+    color: #fff;
+}
+
+.doc-box .doc-img {
+    width: 1.25rem;
+    height: 1.25rem;
+    border-radius: 100%;
+    border: .10rem solid #fff;
+    box-shadow: 0 .10rem .10rem .1rem #f1f2f5;
+    margin-top: -.60rem;
+}
+
+.doc-box .name .label {
+    color: #e02e14;
+    border: .02rem solid #e02e14;
+    border-radius: .05rem;
+    line-height: .26rem;
+    display: inline-block;
+    padding: 0 .10rem;
+    margin-left: .20rem;
+}
+
+.doc-box .name {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.doc-box .addr {
+    color: #888;
+}
+
+.doc-box .info .label {
+    display: inline-block;
+    background: #faf7f3;
+    color: #bc9761;
+    border: .02rem solid #bc9761;
+    border-radius: .30rem;
+    line-height: .30rem;
+    padding: 0 .20rem;
+    margin: 0 .05rem;
+}
+
+.item {
+    margin-top: .20rem;
+    background: #fff;
+}
+
+.item .tit {
+    line-height: 1.00rem;
+    padding: 0 0.30rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: .02rem solid #e8e8e8;
+}
+
+.item .tit .icon {
+    width: .27rem;
+    height: .24rem;
+}
+
+.item .tit .next {
+    width: .13rem;
+    height: .24rem;
+}
+
+.item .item-cont {
+    padding: .20rem .30rem;
+    color: #888;
+}
+
+.item .item-cont .title {
+    color: #333;
+}
+
+.item .top {
+    padding: 0 .30rem;
+    color: #888;
+    line-height: .90rem;
+}
+
+.item .top .line {
+    display: inline-block;
+    width: .06rem;
+    height: .24rem;
+    background: #bc9761;
+}
+
+.item .box {
+    padding: 0 .30rem;
+}
+
+.item .box .class {
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    padding-bottom: .20rem;
+}
+
+.item .box .class .label {
+    display: inline-block;
+    width: 2.05rem;
+    line-height: .60rem;
+    border: .02rem solid #e8e8e8;
+    text-align: center;
+    border-radius: .10rem;
+    margin: .10rem .10rem;
+}
+
+.item .box .class .label.more {
+    color: #bc9761;
+    border-color: #bc9761;
+}
+
+.item .doc-cont .icon {
+    width: .30rem;
+    height: .30rem;
+    margin-left: .15rem;
+}
+
+.item .doc-cont .icon.active {
+    transform: rotate(-180deg);
+}
+
+.item .doc-cont .more {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #888;
+    padding: .30rem 0;
+}
+
+.item .doc-cont .doc-img {
+    width: 100%;
+    height: 3.60rem;
+    margin-bottom: .25rem;
+}
+
+.item .doc-cont .text {
+    line-height: .40rem;
+}
+
+.item .doc-news .list {
+    padding: .25rem .30rem;
+    border-top: .02rem solid #e8e8e8;
+}
+
+.item .more-btn {
+    text-align: center;
+    line-height: .90rem;
+    border-top: .02rem solid #e8e8e8;
+}
+
+.item .discuss .star .star-icon {
+    display: inline-block;
+    width: .40rem;
+    height: .40rem;
+    background-size: cover;
+    margin: 0 .10rem;
+}
+
+.item .discuss .star .star-icon.active {
+    background-position: -.39rem 0;
+}
+
+.item .discuss .cont-bg {
+    background: #f5f6f8;
+    border-radius: .15rem;
+}
+
+.item .discuss .cont-bg .text {
+    line-height: .60rem;
+    border-bottom: .02rem solid #e8e8e8;
+    padding: 0 .30rem;
+}
+
+.item .discuss .cont-bg .star {
+    padding: .30rem;
+}
+
+.item .discuss .list {
+    border-top: .02rem solid #e8e8e8;
+    padding: .30rem;
+}
+
+.item .discuss .title {
+    line-height: .75rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+.item .discuss .star-list {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    height: .45rem;
+    margin: .10rem 0;
+}
+
+.more-text {
+    line-height: .37rem;
+    max-height: 1.05rem;
+    overflow: hidden;
+}
+
+.more-text.active {
+    max-height: 100%;
+    overflow: visible;
+}
+.search-tit{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.search-tit .search-view{
+    display: inline-block;
+    width: 1.80rem;
+    height: .50rem;
+    border-radius: .50rem;
+    border: .03rem solid #bc9761;
+    color: #bc9761;
+    display: flex;
+    justify-items: center;
+    justify-content: center;
+    line-height: .50rem;
+}
+
+
+.query-bg{
+    position: fixed;
+    content: "";
+    width: 100%;
+    height: 100%;
+    display: block;
+    background: rgba(0,0,0,.3);
+    z-index: 9999;
+    top:0;
+}
+
+.query-bg-info{
+    z-index: 10000;
+    top:25%;
+    width: 100%;
+    height: 45%;
+    position: fixed;
+}
+
+.query-img{
+    width: 100%;
+    height: 5rem;
+}

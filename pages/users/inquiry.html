@@ -1,0 +1,154 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
+    <title>我的问诊</title>
+    <link href="../../static/css/public.css?v=1.0" rel="stylesheet">
+    <link href="../../static/css/swiper.min.css?v=1.0" rel="stylesheet">
+    <link href="../../static/css/users/inquiry.css" rel="stylesheet" />
+    <link rel="stylesheet" href="../../static/css/ydui.css" />
+    <script src="../../static/js/webpack/reset.js"></script>
+    <script type="text/javascript" src="../../static/js/webpack/ydui.flexible.js"></script>
+</head>
+
+<body>
+    <header>
+        <span>我的问诊</span>
+    </header>
+    <div class='tabs'>
+        <div class='tab active' data-value="new">
+            <span class='text'>最新问诊</span>
+        </div>
+        <div class='tab' data-value="record">
+            <span class='text'>问诊记录</span>
+        </div>
+    </div>
+    <!-- 最新问诊 -->
+    <div class='focus-doc new-list item-list'>
+    </div>
+
+
+    <!-- 问诊记录   -->
+    <div class="doc-news record-list item-list" style='display:none;'>
+
+    </div>
+
+    <script src="../../static/js/webpack/jquery-2.1.4.min.js"></script>
+    <script src="../../static/js/webpack/modal.js"></script>
+    <script src="../../static/js/webpack/request.js"></script>
+    <script src="../../static/js/webpack/common.js"></script>
+    <script src="../../static/js/webpack/ydui.js"></script>
+    <script src="../../static/js/webrequest/user/inquiry.js?v=2"></script>
+    <script src="../../static/js/webpack/template.js"></script>
+    <script src="../../static/js/webpack/vconsole/dist/vconsole.min.js"></script>
+
+    <script type="text/html" id="new-div">
+        {{if list===null||list.length===0}}
+        {{else}}
+        {{each list as item}}
+
+        <div class='item'>
+            <div class='num font22 c888'>
+                <div>订单号：{{item.recordId}}</div>
+                <div>{{item.time}}</div>
+            </div>
+            <div class='top'>
+                <img class='user' src='{{item.image}}'>
+                <div class='right'>
+                    <div class='info'>
+                        <div class='font30'>
+                            {{item.name}}
+                            <span class='font26'>{{item.titles}}</span>
+                        </div>
+                        <span class='span'>{{item.depart}}</span>
+                    </div>
+                    {{if item.status=="WAIT_BUYER_PAY"}}
+                    <div class='mid' data-state='{{item.explainState}}'>24小时内图文、语音、视频咨询问诊服务</div>
+                    {{/if}}
+
+                    {{if item.status=="PAY_SUCCESS"&&item.explainState==1}}
+                    <view class='mid'>24小时内图文、语音、视频咨询问诊服务</view>
+                    {{/if}}
+
+                    {{if item.status=="PAY_SUCCESS"&&item.explainState==2}}
+                    <div class='mid'>
+                        <text onclick='goWriteInfo(this)' data-recordid='{{item.recordId}}' data-doctorid='{{item.doctorId}}'>点击此处填写问诊单</text>
+                    </div>
+                    {{/if}}
+
+                    {{if item.status=="PAY_SUCCESS"&&item.explainState==3}}
+                    <div class='mid' data-recordid='{{item.recordId}}' data-doctorid='{{item.doctorId}}' onclick='gosuccess(this)'>问诊单已填写</div>
+                    {{/if}}
+
+                    {{if item.status=="PAY_SUCCESS"&&item.explainState==3}}
+                    <div class='mid' data-recordid='{{item.recordId}}' data-doctorid='{{item.doctorId}}' onclick='gosuccess(this)'>服务预约时间:{{item.serviceTime}}</div>
+                    {{/if}}
+
+                    {{if item.status=="PAY_SUCCESS"&&item.explainState==4}}
+                    <div class='mid' data-recordid='{{item.recordId}}' data-doctorid='{{item.doctorId}}' onclick='gosuccess(this)'>问诊单已填写,等待医生回复</div>
+                    {{/if}}
+
+                    {{if item.status=="PAY_SUCCESS"&&item.explainState==4}}
+                    <div class='mid' data-recordid='{{item.recordId}}' data-doctorid='{{item.doctorId}}' onclick='gosuccess(this)'>
+                        {{item.lastReply}}
+                    </div>
+                    {{/if}}
+                </div>
+            </div>
+            {{if item.status=="WAIT_BUYER_PAY"}}
+            <div class='btn'>
+                <div class='font30 mid'>
+                    <img class='icon mr10' src='../../static/images/hos-icon.png'>{{item.fee}}元/次
+                </div>
+                <div>
+                    <span class='button pay' onclick="goPay(this,'{{item.recordId}}','{{item.doctorId}}')" data-recordid='{{item.recordId}}' data-index='{{index}}'>去支付</span>
+                    <span class='button cancel' onclick="goPayCancel(this,'{{item.recordId}}')" data-index='{{index}}' data-recordid='{{item.recordId}}'>取消支付</span>
+                </div>
+            </div>
+            {{/if}}
+        </div>
+
+        {{/each}}
+        {{/if}}
+    </script>
+
+    <script type="text/html" id="record-div">
+        {{if list===null||list.length===0}}
+        {{else}}
+        {{each list as item}}
+        <div class='item'>
+            <div class='title font22'>
+                <text>订单号：{{item.recordId}}</text>
+                <text>{{item.time}}</text>
+            </div>
+            <div class='top'>
+                <image class='user' src='{{item.image}}'></image>
+                <div>
+                    <div class='tit font30 mb10'>{{item.name}}</div>
+                    {{if item.explainState==1}}
+                    <div data-recordid='{{item.recordId}}' onclick='gorecordstatus(this)'>
+                        在线问诊已结束,查看问诊详情>>
+                    </div>
+                    {{/if}}
+                    {{if item.explainState==2}}
+                    <div data-doctorid='{{item.doctorId}}' onclick='gorecordcancel(this)'>
+                        在线问诊已取消,再次前往问诊>>
+                    </div>
+                    {{/if}}
+
+                </div>
+            </div>
+        </div>
+        {{/each}}
+        {{/if}}
+    </script>
+    <script type="text/javascript">
+        var vConsole = new VConsole();
+        vConsole.setOption({ maxLogNumber: 5000 });
+        console.log("Hello World");
+    </script>
+</body>
+
+</html>

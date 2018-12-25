@@ -1,0 +1,88 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
+    <title>消息中心</title>
+    <link href="../../static/css/public.css?v=1.0" rel="stylesheet">
+    <link href="../../static/css/swiper.min.css?v=1.0" rel="stylesheet">
+    <link href="../../static/css/users/message.css" rel="stylesheet" />
+    <link rel="stylesheet" href="../../static/css/ydui.css" />
+    <script src="../../static/js/webpack/reset.js"></script>
+    <script type="text/javascript" src="../../static/js/webpack/ydui.flexible.js"></script>
+</head>
+
+<body>
+    <header>
+        <img class="prev-icon" src="/static/images/prev-icon.png" alt="">
+        <span>消息中心</span>
+        <span class="right" onclick="showMsg()">编辑</span>
+        <div class="msg-wrap">
+            <div class="msg-box">
+                <div class="msg-list" onclick="buildRead()"><img src="/static/images/msg-icon.png" alt="">标记全部已读</div>
+                <div class="msg-list" onclick="emptyRead()"><img src="/static/images/del-cicon.png" alt="">清空已读消息</div>
+            </div>
+            <div class="bg" onclick="hideMsg()"></div>
+        </div>
+    </header>
+
+    <div class="message-list">
+        
+    </div>
+
+
+
+    <div class="drawer_screen" style="display:none"></div>
+    <div class="drawer_box" style="display:none">
+        <div class="drawer_title">转诊提醒</div>
+        <div class="drawer_content">
+            <div class="top grid">
+                <div class="radio-group">
+                    <div class='radio-width'>
+                        <label>
+                            继续等待<span class="doctor-name"></span>医生回复 <input type="radio" name="choiceMethod" class="checkbox"
+                                                                             onclick="checkAttr(this,0,message.TransferId,true)" />
+                        </label>
+                    </div>
+                    <div class='radio-width'>
+                        <label>选择其他在线医生 <input type="radio" name="choiceMethod" class="checkbox" onclick="checkAttr(this, 1, '', false)" /></label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="btn_ok" onclick="btnConfirm()" data-statu="close">确定</div>
+    </div>
+
+    <script src="../../static/js/webpack/jquery-2.1.4.min.js"></script>
+    <script src="../../static/js/webpack/modal.js"></script>
+    <script src="../../static/js/webpack/request.js"></script>
+    <script src="../../static/js/webpack/common.js"></script>
+    <script src="../../static/js/webpack/ydui.js"></script>
+    <script src="../../static/js/webrequest/user/message.js"></script>
+    <script type="text/javascript" src="../../static/js/webpack/template.js"></script>
+    <script type="text/html" id="message-div">
+        {{if list===null||list.length===0}}
+        {{else}}
+        {{each list as item}}
+        <div class='item item-group' data-id="{{item.messageId}}">
+            <div class='time'>
+                <span class='text font20'>{{item.createTime}}</span>
+            </div>
+            <div class='cont' data-businessid='{{item.businessId}}' data-messageid='{{item.messageId}}' data-doctorname='{{item.doctorName}}'
+                 data-doctorid='{{item.doctorId}}' data-code='{{item.code}}' onclick='messageBuildClick(this)'>
+                <div class='top font28 mid'>
+                    <div class='left'><img class='img' src='/static/images/message-img.png'>{{item.title}}</div>
+                    <div class='status {{item.readStatus?"active":""}}'>{{item.readStatus?"已读":"未读"}}</div>
+                </div>
+                <div class='info font24'>
+                    {{item.content}}
+                </div>
+            </div>
+        </div>
+        {{/each}}
+        {{/if}}
+    </script>
+</body>
+
+</html>

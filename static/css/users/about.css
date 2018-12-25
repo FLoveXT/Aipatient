@@ -1,0 +1,136 @@
+
+
+body {
+    padding: .30rem;
+    background: #fff!important;
+}
+
+.title {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.title .left {
+    position: relative;
+    margin-right: .30rem;
+}
+
+.title .left .user-imges {
+    width: 1.00rem;
+    height: 1.00rem;
+    border-radius: 100%;
+}
+
+.title .left .icon {
+    width: .26rem;
+    height: .26rem;
+    position: absolute;
+    right: 0;
+    bottom: .10rem;
+}
+
+.title .right .doctor-info {
+    font-size: .30rem;
+    margin-bottom: .20rem;
+}
+
+.title .right .doctor-info .sub-tit {
+    font-size: .26rem;
+    margin-left: .15rem;
+}
+
+.title .right .addr-info {
+    color: #666;
+}
+
+.title .right .addr-info .sub-tit {
+    margin-left: .15rem;
+}
+
+.invite-text {
+    font-size: .28rem;
+    line-height: .42rem;
+    margin-top: .40rem;
+}
+
+.invite-text .img-box {
+    text-align: center;
+}
+
+.invite-text .img-box .text {
+    font-size: .40rem;
+    color: #bc9761;
+    font-weight: bold;
+    display: block;
+    margin: .30rem 0;
+}
+
+.invite-text .img {
+    width: 5.90rem;
+    height: 1.46rem;
+}
+
+.from .list {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: .28rem;
+    border-bottom: 1px solid #e8e8e8;
+    line-height: 1.00rem;
+    padding-left: .20rem;
+}
+
+.from .list button {
+    width: 1.40rem;
+    height: .60rem;
+    line-height: .60rem;
+    color: #fff;
+    background-color: #3aa2fc;
+    font-size: .28rem;
+}
+
+.from .list .item-text {
+    width: 1.40rem;
+    text-align: right;
+}
+
+.from .list .right {
+    width: 1.45rem;
+    text-align: right;
+    padding-right: .10rem;
+}
+
+.from .list input {
+    width: 3.20rem;
+}
+
+.from .list .icon {
+    width: .28rem;
+    height: .28rem;
+    border-radius: 100%;
+}
+
+.bbtn {
+    margin-top: .65rem;
+}
+
+.bbtn button {
+    background: #bc9761;
+    font-size: .32rem;
+    color: #fff;
+    height: .90rem;
+    line-height: .90rem;
+    width: 100%;
+    border-radius: .12rem;
+}
+.about-list .tit{
+    font-size: .32rem;
+    color: #bc9761;
+    font-weight: bold;
+    margin: .20rem 0;
+}
+.about-list{
+    line-height: .40rem;
+    font-size: .28rem;
+}

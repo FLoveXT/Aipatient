@@ -1,0 +1,170 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
+    <title>我的评价</title>
+    <link href="../../static/css/public.css?v=1.0" rel="stylesheet">
+    <link href="../../static/css/swiper.min.css?v=1.0" rel="stylesheet">
+    <link href="../../static/css/users/appraise.css" rel="stylesheet" />
+    <link rel="stylesheet" href="../../static/css/ydui.css" />
+    <script src="../../static/js/webpack/reset.js"></script>
+    <script type="text/javascript" src="../../static/js/webpack/ydui.flexible.js"></script>
+</head>
+
+<body>
+    <header>
+        <img class="prev-icon" src="/static/images/prev-icon.png" alt="">
+        <span>我的评价</span>
+    </header>
+    <!--pages/user/appraise/appraise.wxml-->
+    <div class='tabs'>
+        <div class='tab' data-value="all">
+            <span class='text'>我的评价</span>
+        </div>
+        <div class='tab' data-value="online">
+            <span class='text'>在线问诊</span>
+        </div>
+        <div class='tab' data-value="down">
+            <span class='text'>线下面诊</span>
+        </div>
+        <div class='tab' data-value="cn">
+            <span class='text'>中药调理</span>
+        </div>
+    </div>
+    <div class="item-list all-list" style="display:none">
+
+
+    </div>
+    <div class="item-list online-list" style="display:none">
+
+    </div>
+    <div class="item-list down-list" style="display:none">
+
+    </div>
+    <div class="item-list cn-list" style="display:none">
+
+    </div>
+
+    <script src="../../static/js/webpack/jquery-2.1.4.min.js"></script>
+    <script src="../../static/js/webpack/modal.js"></script>
+    <script src="../../static/js/webpack/request.js"></script>
+    <script src="../../static/js/webpack/common.js"></script>
+    <script src="../../static/js/webpack/ydui.js"></script>
+    <script src="../../static/js/webrequest/user/appraise.js"></script>
+    <script src="../../static/js/webpack/template.js"></script>
+    <script type="text/html" id="list1-div">
+        {{if list==null||list.length===0}}
+        {{else}}
+        {{each list as item}}
+        <div class='item'>
+            <div class='top'>
+                <img class='user' src='{{item.headImage}}'>
+                <div class='right'>
+                    <div class='font30'>{{item.doctorName}}</div>
+                    <div class='font24 mt15'>{{item.time}} {{item.serviceName}}</div>
+                </div>
+            </div>
+            <div class='bottom'>
+                {{if item.appraiseStatus==0}}
+                <span class='btn' data-orderid='{{item.orderId}}' onclick='scoreChange(this)' data-statusinfo='{{item.appraiseStatus}}'>待评价</span>
+                {{/if}}
+                {{if item.appraiseStatus==1}}
+                <span class='btn gray-btn' data-orderid='{{item.orderId}}' onclick='scoreChange(this)' data-statusinfo='{{item.appraiseStatus}}' wx:if=''>已评价</span>
+                {{/if}}
+                {{if item.appraiseStatus==1}}
+                <span class='btn gray-btn' data-orderid='{{item.orderId}}' onclick='scoreChange(this)' data-statusinfo='{{item.appraiseStatus}}' wx:if='{{}}'>查看详情</span>
+                {{/if}}
+            </div>
+        </div>
+        {{/each}}
+        {{/if}}
+    </script>
+
+    <script type="text/html" id="list2-div">
+        {{if list==null||list.length===0}}
+        {{else}}
+        {{each list as item}}
+        <div class='item'>
+            <div class='top'>
+                <img class='user' src='{{item.headImage}}'>
+                <div class='right'>
+                    <div class='font30'>{{item.doctorName}}</div>
+                    <div class='font24 mt15'>{{item.time}} {{item.serviceName}}</div>
+                </div>
+            </div>
+            <div class='bottom'>
+                {{if item.appraiseStatus==0}}
+                <span class='btn' data-orderid='{{item.orderId}}' onclick='scoreChange(this)' data-statusinfo='{{item.appraiseStatus}}'>待评价</span>
+                {{/if}}
+                {{if item.appraiseStatus==1}}
+                <span class='btn gray-btn' data-orderid='{{item.orderId}}' onclick='scoreChange(this)' data-statusinfo='{{item.appraiseStatus}}' wx:if=''>已评价</span>
+                {{/if}}
+                {{if item.appraiseStatus==1}}
+                <span class='btn gray-btn' data-orderid='{{item.orderId}}' onclick='scoreChange(this)' data-statusinfo='{{item.appraiseStatus}}' wx:if='{{}}'>查看详情</span>
+                {{/if}}
+            </div>
+        </div>
+        {{/each}}
+        {{/if}}
+    </script>
+
+    <script type="text/html" id="list3-div">
+        {{if list==null||list.length===0}}
+        {{else}}
+        {{each list as item}}
+        <div class='item'>
+            <div class='top'>
+                <img class='user' src='{{item.headImage}}'>
+                <div class='right'>
+                    <div class='font30'>{{item.doctorName}}</div>
+                    <div class='font24 mt15'>{{item.time}} {{item.serviceName}}</div>
+                </div>
+            </div>
+            <div class='bottom'>
+                {{if item.appraiseStatus==0}}
+                <span class='btn' data-orderid='{{item.orderId}}' onclick='scoreChange(this)' data-statusinfo='{{item.appraiseStatus}}'>待评价</span>
+                {{/if}}
+                {{if item.appraiseStatus==1}}
+                <span class='btn gray-btn' data-orderid='{{item.orderId}}' onclick='scoreChange(this)' data-statusinfo='{{item.appraiseStatus}}' wx:if=''>已评价</span>
+                {{/if}}
+                {{if item.appraiseStatus==1}}
+                <span class='btn gray-btn' data-orderid='{{item.orderId}}' onclick='scoreChange(this)' data-statusinfo='{{item.appraiseStatus}}' wx:if='{{}}'>查看详情</span>
+                {{/if}}
+            </div>
+        </div>
+        {{/each}}
+        {{/if}}
+    </script>
+
+    <script type="text/html" id="list4-div">
+        {{if list==null||list.length===0}}
+        {{else}}
+        {{each list as item}}
+        <div class='item'>
+            <div class='top'>
+                <img class='user' src='{{item.headImage}}'>
+                <div class='right'>
+                    <div class='font30'>{{item.doctorName}}</div>
+                    <div class='font24 mt15'>{{item.time}} {{item.serviceName}}</div>
+                </div>
+            </div>
+            <div class='bottom'>
+                {{if item.appraiseStatus==0}}
+                <span class='btn' data-orderid='{{item.orderId}}' onclick='scoreChange(this)' data-statusinfo='{{item.appraiseStatus}}'>待评价</span>
+                {{/if}}
+                {{if item.appraiseStatus==1}}
+                <span class='btn gray-btn' data-orderid='{{item.orderId}}' onclick='scoreChange(this)' data-statusinfo='{{item.appraiseStatus}}' wx:if=''>已评价</span>
+                {{/if}}
+                {{if item.appraiseStatus==1}}
+                <span class='btn gray-btn' data-orderid='{{item.orderId}}' onclick='scoreChange(this)' data-statusinfo='{{item.appraiseStatus}}' wx:if='{{}}'>查看详情</span>
+                {{/if}}
+            </div>
+        </div>
+        {{/each}}
+        {{/if}}
+    </script>
+</body>
+
+</html>

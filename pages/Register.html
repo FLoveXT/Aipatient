@@ -1,0 +1,99 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="format-detection" content="email=no">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
+    <title>注册</title>
+    <link href="../static/css/swiper.min.css?v=1.0" rel="stylesheet">
+    <link rel="stylesheet" href="../static/css/Register.css">
+    <link rel="stylesheet" href="../static/css/public.css">
+    <link rel="stylesheet" href="../static/css/ydui.css">
+    <script src="../static/js/webpack/ydui.flexible.js"></script>
+</head>
+<body>
+
+    <div class="login-wrap">
+        <header>
+            <img class="prev-icon" src="../static/images/prev-icon.png" alt="">
+            <span>注册</span>
+        </header>
+        <div class='login-list'>
+            <label>
+                <div class='login-tit login-icons phone'>手机号</div>
+                <input class='input reg-phone' value='' />
+            </label>
+            <div class='info'></div>
+        </div>
+        <div class='login-list'>
+            <div class='login-tit login-icons verify'>验证码</div>
+            <input class='input verify-input reg-code' value='' />
+            <button class='verify-img send-code'>获取验证码</button>
+            <div class='info'></div>
+        </div>
+        <div class='login-list'>
+            <label>
+                <div class='login-tit login-icons password'>设置6位以上密码</div>
+                <input class='input reg-pass' type='password' value='' />
+            </label>
+            <div class='info'></div>
+        </div>
+        <div class='remeber-psw login-list clearfix'>
+            <div class='fl'>
+                <div class="check-info">
+                    <div class="label" style="display: inline;">
+                        <div class='check-icon'></div>
+                        注册即同意
+                    </div>
+                    
+                    <a href="javascript:void(0)" class='agreement' onclick="OnLayer()">《爱用中医用户服务协议》</a>
+                </div>
+            </div>
+        </div>
+        <div class='login-list'>
+            <button class='btn register-btn' disabled="disabled" onclick="OnRegister()">注册</button>
+        </div>
+        <div class='login-list reg-info'>
+            已有爱尚中医的账号？
+            <a class='reg' href="/pages/login.html">立即登录</a>
+        </div>
+    </div>
+
+
+    <script src="../static/js/webpack/jquery-2.1.4.min.js"></script>
+    <script src="../static/js/webpack/layer/layer.js"></script>
+    <script src="../static/js/webpack/modal.js"></script>
+    <script src="../static/js/webpack/request.js"></script>
+    <script src="../static/js/webpack/common.js"></script>
+    <script src="../static/js/webrequest/register/Register.js?v=1"></script>
+    <script src="../static/js/webpack/verify.js"></script>
+    <script src="../static/js/webpack/ydui.js"></script>
+    <script type="text/javascript">
+        function OnLayer() {
+            var url = '/pages/H5/user_agreement.html';
+            layer.open({
+                type: 2,
+                title: false,
+                shadeClose: true,
+                closeBtn: 1, //不显示关闭按钮
+                area: ['90%', '90%'],
+                anim: 2,
+                scrollbar: false,
+                content: [url], //iframe的url，no代表不显示滚动条
+            });
+        }
+    </script>
+    <style>
+        .layui-layer-setwin .layui-layer-close2 {
+            background-position: -154px -25px;
+        }
+    </style>
+    <script type="text/javascript">
+        $(function () {
+            $(".footer-info").remove();
+        })
+    </script>
+</body>
+</html>

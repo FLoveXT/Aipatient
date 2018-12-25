@@ -1,0 +1,53 @@
+/* pages/user/appraise/appraise.wxss */
+.tabs {
+    height: .80rem;
+    background: #fff;
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 .30rem;
+}
+.tabs .tab.active{
+    color: #bc9761;
+    border-bottom: .04rem solid #bc9761;
+    line-height: .80rem;
+}
+.item{
+    margin-top: .20rem;
+    background: #fff;
+}
+.item .user{
+    width: 1.00rem;
+    height: 1.00rem;
+    border-radius: 100%;
+    margin-right: .30rem;
+}
+.item .top{
+    display: flex;
+    padding:.30rem;
+    border-bottom: 1px solid #e8e8e8;
+}
+.item .bottom{
+    display: flex;
+    height: 1.00rem;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 0 .30rem;
+}
+.item .bottom .btn{
+    background: #bc9761;
+    line-height: .60rem;
+    color: #fff;
+    font-size: .26rem;
+    padding: 0 .30rem;
+    border-radius: .10rem;
+    margin-left: .20rem;
+    height: auto;
+}
+.item .top .right{
+    flex: 1;
+}
+.item .bottom .btn.gray-btn{
+    background: #ebedf1;
+    color: #333;
+}

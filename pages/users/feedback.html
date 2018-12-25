@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
+    <title>我的-帮助与反馈</title>
+    <link href="../../static/css/public.css?v=1.0" rel="stylesheet">
+    <link href="../../static/css/swiper.min.css?v=1.0" rel="stylesheet">
+    <link href="../../static/css/users/feedback.css" rel="stylesheet" />
+    <link rel="stylesheet" href="../../static/css/ydui.css" />
+    <script src="../../static/js/webpack/reset.js"></script>
+    <script type="text/javascript" src="../../static/js/webpack/ydui.flexible.js"></script>
+</head>
+
+<body>
+    <header>
+        <img class="prev-icon" src="/static/images/prev-icon.png" alt="">
+        <span>我的-帮助与反馈</span>
+    </header>
+    <div class='box mt30'>
+        <textarea onkeyup="checkStrInfo(this)" placeholder='请输入您的宝贵意见，我们将积极改进' value=''></textarea>
+        <div class='text'>
+            <zev class="zev-first"></zev>/
+            <zev class="zev-last"></zev>
+        </div>
+    </div>
+    <div class='bbtn'>
+        <button disabled="disabled" id="btnCommit" onclick="getCommitInfo(this)">提交</button>
+    </div>
+
+    <script src="../../static/js/webpack/jquery-2.1.4.min.js"></script>
+    <script src="../../static/js/webpack/modal.js"></script>
+    <script src="../../static/js/webpack/request.js"></script>
+    <script src="../../static/js/webpack/common.js"></script>
+    <script src="../../static/js/webpack/ydui.js"></script>
+    <script src="../../static/js/webrequest/all/feedback.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,42 @@
+﻿body {
+    display: flex;
+    flex-direction: column;
+}
+
+.item {
+    margin-top: .30rem;
+}
+
+.item .list .icon {
+    width: .13rem;
+    height: .24rem;
+    margin-left: .20rem;
+}
+
+.item .list {
+    background: #fff;
+    height: 1.00rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-top: 0.02rem solid #e8e8e8;
+    padding: 0 .30rem;
+}
+.item .list div{
+    display: flex;
+    align-items: center;
+}
+.btn {
+    padding: 0 .30rem;
+}
+
+.btn button {
+    background: #fff;
+    color: #e82020;
+    line-height: 1.00rem;
+    height: 1.00rem;
+    font-size: .30rem;
+    margin-top: 2.00rem;
+    width: 100%;
+    border-radius: .1rem;
+}

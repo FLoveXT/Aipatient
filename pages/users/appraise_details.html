@@ -1,0 +1,68 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
+    <title>我的评价-详情</title>
+    <link href="../../static/css/public.css?v=1.0" rel="stylesheet">
+    <link href="../../static/css/users/appraise_details.css" rel="stylesheet" />
+    <link rel="stylesheet" href="../../static/css/ydui.css" />
+    <script src="../../static/js/webpack/reset.js"></script>
+    <script type="text/javascript" src="../../static/js/webpack/ydui.flexible.js"></script>
+</head>
+<body>
+
+    <header>
+        <img class="prev-icon" src="/static/images/prev-icon.png" alt="">
+        <span>我的评价-详情</span>
+    </header>
+    <div class="app-list">
+
+    </div>
+
+
+
+
+
+    <script src="../../static/js/webpack/jquery-2.1.4.min.js"></script>
+    <script src="../../static/js/webpack/modal.js"></script>
+    <script src="../../static/js/webpack/request.js"></script>
+    <script src="../../static/js/webpack/common.js"></script>
+    <script src="../../static/js/webpack/ydui.js"></script>
+    <script src="../../static/js/webrequest/user/appraise_details.js"></script>
+    <script type="text/javascript" src="../../static/js/webpack/template.js"></script>
+    <script type="text/html" id="app-div">
+        <div class='item'>
+            <div class='tit font30'>服务内容</div>
+            <div class='text'>{{list.serverName}}</div>
+        </div>
+        {{if list===null||list.length===0}}
+        {{else}}
+        {{each list.fotmatnewItem as item index}}
+        <div class='item'>
+            <div class='box'>
+                {{if list.updateStatus==true}}
+                <span class='reset font24' onclick='resetStatChange(this,0, {{index}})' data-parindex='{{index}}'>重新评价</span>
+                {{/if}}
+                <div class='top font30'>{{item.tagsname}}</div>
+                <div class='star'>
+                    {{each item.score as i scoreindex}}
+                    <text data-index='{{scoreindex}}' data-active='{{i==true?0:1}}' data-parindex='{{index}}' class='icon star-icon {{i==true?"active":""}}' onclick='startActiveChange(this,"{{scoreindex}}","{{index}}","{{i==true?"true":"false"}}")'></text>
+                    {{/each}}
+                </div>
+                <div class='choice font24'>
+                    {{each item.selectvalue as cell cellindex}}
+                    <text data-active='{{cell.value}}' data-index='{{cellindex}}' data-parindex='{{index}}' onclick='selectActiveChange(this,"{{cellindex}}","{{index}}","{{cell.value==true?"true":"false"}}")' class='label {{cell.value?"active":""}}'>{{cell.text}}</text>
+                    {{/each}}
+                </div>
+            </div>
+        </div>
+
+        {{/each}}
+        {{/if}}
+        <div class='bbtn'>
+            <button onclick='{{list.status=="0"?"Insert()":"updateInfo()"}}'>提交</button>
+        </div>
+    </script>
+</body>
+</html>

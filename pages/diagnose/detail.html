@@ -1,0 +1,699 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
+    <!--使用webkit内核-->
+    <meta name="renderer" content="webkit">
+    <meta name="renderer" content="ie-stand">
+    <!--避免IE使用兼容模式-->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1,IE=9" />
+    <title>问诊详情</title>
+    <link href="../../static/css/public.css?v=1.0" rel="stylesheet">
+    <link href="../../static/css/swiper.min.css?v=1.0" rel="stylesheet">
+    <link href="../../static/css/diagnose/detail.css" rel="stylesheet" />
+    <link rel="stylesheet" href="../../static/css/ydui.css" />
+    <script src="../../static/js/webpack/reset.js"></script>
+    <script type="text/javascript" src="../../static/js/webpack/ydui.flexible.js"></script>
+</head>
+<body>
+
+    <header>
+        <span>问诊单详情</span>
+    </header>
+    <div class="detail-list" id="id">
+
+    </div>
+
+
+    <script src="../../static/js/webpack/jquery-2.1.4.min.js"></script>
+    <script src="../../static/js/webpack/modal.js"></script>
+    <script src="../../static/js/webpack/request.js"></script>
+    <script src="../../static/js/webpack/common.js"></script>
+    <script src="../../static/js/webpack/ydui.js"></script>
+    <script src="../../static/js/webpack/template.js"></script>
+    <script type="text/javascript" src="../../static/js/webpack/layer/layer.js"></script>
+    <script type="text/javascript" src="../../static/js/webrequest/diagnose/detail.js"></script>
+    <script src="/static/js/webpack/image/fly-zoom.js"></script>
+    <script type="text/html" id="detail-div">
+        {{if list==null||list.length==0}}
+        {{else}}
+        <div class='item mt20'>
+            <div class='title font28'>
+                <text class='line'></text> 患者：{{list.patient.name}} {{list.patient.sex}} {{list.patient.age}}
+            </div>
+            <div class='cont'>
+                <div class='user-info mt10'>
+                    <div class='font24'>
+                        <text class='c888'>身高：</text>{{list.patient.height}}cm
+                    </div>
+                    <div class='font24'>
+                        <text class='c888'>体重：</text>{{list.patient.weight}}kg
+                    </div>
+                    <div class='font24'>
+                        <text class='c888'>手机：</text>{{list.patient.phoneNumber}}
+                    </div>
+                    <div class='font24'>
+                        <text class='c888'>地址：</text>{{list.patient.address}}
+                    </div>
+                    <div class='font24'>
+                        <text class='c888'>既往病史：</text>{{list.patient.medicalHistory}}
+                    </div>
+                    <div class='font24'>
+                        <text class='c888'>补充描述：</text>{{list.patient.remarks}}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class='item mt20'>
+            <div class='title font28'>
+                <text class='line'></text> 患者主诉
+            </div>
+            <div class='cont'>
+                <div class='user-cont mt10'>
+                    <div class='font24'>
+                        <text class='c888'>主诉：</text> {{list.appeal}}
+                    </div>
+                    <div class='font24'>
+                        <text class='c888'>现病史及现在症状：</text> {{list.symptom}}
+                    </div>
+                    <div class='font24'>
+                        <text class='c888'>舌苔照：</text>
+                        <div class='img-wrap'>
+                            {{if list.tongueImages.length==0}}
+                            <div>[空]</div>
+                            {{/if}}
+                            {{if list.tongueImages.length>0}}
+                            <div>
+                                {{each list.tongueImages as p}}
+                                <img class="img" src="{{p}}" />
+                                {{/each}}
+                            </div>
+                            {{/if}}
+                        </div>
+                    </div>
+                    <div class='font24'>
+                        <text class='c888'>患处照片、检查报告、化验单：</text>
+                        <div class='img-wrap'>
+                            {{if list.otherImages.length==0}}
+                            <div>[空]</div>
+                            {{/if}}
+                            {{if list.otherImages.length>0}}
+                            <div>
+                                {{each list.otherImages as p}}
+                                <img class="img" src="{{p}}" />
+                                {{/each}}
+                            </div>
+                            {{/if}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class='item mt20'>
+            <div class='title font28'>
+                <text class='line'></text> 问题概要
+            </div>
+            <div class='list-wrap'>
+                {{if list.template_info==1}}
+                <div class='list'>
+                    <div class='title'>饮食情况</div>
+                    <div class='cont'>
+                        <div class='cont-list'>
+                            <div class='font28 mt30'>喝水</div>
+                            <div class='label-cont mt30'>
+                                <text class='labl'>{{list.diet.water}}</text>
+                            </div>
+                        </div>
+                        <div class='cont-list'>
+                            <div class='font28 mt30'>喜欢喝</div>
+                            <div class='label-cont mt30'>
+                                <text class='labl'>{{list.diet.waterDegree}}</text>
+                            </div>
+                        </div>
+                        <div class='cont-list'>
+                            <div class='font28 mt30'>口中感觉</div>
+                            <div class='label-cont mt30'>
+                                {{if list.diet.texture.length==0}}
+                                <text class='labl'>[空]</text>
+                                {{/if}}
+                                {{if list.diet.texture.length>0}}
+                                {{each list.diet.texture as p}}
+                                <text class='labl'>{{p}}</text>
+                                {{/each}}
+                                {{/if}}
+                            </div>
+                        </div>
+                        <div class='cont-list'>
+                            <div class='font28 mt30'>胃口</div>
+                            <div class='label-cont mt30'>
+                                <text class='labl'>{{list.diet.appetite}}</text>
+                            </div>
+                        </div>
+                        <div class='cont-list'>
+                            <div class='font28 mt30'>是否有以下情况</div>
+                            <div class='label-cont mt30'>
+                                {{if list.diet.other.length==0}}
+                                <text class='labl'>[空]</text>
+                                {{/if}}
+                                {{if list.diet.other.length>0}}
+                                {{each list.diet.other as p}}
+                                <text class='labl'>{{p}}</text>
+                                {{/each}}
+                                {{/if}}
+                            </div>
+                        </div>
+                        <div class='cont-list'>
+                            <div class='font28 mt30'>是否有可察觉的原因引起上述症状？比如饮食、服药、情绪、劳累、环境、气候等</div>
+                            <div class='font26 mt30'>{{list.diet.supplement}}</div>
+                        </div>
+                    </div>
+                </div>
+                {{/if}}
+
+                {{if list.template_info==1}}
+                <div class='list'>
+                    <div class='title'>二便情况</div>
+                    <div class='cont'>
+                        <div class='cont-list'>
+                            <div class='font28 mt30'>大便</div>
+                            <div class='label-cont mt30'>
+                                <text class='labl'>{{list.excrement.stool}}</text>
+                            </div>
+                        </div>
+                        <div class='cont-list'>
+                            <div class='font28 mt30'>形状质地</div>
+                            <div class='label-cont mt30'>
+                                {{if list.excrement.shape.length==0}}
+                                <text class='labl'>[空]</text>
+                                {{/if}}
+                                {{if list.excrement.shape.length>0}}
+                                {{each list.excrement.shape as p}}
+                                <text class='labl'>{{p}}</text>
+                                {{/each}}
+                                {{/if}}
+                            </div>
+                        </div>
+                        <div class='cont-list'>
+                            <div class='font28 mt30'>大便颜色</div>
+                            <div class='label-cont mt30'>
+                                <text class='labl'>{{list.excrement.colour}}</text>
+                            </div>
+                        </div>
+                        <div class='cont-list'>
+                            <div class='font28 mt30'>是否有以下情况</div>
+                            <div class='label-cont mt30'>
+                                {{if list.excrement.other.length==0}}
+                                <text class='labl'>[空]</text>
+                                {{/if}}
+                                {{if list.excrement.other.length>0}}
+                                {{each list.excrement.other as p}}
+                                <text class='labl'>{{p}}</text>
+                                {{/each}}
+                                {{/if}}
+                            </div>
+                        </div>
+
+                        <div class='cont-list'>
+                            <div class='font28 mt30'>小便</div>
+                            <div class='label-cont mt30'>
+                                {{if list.excrement.urine.length==0}}
+                                <text class='labl'>[空]</text>
+                                {{/if}}
+                                {{if list.excrement.urine.length>0}}
+                                {{each list.excrement.urine as p}}
+                                <text class='labl'>{{p}}</text>
+                                {{/each}}
+                                {{/if}}
+                            </div>
+                        </div>
+
+                        <div class='cont-list'>
+                            <div class='font28 mt30'>是否有可察觉的原因引起上述症状？比如饮食、服药、情绪、劳累、环境、气候等</div>
+                            <div class='font26 mt30'>{{list.excrement.supplement}}</div>
+                        </div>
+                    </div>
+                </div>
+                {{/if}}
+
+                {{if list.template_info==1}}
+                <div class='list'>
+                    <div class='title'>睡眠与情绪</div>
+                    <div class='cont'>
+                        <div class='cont-list'>
+                            <div class='font28 mt30'>入睡</div>
+                            <div class='label-cont mt30'>
+                                <text class='labl'>{{list.sleepMood.fallAsleep}}</text>
+                            </div>
+                        </div>
+                        <div class='cont-list'>
+                            <div class='font28 mt30'>质量</div>
+                            <div class='label-cont mt30'>
+                                <text class='labl'>{{list.sleepMood.fallAsleep}}</text>
+                            </div>
+                        </div>
+
+                        <div class='cont-list'>
+                            <div class='font28 mt30'>夜醒</div>
+                            <div class='label-cont mt30'>
+                                {{if list.sleepMood.wakeUp.length==0}}
+                                <text class='labl'>[空]</text>
+                                {{/if}}
+                                {{if list.sleepMood.wakeUp.length>0}}
+                                {{each list.sleepMood.wakeUp as p}}
+                                <text class='labl'>{{p}}</text>
+                                {{/each}}
+                                {{/if}}
+                            </div>
+                        </div>
+
+                        <div class='cont-list'>
+                            <div class='font28 mt30'>梦</div>
+                            <div class='label-cont mt30'>
+                                <text class='labl'>{{list.sleepMood.dream}}</text>
+                            </div>
+                        </div>
+
+                        <div class='cont-list'>
+                            <div class='font28 mt30'>是否有以下情况</div>
+                            <div class='label-cont mt30'>
+                                {{if list.sleepMood.other.length==0}}
+                                <text class='labl'>[空]</text>
+                                {{/if}}
+                                {{if list.sleepMood.other.length>0}}
+                                {{each list.sleepMood.other as p}}
+                                <text class='labl'>{{p}}</text>
+                                {{/each}}
+                                {{/if}}
+                            </div>
+                        </div>
+
+                        <div class='cont-list'>
+                            <div class='font28 mt30'>是否有可察觉的原因引起上述症状？比如饮食、服药、情绪、劳累、环境、气候等</div>
+                            <div class='font26 mt30'>{{list.sleepMood.supplement}}</div>
+                        </div>
+                    </div>
+                </div>
+                {{/if}}
+
+                {{if list.template_info==1}}
+                <div class='list'>
+                    <div class='title'>身体感觉</div>
+                    <div class='cont'>
+                        <div class='cont-list'>
+                            <div class='font28 mt30'>身体感觉</div>
+                            <div class='label-cont mt30'>
+                                {{if list.body.feel.length==0}}
+                                <text class='labl'>[空]</text>
+                                {{/if}}
+                                {{if list.body.feel.length>0}}
+                                {{each list.body.feel as p}}
+                                <text class='labl'>{{p}}</text>
+                                {{/each}}
+                                {{/if}}
+                            </div>
+                        </div>
+                        <div class='cont-list'>
+                            <div class='font28 mt30'>手脚</div>
+                            <div class='label-cont mt30'>
+                                <text class='labl'>{{list.body.handAndFoot}}</text>
+                            </div>
+                        </div>
+
+                        <div class='cont-list'>
+                            <div class='font28 mt30'>出汗</div>
+                            <div class='label-cont mt30'>
+                                {{if list.body.sweat.length==0}}
+                                <text class='labl'>[空]</text>
+                                {{/if}}
+                                {{if list.body.sweat.length>0}}
+                                {{each list.body.sweat as p}}
+                                <text class='labl'>{{p}}</text>
+                                {{/each}}
+                                {{/if}}
+                            </div>
+                        </div>
+
+                        <div class='cont-list'>
+                            <div class='font28 mt30'>头咽部</div>
+                            <div class='label-cont mt30'>
+                                {{if list.body.headPharynx.length==0}}
+                                <text class='labl'>[空]</text>
+                                {{/if}}
+                                {{if list.body.headPharynx.length>0}}
+                                {{each list.body.headPharynx as p}}
+                                <text class='labl'>{{p}}</text>
+                                {{/each}}
+                                {{/if}}
+                            </div>
+                        </div>
+
+                        <div class='cont-list'>
+                            <div class='font28 mt30'>咳嗽和痰</div>
+                            <div class='label-cont mt30'>
+                                {{if list.body.cough.length==0}}
+                                <text class='labl'>[空]</text>
+                                {{/if}}
+                                {{if list.body.cough.length>0}}
+                                {{each list.body.cough as p}}
+                                <text class='labl'>{{p}}</text>
+                                {{/each}}
+                                {{/if}}
+                            </div>
+                        </div>
+
+                        <div class='cont-list'>
+                            <div class='font28 mt30'>胸腹部</div>
+                            <div class='label-cont mt30'>
+                                {{if list.body.chest.length==0}}
+                                <text class='labl'>[空]</text>
+                                {{/if}}
+                                {{if list.body.chest.length>0}}
+                                {{each list.body.chest as p}}
+                                <text class='labl'>{{p}}</text>
+                                {{/each}}
+                                {{/if}}
+                            </div>
+                        </div>
+
+                        <div class='cont-list'>
+                            <div class='font28 mt30'>身体</div>
+                            <div class='label-cont mt30'>
+                                {{if list.body.body.length==0}}
+                                <text class='labl'>[空]</text>
+                                {{/if}}
+                                {{if list.body.body.length>0}}
+                                {{each list.body.body as p}}
+                                <text class='labl'>{{p}}</text>
+                                {{/each}}
+                                {{/if}}
+                            </div>
+                        </div>
+
+                        <div class='cont-list'>
+                            <div class='font28 mt30'>生活习惯</div>
+                            <div class='label-cont mt30'>
+                                {{if list.body.livingHabit.length==0}}
+                                <text class='labl'>[空]</text>
+                                {{/if}}
+                                {{if list.body.livingHabit.length>0}}
+                                {{each list.body.livingHabit as p}}
+                                <text class='labl'>{{p}}</text>
+                                {{/each}}
+                                {{/if}}
+                            </div>
+                        </div>
+                        <div class='cont-list'>
+                            <div class='font28 mt30'>是否有可察觉的原因引起上述症状？比如饮食、服药、情绪、劳累、环境、气候等</div>
+                            <div class='font26 mt30'>{{list.body.supplement}}</div>
+                        </div>
+                    </div>
+                </div>
+                {{/if}}
+
+                {{if list.template_info==1&&list.template_sex=="男"}}
+                <div class='list'>
+                    <div class='title'>男科</div>
+                    <div class='cont'>
+                        <div class='cont-list'>
+                            <div class='font28 mt30'>性功能问题</div>
+                            <div class='label-cont mt30'>
+                                <text class='labl'>{{list.andrology.sexualFunction}}</text>
+                            </div>
+                        </div>
+
+                        <div class='cont-list'>
+                            <div class='font28 mt30'>男科问题</div>
+                            <div class='label-cont mt30'>
+                                <text class='labl'>{{list.andrology.andrology}}</text>
+                            </div>
+                        </div>
+
+                        <div class='cont-list'>
+                            <div class='font28 mt30'>是否有可察觉的原因引起上述症状？比如饮食、服药、情绪、劳累、环境、气候等</div>
+                            <div class='font26 mt30'>{{list.andrology.supplement}}</div>
+                        </div>
+                    </div>
+                </div>
+                {{/if}}
+
+                {{if list.template_info==1&&list.template_sex=="女"}}
+                <div class='list'>
+                    <div class='title'>妇科</div>
+                    <div class='cont'>
+
+                        <div class='cont-list'>
+                            <div class='font28 mt30'>特殊阶段</div>
+                            <div class='label-cont mt30'>
+                                <text class='labl'>{{list.gynaecology.specialStage}}</text>
+                            </div>
+                        </div>
+
+                        <div class='cont-list'>
+                            <div class='font28 mt30'>生育</div>
+                            <div class='label-cont mt30'>
+                                <text class='labl'>{{list.gynaecology.fertility}}</text>
+                            </div>
+                        </div>
+
+                        <div class='cont-list'>
+                            <div class='font28 mt30'>流产</div>
+                            <div class='label-cont mt30'>
+                                <text class='labl'>{{list.gynaecology.abortion}}</text>
+                            </div>
+                        </div>
+
+                        <div class='cont-list'>
+                            <div class='font28 mt30'>是否绝经</div>
+                            <div class='label-cont mt30'>
+                                <text class='labl'>{{list.gynaecology.menopause}}</text>
+                            </div>
+                        </div>
+
+                        <div class='cont-list'>
+                            <div class='font28 mt30'>月经周期</div>
+                            <div class='label-cont mt30'>
+                                <text class='labl'>{{list.gynaecology.cycle}}</text>
+                            </div>
+                        </div>
+
+                        <div class='cont-list'>
+                            <div class='font28 mt30'>行经期</div>
+                            <div class='label-cont mt30'>
+                                <text class='labl'>{{list.gynaecology.period}}</text>
+                            </div>
+                        </div>
+
+                        <div class='cont-list'>
+                            <div class='font28 mt30'>经色</div>
+                            <div class='label-cont mt30'>
+                                <text class='labl'>{{list.gynaecology.color}}</text>
+                            </div>
+                        </div>
+
+                        <div class='cont-list'>
+                            <div class='font28 mt30'>经量</div>
+                            <div class='label-cont mt30'>
+                                <text class='labl'>{{list.gynaecology.quantity}}</text>
+                            </div>
+                        </div>
+
+                        <div class='cont-list'>
+                            <div class='font28 mt30'>血块</div>
+                            <div class='label-cont mt30'>
+                                <text class='labl'>{{list.gynaecology.clot}}</text>
+                            </div>
+                        </div>
+
+                        <div class='cont-list'>
+                            <div class='font28 mt30'>痛经</div>
+                            <div class='label-cont mt30'>
+                                {{if list.gynaecology.dysmenorrhoea.length==0}}
+                                <text class='labl'>[空]</text>
+                                {{/if}}
+                                {{if list.gynaecology.dysmenorrhoea.length>0}}
+                                {{each list.gynaecology.dysmenorrhoea as p}}
+                                <text class='labl'>{{p}}</text>
+                                {{/each}}
+                                {{/if}}
+                            </div>
+                        </div>
+
+                        <div class='cont-list'>
+                            <div class='font28 mt30'>经前感觉</div>
+                            <div class='label-cont mt30'>
+                                <text class='labl'>{{list.gynaecology.feel}}</text>
+                            </div>
+                        </div>
+
+                        <div class='cont-list'>
+                            <div class='font28 mt30'>白带量</div>
+                            <div class='label-cont mt30'>
+                                <text class='labl'>{{list.gynaecology.leucorrheaCapacity}}</text>
+                            </div>
+                        </div>
+
+                        <div class='cont-list'>
+                            <div class='font28 mt30'>白带</div>
+                            <div class='label-cont mt30'>
+                                <text class='labl'>{{list.gynaecology.leucorrhea}}</text>
+                            </div>
+                        </div>
+
+                        <div class='cont-list'>
+                            <div class='font28 mt30'>是否有可察觉的原因引起上述症状？比如饮食、服药、情绪、劳累、环境、气候等</div>
+                            <div class='font26 mt30'>{{list.gynaecology.supplement}}</div>
+                        </div>
+                    </div>
+                </div>
+                {{/if}}
+
+                {{if list.template_info==2}}
+                <div class='list'>
+                    <div class='title'>特殊情况</div>
+                    <div class='cont'>
+                        <div class='cont-list'>
+                            <div class='font28 mt30'>体温</div>
+                            <div class='label-cont mt30'>
+                                <text class='labl'>{{list.special.temperature}}</text>
+                            </div>
+                        </div>
+                        <div class='cont-list'>
+                            <div class='font28 mt30'>手脚</div>
+                            <div class='label-cont mt30'>
+                                <text class='labl'>{{list.special.foot}}</text>
+                            </div>
+                        </div>
+                        <div class='cont-list'>
+                            <div class='font28 mt30'>咳嗽</div>
+                            <div class='label-cont mt30'>
+                                <text class='labl'>{{list.special.cough}}</text>
+                            </div>
+                        </div>
+                        <div class='cont-list'>
+                            <div class='font28 mt30'>胃口</div>
+                            <div class='label-cont mt30'>
+                                {{if list.special.sputum.length==0}}
+                                <text class='labl'>[空]</text>
+                                {{/if}}
+                                {{if list.special.sputum.length>0}}
+                                {{each list.special.sputum as p}}
+                                <text class='labl'>{{p}}</text>
+                                {{/each}}
+                                {{/if}}
+                            </div>
+                        </div>
+                        <div class='cont-list'>
+                            <div class='font28 mt30'>其他补充说明</div>
+                            <div class='font26 mt30'>
+                                {{list.special.supplement}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {{/if}}
+
+                {{if list.template_info==2}}
+                <div class='list'>
+                    <div class='title'>基本情况</div>
+                    <div class='cont'>
+                        <div class='cont-list'>
+                            <div class='font28 mt30'>饮食</div>
+                            <div class='label-cont mt30'>
+                                <text class='labl'>{{list.basicSituation.diet}}</text>
+                            </div>
+                        </div>
+                        <div class='cont-list'>
+                            <div class='font28 mt30'>饮水</div>
+                            <div class='label-cont mt30'>
+                                <text class='labl'>{{list.basicSituation.drink}}</text>
+                            </div>
+                        </div>
+                        <div class='cont-list'>
+                            <div class='font28 mt30'>精神</div>
+                            <div class='label-cont mt30'>
+                                <text class='labl'>{{list.basicSituation.spirit}}</text>
+                            </div>
+                        </div>
+                        <div class='cont-list'>
+                            <div class='font28 mt30'>睡眠</div>
+                            <div class='label-cont mt30'>
+                                <text class='labl'>{{list.basicSituation.sleep}}</text>
+                            </div>
+                        </div>
+                        <div class='cont-list'>
+                            <div class='font28 mt30'>出汗</div>
+                            <div class='label-cont mt30'>
+                                <text class='labl'>{{list.basicSituation.sweat}}</text>
+                            </div>
+                        </div>
+                        <div class='cont-list'>
+                            <div class='font28 mt30'>其他补充说明</div>
+                            <div class='font26 mt30'>
+                                {{list.basicSituation.supplement}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {{/if}}
+
+                {{if list.template_info==2}}
+                <div class='list'>
+                    <div class='title'>二便情况</div>
+                    <div class='cont'>
+                        <div class='cont-list'>
+                            <div class='font28 mt30'>大便次数</div>
+                            <div class='label-cont mt30'>
+                                <text class='labl'>{{list.childExcrement.stoolTime}}</text>
+                            </div>
+                        </div>
+                        <div class='cont-list'>
+                            <div class='font28 mt30'>形状质地</div>
+                            <div class='label-cont mt30'>
+                                {{if list.childExcrement.shape.length==0}}
+                                <text class='labl'>[空]</text>
+                                {{/if}}
+                                {{if list.childExcrement.shape.length>0}}
+                                {{each list.childExcrement.shape as p}}
+                                <text class='labl'>{{p}}</text>
+                                {{/each}}
+                                {{/if}}
+                            </div>
+                        </div>
+                        <div class='cont-list'>
+                            <div class='font28 mt30'>大便颜色</div>
+                            <div class='label-cont mt30'>
+                                <text class='labl'>{{list.childExcrement.colour}}</text>
+                            </div>
+                        </div>
+                        <div class='cont-list'>
+                            <div class='font28 mt30'>小便次数</div>
+                            <div class='label-cont mt30'>
+                                <text class='labl'>{{list.childExcrement.urineTime}}</text>
+                            </div>
+                        </div>
+                        <div class='cont-list'>
+                            <div class='font28 mt30'>小便颜色</div>
+                            <div class='label-cont mt30'>
+                                <text class='labl'>{{list.childExcrement.urineColour}}</text>
+                            </div>
+                        </div>
+                        <div class='cont-list'>
+                            <div class='font28 mt30'>其他补充说明</div>
+                            <div class='font26 mt30'>
+                                {{list.childExcrement.supplement}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {{/if}}
+            </div>
+        </div>
+
+
+        {{/if}}
+    </script>
+</body>
+</html>

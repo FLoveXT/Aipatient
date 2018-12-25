@@ -1,0 +1,194 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
+    <title>聊天室</title>
+    <link href="../../static/css/public.css?v=1.0" rel="stylesheet">
+    <link href="../../static/css/swiper.min.css?v=1.0" rel="stylesheet">
+    <link href="../../static/css/diagnose/ai_detail.css" rel="stylesheet" />
+    <link rel="stylesheet" href="../../static/css/ydui.css" />
+    <script src="../../static/js/webpack/reset.js"></script>
+    <script type="text/javascript" src="../../static/js/webpack/ydui.flexible.js"></script>
+</head>
+
+<body>
+    <header>
+        <img class="prev-icon if-ai" src="/static/images/prev-icon.png" alt="">
+        <span></span>
+    </header>
+    <div class='chating-wrapper' id="id">
+        <!--完成问诊单-->
+        <div class='is-success' style="display: none" onclick='getUrl()'>
+            <text class='is-success-left'>你可以完善问诊单,方便医生更好的为您诊断 ></text>
+        </div>
+        <!-- 消息记录 -->
+        <div class='record-wrapper' id="recordWrapper">
+
+        </div>
+        <!--底部输入框  -->
+        <div class='chatinput-wrapper' wx:if='{{!isSuccess}}' style='margin-bottom: {{focusFlag ? 20 : 0}}rpx;'
+             catchtap='stopEventPropagation'>
+            <div class='chatinput-content'>
+                <input style='margin-bottom: .20rem;' value='' class='chatinput-input input-value' placeholder="输入文字"
+                       confirm-type='send' />
+                <image src='../../static/images/more.png' class='chatinput-img fr more-add hide'></image>
+            </div>
+            <div class='more-subcontent' style="display:none">
+                <div style='display:flex;justify-content: space-between;'>
+                    <div class='more-subcontent-item' catchtap='chooseImageToSend'>
+                        <div class="albums-file">
+                            <image src="../../static/images/photo.png" class='image hide'></image>
+                            <text class='text'>相册</text>
+                            <input class="input-file" type="file" id='input_file' accept="image/*" onchange="uploadImage(this)">
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <style>
+        .albums-file {
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+
+            .albums-file input[type=file] {
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                opacity: 0;
+                z-index: 2;
+            }
+    </style>
+
+    <script src="../../static/js/webpack/jquery-2.1.4.min.js"></script>
+    <script src="../../static/js/webpack/modal.js"></script>
+    <script src="../../static/js/webpack/request.js"></script>
+    <script src="../../static/js/webpack/common.js"></script>
+    <script src="../../static/js/webpack/ydui.js"></script>
+    <script src="../../static/js/webpack/template.js"></script>
+    <script type="text/javascript" src="../../static/js/webpack/layer/layer.js"></script>
+    <script src="../../webdemo/im/js/module/base.js"></script>
+    <script type="text/javascript" src="../../static/js/webrequest/diagnose/ai_detail.js?V=3"></script>
+    <script src="../../webdemo/3rd/nim_server_conf.js"></script>
+    <script src="../../webdemo/3rd/NIM_Web_SDK_v5.5.0.js"></script>
+    <script src="../../webdemo/3rd/NIM_Web_Netcall_v5.5.0.js"></script>
+    <script src="../../webdemo/3rd/NIM_Web_WebRTC_v5.5.0.js"></script>
+    <script src="../../webdemo/3rd/NIM_Web_WhiteBoard_v5.5.0.js"></script>
+    <!--<script src="../../webdemo/3rd/DrawPlugin.js"></script>
+    <script src="../../webdemo/im/js/3rd/whiteboard.js"></script>
+    <script src="../../webdemo/3rd/rtcSupport.js"></script>
+    <script src="../../webdemo/3rd/rangeslider.min.js"></script>
+    <script src="../../webdemo/im/js/3rd/jquery-ui.min.js"></script>
+    <script src="../../webdemo/im/js/3rd/contextMenu/jquery.ui.position.js"></script>
+    <script src="../../webdemo/im/js/3rd/contextMenu/jquery.contextMenu.js"></script>
+    <script src="../../webdemo/im/js/emoji.js"></script>-->
+    <script src="../../webdemo/im/js/config.js"></script>
+
+    <script src="../../webdemo/im/js/util.js?v=2"></script>
+    <script src="../../webdemo/im/js/cache.js?v=2"></script>
+    <script src="../../webdemo/im/js/link.js?V=2"></script>
+    <script src="../../webdemo/im/js/ui.js?v=2"></script>
+    <script src="../../webdemo/im/js/widget/uiKit.js?v=2"></script>
+    <script src="../../webdemo/im/js/widget/minAlert.js"></script>
+
+    <!--<script src="../../webdemo/im/js/module/message.js"></script>
+    <script src="../../webdemo/im/js/module/sysMsg.js"></script>
+    <script src="../../webdemo/im/js/module/personCard.js"></script>
+    <script src="../../webdemo/im/js/module/session.js"></script>
+    <script src="../../webdemo/im/js/module/friend.js"></script>
+    <script src="../../webdemo/im/js/module/team.js"></script>
+    <script src="../../webdemo/im/js/module/dialog_team.js"></script>
+    <script src="../../webdemo/im/js/module/cloudMsg.js"></script>
+    <script src="../../webdemo/im/js/module/notification.js"></script>
+    <script src="../../webdemo/im/js/module/netcall.js"></script>
+    <script src="../../webdemo/im/js/module/netcall_meeting.js"></script>
+    <script src="../../webdemo/im/js/module/netcall_ui.js"></script>
+    <script src="../../webdemo/im/js/module/dialog_call_method.js"></script>
+    <script src="../../webdemo/3rd/vue.min.js"></script>-->
+    <script src="../../static/js/webpack/FileUpload/js/vendor/jquery.ui.widget.js"></script>
+    <script src="../../static/js/webpack/FileUpload/js/jquery.iframe-transport.js"></script>
+    <script src="../../static/js/webpack/FileUpload/js/jquery.fileupload.js"></script>
+    <script src="/static/js/webpack/image/fly-zoom.js"></script>
+    <script type="text/html" id="div-message">
+        {{if list===null}}
+        {{else}}
+        {{each list as message}}
+        <div>
+            <div class='record-item-time-wrapper'>
+                <text class='record-item-time'>{{message.displayTimeHeader}}</text>
+            </div>
+            {{if message.sendOrReceive == 'send'}}
+            <div data-send="{{message.sendOrReceive}}" class='{{message.sendOrReceive == "send" ? "record-chatting-item self" : ""}}' style='justify-content: {{message.type === "tip" ? "center" : "flex-end"}}' data-message="{{message}}"
+                 bindlongpress='showEditorMenu' bindtap='divShowBinb' data-type='{{message.type}}'>
+                <div class="record-chatting-item-text" style="{{message.type === 'text'?"display:block":"display:none"}}">
+                    {{message.type === 'text'?message.text:""}}
+                </div>
+                <div class="record-chatting-item-text" style="{{message.type === 'image'?"display:block":"display:none"}}">
+                    {{if message.type=="image"}}
+                    <img src="{{message.text}}" width="100" height="100" />
+                    {{/if}}
+                </div>
+                <div class="record-chatting-item-text" style="{{message.type === 'custom'?"display:block":"display:none"}}">
+                    {{if message.type=="custom"}}
+                    <div onclick='customMessageUrl(this)' data-id='{{message.customContent.singleid}}' data-type='{{message.customContent.types}}' data-doctorUrl='{{message.customContent.doctorUrl}}' data-patientUrl='{{message.customContent.patientUrl}}' class='right-text'>
+                        <div class='text-top'>
+                            <image class='text-icon hide' src='../../static/images/text.png'></image>
+                            <text class='text'>{{message.customContent.title}}</text>
+                        </div>
+                        <div class='text-bottom'>
+                            {{message.customContent.action}}
+                        </div>
+                    </div>
+                    {{/if}}
+                </div>
+
+                <image src='' catchtap='switchToMyTab' class='record-chatting-item-img my-pic hide'></image>
+            </div>
+            {{/if}}
+
+            {{if message.sendOrReceive == 'receive'}}
+            <div data-send="{{message.sendOrReceive}}" class='{{message.sendOrReceive == "receive" ? "record-chatting-item other" : ""}}' style='justify-content: {{message.type === "tip" ? "center" : "flex-start"}}'
+                 data-message="{{message}}" bindlongpress='showEditorMenu'>
+                <image wx:if="{{message.type !== 'tip'}}" class='record-chatting-item-img doctor-pic hide' bindtap='receiveChange'></image>
+
+                <div class="record-chatting-item-text left-record" style="{{message.type === 'text'?"display:block":"display:none"}}">
+                    {{message.type === 'text'?message.text:""}}
+                </div>
+                <div class="record-chatting-item-text" style="{{message.type === 'image'?"display:block":"display:none"}}">
+                    {{if message.type=="image"}}
+                    <img src="{{message.text}}" width="100" height="100" />
+                    {{/if}}
+                </div>
+                {{if message.type=='custom'}}
+                <div onclick='customMessageUrl(this)' data-id='{{message.customContent.singleid}}' data-type='{{message.customContent.types}}' data-doctorurl='{{message.customContent.doctorUrl}}' data-patienturl='{{message.customContent.patientUrl}}' wx:if="{{message.type === 'custom'&&message.isCustom }}" class='right-text'>
+                    <div class='text-top'>
+                        <image class='text-icon hide' src='../../static/images/text.png'></image>
+                        <text class='text'>{{message.customContent.title}}</text>
+                    </div>
+                    <div class='text-bottom'>
+                        {{message.customContent.action}}
+                    </div>
+                </div>
+                {{/if}}
+            </div>
+            {{/if}}
+        </div>
+        {{/each}}
+        {{/if}}
+    </script>
+
+    <style>
+        .layui-layer-setwin .layui-layer-close2 {
+            background-position: -154px -25px;
+        }
+    </style>
+</body>
+
+</html>

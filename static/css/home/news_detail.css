@@ -1,0 +1,63 @@
+﻿
+.top {
+    background: #fff;
+    padding: .70rem .30rem;
+}
+
+    .top .cont {
+        line-height: .48rem;
+    }
+
+    .top .img-list image {
+        width: 100%;
+    }
+
+.news-mid {
+    margin-top: .20rem;
+    padding: .30rem;
+    border-top: .02rem solid #e8e8e8;
+    background: #fff;
+}
+
+    .news-mid .top {
+        background: #f5f6f8;
+        border-radius: .15rem .15rem 0 0;
+    }
+
+    .news-mid .item {
+        background: #f5f6f8;
+        border-radius: .15rem;
+    }
+
+.doc-card .item {
+    border: none;
+}
+
+    .doc-card .item .right .bottom .label {
+        background: #e5e8f0;
+    }
+
+.news-btn {
+    height: 1.20rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #fff;
+    border-top: .02rem solid #e8e8e8;
+    margin-top: .20rem;
+    padding: 0 .30rem;
+}
+
+    .news-btn .btn {
+        width: 3.35rem;
+        height: .80rem;
+        background: #bc9761;
+        color: #fff;
+        text-align: center;
+        line-height: .80rem;
+        border-radius: .10rem;
+    }
+
+        .news-btn .btn.appoint {
+            background: #2e488e;
+        }

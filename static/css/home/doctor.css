@@ -1,0 +1,229 @@
+﻿/* pages/home/home/doctor/doctor.wxss */
+
+.focus-doc .item {
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    border-bottom: .02rem solid #e8e8e8;
+}
+
+    .focus-doc .item .right {
+        flex: 1;
+        padding-left: .30rem;
+    }
+
+    .focus-doc .item .user {
+        width: 1.00rem;
+        height: 1.00rem;
+        border-radius: 100%;
+    }
+
+    .focus-doc .item .top {
+        padding: .30rem;
+        padding-bottom: 0;
+        display: flex;
+        justify-content: flex-start;
+    }
+
+        .focus-doc .item .top .left {
+            position: relative;
+        }
+
+            .focus-doc .item .top .left .online {
+                font-size: .16rem;
+                display: inline-block;
+                width: .40rem;
+                text-align: center;
+                color: #fff;
+                background: #bc9761;
+                line-height: .30rem;
+                border-radius: .30rem;
+                padding: 0 .10rem;
+                border: .02rem solid #fff;
+                box-shadow: 0 0 .10rem 1rem #eee4d6;
+                position: absolute;
+                left: 50%;
+                transform: translateX(-50%);
+                bottom: .30rem;
+            }
+
+        .focus-doc .item .top .info {
+            display: flex;
+            justify-content: space-between;
+        }
+
+            .focus-doc .item .top .info .span {
+                border: .02rem solid #bc9761;
+                color: #bc9761;
+                line-height: .36rem;
+                border-radius: .36rem;
+                padding: 0 .15rem;
+            }
+
+            .focus-doc .item .top .info .hot {
+                font-size: .18rem;
+                color: #e02e14;
+                border: .02rem solid #e02e14;
+                line-height: .40rem;
+                padding: 0 .08rem;
+                border-radius: .08rem;
+                margin-left: .20rem;
+            }
+
+.focus-doc .icon {
+    width: .32rem;
+    height: .32rem;
+}
+
+.focus-doc .item .right .mid {
+    margin: .20rem 0 .10rem;
+}
+
+.focus-doc .item .right .mid, .focus-doc .item .right .bottom {
+    color: #666;
+}
+
+    .focus-doc .item .right .bottom .label {
+        background: #eff1f6;
+        line-height: .40rem;
+        color: #2e488e;
+        margin: 0 .05rem;
+        border-radius: .40rem;
+        font-size: .22rem;
+        padding: 0 .15rem;
+    }
+
+.focus-doc .item .btn {
+    height: 1.00rem;
+    padding: 0 .30rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #ff7e00;
+    padding-left: 1.30rem;
+}
+
+    .focus-doc .item .btn .cancel {
+        background: #bc9761;
+        color: #fff;
+        line-height: .60rem;
+        border-radius: .10rem;
+        padding: 0 .20rem;
+    }
+
+.header {
+    background: #fff;
+    margin-bottom: .30rem;
+    padding: .30rem;
+}
+
+    .header .input {
+        height: .70rem;
+        display: flex;
+        align-items: center;
+        background: #eff1f6;
+        border-radius: .70rem;
+        padding: 0 .40rem;
+        margin-bottom: .30rem;
+    }
+
+        .header .input input {
+            flex: 1;
+        }
+
+    .header .icon {
+        width: .19rem;
+        height: .13rem;
+    }
+
+    .header .choice {
+        width: .22rem;
+        height: .26rem;
+    }
+
+    .header .search-icon {
+        width: .24rem;
+        height: .24rem;
+        margin-right: .15rem;
+    }
+
+    .header .option {
+        display: flex;
+        justify-content: space-between;
+        padding: 0 .40rem;
+        align-items: center;
+    }
+
+    .header .input button {
+        width: 1.00rem;
+        height: .50rem;
+        line-height: .50rem;
+        font-size: .26rem;
+        background: #bc9761;
+        color: #fff;
+        padding: 0;
+        margin: 0;
+        margin-left: .20rem;
+    }
+
+.title-info {
+    text-align: center;
+    font-size: .24rem;
+    color: #999;
+    margin-bottom: .20rem;
+}
+
+.grade-eject > ul.grade-w, .Category-eject > ul.Category-w {
+    position: absolute;
+    z-index: 1;
+    transition: all .3s ease-in .1s;
+    /*background: rgba(0,0,0,0.3);*/
+}
+
+.grade-eject-bg {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 9998;
+    width: 100%;
+    height: 100%;
+    visibility: hidden;
+    opacity: 0;
+  /*background: rgba(0,0,0,0.3);*/
+}
+
+.grade-eject > ul, .Category-eject > ul, .Sort-eject > ul {
+    margin: 0;
+    padding: 0;
+    overflow: auto;
+    height: 7rem;
+    width: 100%;
+    -webkit-transition-duration: .4s;
+    top: 15%;
+    min-height: 2rem;
+    /*background: rgba(0,0,0,0.3);*/
+}
+
+    .grade-eject > ul > li, .Category-eject > ul > li, .Sort-eject > ul > li {
+        line-height: 0.8rem;
+        font-size: .28rem;
+        padding-left: 1rem;
+        background: #fff;
+        border-bottom: solid 1px #eee;
+    }
+
+.grade-w-roll {
+    top: 3rem;
+}
+
+    .grade-w-roll::after {
+        position: fixed;
+        content: "";
+        width: 100%;
+        height: 100%;
+        display: block;
+        background: rgba(0,0,0,.3);
+        top: 15%;
+    }

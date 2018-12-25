@@ -1,0 +1,38 @@
+/* 
+加入我们样式
+*/
+.login-wrap {
+  padding-top: 0;
+}
+.login-wrap .content img{
+  width: 100%;
+}
+.login-wrap .login{
+  background-color: #f9f3eb;
+  padding-left: 0.2rem;
+  padding-right: 0.2rem;
+}
+.login .cell-item{
+  border-bottom: 1px solid #E7D7C2;
+}
+.login-wrap .login .cell-right{
+  padding-left: 0.8rem;
+}
+.cell-item:nth-child(1) .cell-right,
+.cell-item:nth-child(4) .cell-right{
+  padding-left: 1.1rem;
+}
+.login-wrap .login .verify-img{
+  position: absolute;
+  right: 0.25rem;
+  top: 0.25rem;
+  color:#BE9965;
+  border: 1px solid #C4A474;
+  border-radius: 5px;
+}
+.login .btn-primary{
+  background-color: #BC9761;
+}
+.pb80 {
+  background-color: #F9F3EB;
+}

@@ -1,0 +1,65 @@
+﻿body {
+     font-size:0.28rem;
+}
+.from .list {
+    background: #fff;
+    display: flex;
+    justify-content: space-between;
+    height: 1.00rem;
+    align-items: center;
+    padding: 0 .30rem;
+    border-top: .02rem solid #e8e8e8;
+    box-sizing: border-box;
+}
+
+    .from .list input {
+        text-align: right;
+        width: 3.80rem;
+    }
+
+    .from .list .color {
+        color: #dc0303;
+    }
+
+    .from .list > .font28 {
+        width: 1.20rem;
+        text-align: right;
+    }
+
+    .from .list .more {
+        width: .13rem;
+        height: .24rem;
+    }
+
+    .from .list .right {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+    }
+
+.from .cont {
+    background: #fff;
+    padding: .20rem;
+    border-top: .02rem solid #e8e8e8;
+}
+
+    .from .cont .label {
+        font-size: .24rem;
+        border: .02rem solid #e8e8e8;
+        line-height: .46rem;
+        display: inline-block;
+        padding: 0 .30rem;
+        margin: .10rem;
+        border-radius: .45rem;
+        color: #666;
+    }
+
+        .from .cont .label.active {
+            background: #bc9761;
+            color: #fff;
+            border-color: #bc9761;
+        }
+
+.width100 {
+width:100%;
+}

@@ -1,0 +1,68 @@
+.focus-doc .item{
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    border-bottom: .02rem solid #e8e8e8;
+}
+.focus-doc .item .right{
+    flex: 1;
+}
+.focus-doc .item .user{
+    width: 1.00rem;
+    height: 1.00rem;
+    border-radius: 100%;
+    margin-right: .30rem;
+}
+.focus-doc .item .top{
+    padding:.30rem;
+    display: flex;
+    justify-content: flex-start;
+    padding-bottom: 0rem;
+}
+.focus-doc .item .top .info{
+    display: flex;
+    justify-content: space-between;
+
+}
+.focus-doc .item .top .info .span{
+    border:.02rem solid #bc9761;
+    color: #bc9761;
+    line-height: .36rem;
+    border-radius: .36rem;
+    padding: 0 .15rem;
+}
+.focus-doc .icon{
+    width: .32rem;
+    height: .32rem;
+}
+.focus-doc .item .right .mid{
+    margin: .20rem 0 .10rem;
+}
+.focus-doc .item .right .mid,.focus-doc .item .right .bottom{
+    color: #666;
+}
+.focus-doc .item .right .bottom .label{
+    background: #eff1f6;
+    line-height: .40rem;
+    color: #2e488e;
+    margin: 0 .05rem;
+    border-radius: .40rem;
+    font-size: .22rem;
+    padding: 0 .15rem;
+}
+.focus-doc .item .btn{
+    height: .90rem;
+    padding:  0 .30rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #ff7e00;
+    padding-left: 1.30rem;
+}
+.focus-doc .item .btn .cancel{
+    background: #bc9761;
+    color: #fff;
+    line-height: .60rem;
+    border-radius: .10rem;
+    padding: 0 .20rem;
+}

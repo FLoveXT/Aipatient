@@ -1,0 +1,96 @@
+﻿.page {
+    padding: .30rem;
+}
+
+.item {
+    background: #fff;
+    margin-bottom: .30rem;
+    border-radius: .10rem;
+}
+
+    .item .bottom .right .icon {
+        width: .24rem;
+        height: .24rem;
+    }
+
+    .item .top {
+        padding: .30rem;
+        border-bottom: .02rem solid #e8e8e8;
+        color: #999;
+        line-height: .40rem;
+    }
+
+        .item .top .name {
+            color: #333;
+            font: .28rem;
+            margin-right: .30rem;
+        }
+
+    .item .bottom {
+        padding: 0 .30rem;
+        display: flex;
+        justify-content: space-between;
+        height: .80rem;
+        align-items: center;
+    }
+
+        .item .bottom .t-icon {
+            display: inline-block;
+            width: .36rem;
+            height: .36rem;
+            background-size: cover;
+            background-position: -.34rem 0;
+        }
+
+            .item .bottom .t-icon.active {
+                background-position: 0 0;
+            }
+
+        .item .bottom .left {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+        }
+
+        .item .bottom .right {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+        }
+
+            .item .bottom .right .del {
+                margin-left: .40rem;
+            }
+
+.bbtn button {
+    height: .90rem;
+    line-height: .90rem;
+    color: #fff;
+    background: #bc9761;
+    font-size: .30rem;
+    width: 100%;
+}
+
+.edit .addr-list {
+    height: 1.00rem;
+    display: flex;
+    align-items: center;
+    padding: 0 .30rem;
+    background: #fff;
+    border-bottom: .02rem solid #e8e8e8;
+    justify-content: space-between;
+}
+
+    .edit .addr-list input {
+        width: 5.00rem;
+        text-align: right;
+        color: #666;
+    }
+
+.edit .btn {
+    padding: 0 .30rem;
+}
+
+.edit button {
+    margin-top: 30px;
+}

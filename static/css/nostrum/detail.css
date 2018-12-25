@@ -1,0 +1,32 @@
+﻿
+body {
+    padding-top: .30rem;
+    font-size:0.25rem;
+}
+
+.list {
+    background: #fff;
+    padding: .50rem .30rem .40rem;
+    border-bottom: .02rem solid #eee;
+}
+
+    .list .tit {
+        color: #888;
+        display: flex;
+        justify-content: space-between;
+    }
+
+        .list .tit .btn {
+            border: .02rem solid #bb7e3c;
+            color: #bb7e3c;
+            border-radius: .10rem;
+            line-height: .50rem;
+            padding: 0 .15rem;
+        }
+
+    .list .cont {
+        background: #f5f6f8;
+        padding: .25rem;
+        border-radius: .10rem;
+        margin-top: .30rem;
+    }

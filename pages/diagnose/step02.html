@@ -1,0 +1,123 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
+    <title>成人模板-第二步-填写问诊单</title>
+    <link href="../../static/css/public.css?v=1.0" rel="stylesheet">
+    <link href="../../static/css/swiper.min.css?v=1.0" rel="stylesheet">
+    <link rel="stylesheet" href="../../static/css/ydui.css" />
+    <script src="../../static/js/webpack/reset.js"></script>
+    <script type="text/javascript" src="../../static/js/webpack/ydui.flexible.js"></script>
+</head>
+<body class="active">
+
+    <!--pages/diagnose/step01/step01.wxml-->
+    <div class='patient-header'>
+        <image class='icon' src='../../static/images/coll-icon.png'></image>
+        <text class='text'>
+            1、以下所列问题，均指当前症状。以往出现而现在已经没有
+            的症状，不在此例，如果觉得有必要提及，可填写补充说明。
+            2、急性病以当前情况为准，慢性病以近三天情况为准。
+            3、题目均为选填，但越详细的问诊单越能帮助医生更精准地
+            为您辩证开方。
+        </text>
+    </div>
+    <div class='patient-setp mt20'>
+        <text class='step '>01</text>
+        <text class='step active'>02</text>
+        <text class='step'>03</text>
+        <text class='step'>04</text>
+        <text class='step'>05</text>
+
+    </div>
+    <div class='patient-cont mt20 adult02'>
+
+
+
+
+
+    </div>
+    <div class='mt20 patient-info'>
+        <div class='font28'>其他补充说明</div>
+        <textarea class='text mt30 content-value' maxlength='250' onkeyup='valueStrCheck(this)' placeholder='请输入其他情况'></textarea>
+        <div class='font24 mt20 num'><text><span class="zev-min">0</span>/250</text></div>
+    </div>
+    <div class='patient-btn padd30'>
+        <button class='btn' onclick='getonenavto(adult02.recordId, false, 1)'>上一步</button>
+        <button class='btn' onclick='commitInfo()'>下一步</button>
+    </div>
+
+    <script src="../../static/js/webpack/jquery-2.1.4.min.js"></script>
+    <script src="../../static/js/webpack/linq/linq.js"></script>
+    <script src="../../static/js/webpack/modal.js"></script>
+    <script src="../../static/js/webpack/request.js"></script>
+    <script src="../../static/js/webpack/common.js"></script>
+    <script src="../../static/js/webpack/ydui.js"></script>
+    <script src="../../static/js/webpack/template.js"></script>
+    <script src="../../static/js/webrequest/diagnose/writeStep.js"></script>
+    <script src="../../static/js/webrequest/diagnose/step02.js"></script>
+    <script type="text/javascript" src="../../static/js/webpack/layer/layer.js"></script>
+    <script type="text/html" id="adult02-div">
+        <div class='title font30'>二便情况</div>
+        {{if list===null||list.length==0}}
+        {{else}}
+        <div class='list'>
+            <div class='cont'>
+                <div class='tit font28'>大便</div>
+                <div class='box mt30'>
+                    {{each list.stool as item index}}
+                    <text class='label {{item.isChecked?"active":""}}' onclick='dabianOnclick(this, {{index}})' data-value='{{item.name}}'>{{item.name}}</text>
+                    {{/each}}
+                </div>
+            </div>
+        </div>
+
+        <div class='list'>
+            <div class='cont'>
+                <div class='tit font28'>形状质地（可多选）</div>
+                <div class='box mt30'>
+                    {{each list.shape as item index}}
+                    <text class='label {{item.isChecked?"active":""}}' onclick='xingzhuangClick(this, {{index}})' data-value='{{item.name}}'>{{item.name}}</text>
+                    {{/each}}
+                </div>
+            </div>
+        </div>
+
+        <div class='list'>
+            <div class='cont'>
+                <div class='tit font28'>大便颜色</div>
+                <div class='box mt30'>
+                    {{each list.colour as item index}}
+                    <text class='label {{item.isChecked?"active":""}}' onclick='dabianyanseOnclick(this, {{index}})' data-value='{{item.name}}'>{{item.name}}</text>
+                    {{/each}}
+                </div>
+            </div>
+        </div>
+
+        <div class='list'>
+            <div class='cont'>
+                <div class='tit font28'>是否有以下情况（可多选）</div>
+                <div class='box mt30'>
+                    {{each list.other as item index}}
+                    <text class='label {{item.isChecked?"active":""}}' onclick='otherClick(this, {{index}})' data-value='{{item.name}}'>{{item.name}}</text>
+                    {{/each}}
+                </div>
+            </div>
+        </div>
+
+
+        <div class='list'>
+            <div class='cont'>
+                <div class='tit font28'>小便(可多选)</div>
+                <div class='box mt30'>
+                    {{each list.urine as item index}}
+                    <text class='label {{item.isChecked?"active":""}}' onclick='xiaobianClick(this, {{index}})' data-value='{{item.name}}'>{{item.name}}</text>
+                    {{/each}}
+                </div>
+            </div>
+        </div>
+        {{/if}}
+    </script>
+</body>
+</html>

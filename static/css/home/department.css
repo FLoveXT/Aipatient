@@ -1,0 +1,27 @@
+﻿/* pages/home/home/department/department.wxss */
+body {
+    padding: .20rem 0 .40rem;
+}
+
+.dep {
+    background: #fff;
+    display: inline-block;
+    width: 24%;
+    text-align: center;
+    padding: .50rem 0 .30rem;
+}
+
+.dep .img {
+    width: .80rem;
+    height: .80rem;
+    border-radius: 100%;
+}
+
+.dep .font28 {
+    margin-top: .10rem;
+    display: block;
+}
+
+.cont {
+    background: #fff;
+}

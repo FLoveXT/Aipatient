@@ -1,0 +1,78 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
+    <title>秘方列表</title>
+    <link href="../../static/css/public.css?v=1.0" rel="stylesheet">
+    <link href="../../static/css/swiper.min.css?v=1.0" rel="stylesheet">
+    <link rel="stylesheet" href="../../static/css/ydui.css" />
+    <link rel="stylesheet" href="../../static/css/nostrum/list.css" />
+    <script src="../../static/js/webpack/reset.js"></script>
+    <script type="text/javascript" src="../../static/js/webpack/ydui.flexible.js"></script>
+</head>
+<body>
+    <header>
+       
+        <span>秘方列表</span>
+    </header>
+    <div class='banner'>
+        <div class="swiper-container index-container">
+            <div class="swiper-wrapper">
+
+            </div>
+            <div class="swiper-pagination"></div>
+        </div>
+    </div>
+
+    <div class="list-item-nostrum">
+
+    </div>
+    <script src="../../static/js/webpack/jquery-2.1.4.min.js"></script>
+    <script src="../../static/js/webpack/modal.js"></script>
+    <script src="../../static/js/webpack/request.js"></script>
+    <script src="../../static/js/webpack/common.js"></script>
+    <script src="../../static/js/webpack/ydui.js"></script>
+    <script src="../../static/js/webpack/template.js"></script>
+    <script src="../../static/js/webpack/swiper.min.js"></script>
+    <script src="../../static/js/webrequest/all/nostrum-list.js"></script>
+    <script type="text/html" id="swiper-div">
+        {{if list===null||list.length===0}}
+        {{else}}
+        {{each list as item }}
+        <div class="swiper-slide">
+            <img src="{{item.imagesUrl}}" class="slide-image" />
+        </div>
+        {{/each}}
+        {{/if}}
+    </script>
+
+    <script type="text/html" id="list-div">
+        {{if list===null||list.length===0}}
+        {{else}}
+        {{each list as item }}
+        <div class='item item-list' onclick="switchItemClick('{{item.secret_id}}')">
+            <div class='icon-bg'>
+                <div class='tit'>
+                    <img class='tit-img' src="../../static/images/yun-left.png" />
+                    <text class='font30'>{{item.title}}</text>
+                    <img class='tit-img' src='../../static/images/yun-right.png' />
+                </div>
+                <div class='line'>
+                    <img class='icon' src='../../static/images/line-icon.png' />
+                </div>
+                <div class='cont font24'>
+                    功能主治：{{item.function}}
+                    <div></div>
+                    秘方介绍：{{item.introduce}}
+                </div>
+                <div class='btn font24'>
+                    查看详情
+                </div>
+            </div>
+        </div>
+        {{/each}}
+        {{/if}}
+    </script>
+</body>
+</html>

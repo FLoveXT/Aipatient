@@ -1,0 +1,125 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
+    <title>我的-关注</title>
+    <link href="../../static/css/public.css?v=1.0" rel="stylesheet">
+    <link href="../../static/css/swiper.min.css?v=1.0" rel="stylesheet">
+    <link href="../../static/css/users/foucs.css" rel="stylesheet" />
+    <link rel="stylesheet" href="../../static/css/ydui.css" />
+    <script src="../../static/js/webpack/reset.js"></script>
+    <script type="text/javascript" src="../../static/js/webpack/ydui.flexible.js"></script>
+</head>
+
+<body>
+    <header>
+        <img class="prev-icon" src="/static/images/prev-icon.png" alt="">
+        <span>我的-关注</span>
+    </header>
+    <div class='tabs'>
+        <div class='tab active' data-value='doctor'>
+            <span class='text'>关注的医生</span>
+        </div>
+        <div class='tab' data-value='dynamic'>
+            <span class='text'>医生动态</span>
+        </div>
+    </div>
+    <!-- 关注医生 -->
+    <div class='focus-doc item-list doctor-list' style="display:none">
+
+    </div>
+
+    <div class="doc-news item-list dynamic-list" style="display:none">
+
+    </div>
+
+    <script src="../../static/js/webpack/jquery-2.1.4.min.js"></script>
+    <script src="../../static/js/webpack/modal.js"></script>
+    <script src="../../static/js/webpack/request.js"></script>
+    <script src="../../static/js/webpack/common.js"></script>
+    <script src="../../static/js/webpack/ydui.js"></script>
+    <script src="../../static/js/webrequest/user/focus.js"></script>
+    <script src="../../static/js/webpack/template.js"></script>
+    <script type="text/html" id="doctor-div">
+        {{if list===null||list.length===0}}
+        {{else}}
+        {{each list as item}}
+        <div class='item'>
+            <div class='top'>
+                <img class='user' src='{{item.image}}'>
+                <div class='right'>
+                    <div class='info'>
+                        <div class='font30'>
+                            {{item.name}}
+                            <span class='font26'>{{item.titles}}</span>
+                        </div>
+                        <span class='span'>{{item.depart}}</span>
+                    </div>
+                    <div class='mid'>医院机构：{{item.medicalInstitutions}}</div>
+                    <div class='bottom'>
+                        擅长：
+                        {{each item.diseaseExpertise as p}}
+                        <span class='label'>{{p}}</span>
+                        {{/each}}
+                    </div>
+
+                </div>
+            </div>
+            <div class='btn'>
+                <div class='font30 mid'>
+                    <img class='icon mr10' src='/static/images/hos-icon.png'>{{item.fee}}元/次
+                </div>
+                <span class='cancel' onclick='cancelFollower("{{item.id}}")' data-id='{{item.id}}'>取消关注</span>
+            </div>
+        </div>
+        {{/each}}
+        {{/if}}
+    </script>
+
+    <script type="text/html" id="dynamic-div">
+        {{if list===null||list.length===0}}
+        {{else}}
+        {{each list as item}}
+        <div class='item'>
+            <div class='top'>
+                <img class='user' src='{{item.image}}'>
+                <div>
+                    <div class='tit font30'>
+                        {{if item.type==1}}
+                        <text>{{item.name}}发布了文章</text>
+                        {{/if}}
+                        {{if item.type==5}}
+                        <text>{{item.name}}发布了新动态</text>
+                        {{/if}}
+                        {{if item.type==6}}
+                        <text>{{item.name}}发布了新公告</text>
+                        {{/if}}
+
+                    </div>
+                    <div class='font26 text'></div>
+                </div>
+            </div>
+            <!-- 详情cont -->
+            <div class='cont'>
+                {{item.content}}
+            </div>
+            {{if item.pics.length>0}}
+            <div class='image-list'>
+                {{if item.pics!=null||item.pics.length>0}}
+                {{each item.pics as p}}
+                <img class='img-item' src='{{p}}'>
+                {{/each}}
+                {{/if}}
+            </div>
+            {{/if}}
+            <div class='bottom mid'>
+                <span class='button' onclick='navigationUrlDetail("{{item.articleId}}","{{item.type}}","{{item.doctorId}}")' data-type='{{item.type}}' data-id='{{item.articleId}}'>查看详情</span>
+            </div>
+        </div>
+        {{/each}}
+        {{/if}}
+    </script>
+</body>
+</html>

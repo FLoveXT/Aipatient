@@ -1,0 +1,68 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
+    <title>我的-售后服务</title>
+    <link href="../../static/css/public.css?v=1.0" rel="stylesheet">
+    <link href="../../static/css/users/services.css" rel="stylesheet" />
+    <link rel="stylesheet" href="../../static/css/ydui.css" />
+    <script src="../../static/js/webpack/reset.js"></script>
+    <script type="text/javascript" src="../../static/js/webpack/ydui.flexible.js"></script>
+</head>
+<body>
+    <header>
+        <img class="prev-icon" src="/static/images/prev-icon.png" alt="">
+        <span>售后服务</span>
+    </header>
+    <!--pages/user/service/service.wxml-->
+    <div class='flex'>
+        <div class='top'>
+            <div class='tit'>
+                <div class='font28'>问题描述</div>
+                <div class='font24 c888'>输入问题描述详情</div>
+            </div>
+            <textarea placeholder='输入问题描述详情' id="inputcontent" maxlength="500"></textarea>
+        </div>
+        <div class='img-cont'>
+            <div class='font28'>上传图片：</div>
+            <div class='img-wrap'>
+                <div class='img box' id="div01-box" style="display:none">
+                    <img src="../../static/images/img-close.png" alt="" onclick="closeImages(this,'div01-box','_hideDiv','img-box-01')" class='img-close' />
+                    <img src="" alt="" id="img-box-01" class='c-img' />
+                </div>
+                <div class='img box' id="_hideDiv">
+                    <input type="file" id="file01" onclick="showUpload(this,'file01','img-box-01','div01-box','_hideDiv')" accept="image/*" />
+                    <img class='img' src='../../static/images/upload-icon.png' />
+                </div>
+
+                <div class='img box' id="div02-box" style="display:none">
+                    <img src="../../static/images/img-close.png" alt="" onclick="closeImages(this,'div02-box','_hideDiv02','img-box-02')" class='img-close' />
+                    <img src="" alt="" id="img-box-02" class='c-img' />
+                </div>
+                <div class='img box' id="_hideDiv02">
+                    <input type="file" id="file02" accept="image/*" />
+                    <img class='img' onclick="showUpload(this,'file02','img-box-02','div02-box','_hideDiv02')" src='../../static/images/upload-icon.png' />
+                </div>
+
+
+            </div>
+            <div class='font24 mt25 c888'>温馨提示：为保障双方权益，请至少上传一张问题产品图片。</div>
+        </div>
+    </div>
+    <div class='padd30'>
+        <button class='next-btn' onclick="btnConfirm()">提交售后</button>
+    </div>
+
+
+    <script src="../../static/js/webpack/jquery-2.1.4.min.js"></script>
+    <script src="../../static/js/webpack/modal.js"></script>
+    <script src="../../static/js/webpack/request.js"></script>
+    <script src="../../static/js/webpack/common.js"></script>
+    <script src="../../static/js/webpack/ydui.js"></script>
+    <script src="../../static/js/webpack/FileUpload/js/vendor/jquery.ui.widget.js"></script>
+    <script src="../../static/js/webpack/FileUpload/js/jquery.iframe-transport.js"></script>
+    <script src="../../static/js/webpack/FileUpload/js/jquery.fileupload.js"></script>
+    <script src="../../static/js/webrequest/all/services.js"></script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+/* pages/user/phone01/phone01.wxss */
+
+body{
+    background: #f5f5f5;
+}
+.input input{
+    font-size: .28rem;
+    line-height: 1.00rem;
+    height: .90rem;
+    background: #fff;
+    padding: 0 .30rem;
+    margin-top: .30rem;
+    width: 100%;
+}
+.btn {
+    padding: 0 .70rem;
+    margin: .40rem 0;
+    width: 100%;
+}
+.btn button {
+    background: #bc9761;
+    height: .90rem;
+    line-height: .90rem;
+    font-size: .28rem;
+    color: #fff;
+    width: 100%;
+    border-radius: .12rem;
+}

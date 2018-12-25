@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="format-detection" content="email=no">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
+    <title>分享推荐</title>
+    <link href="../static/css/swiper.min.css?v=1.0" rel="stylesheet">
+    <link rel="stylesheet" href="../static/css/newshare.css">
+    <link rel="stylesheet" href="../static/css/public.css">
+    <link rel="stylesheet" href="../static/css/ydui.css">
+    <script src="../static/js/webpack/ydui.flexible.js"></script>
+</head>
+
+<body>
+
+    <div class="login-wrap">
+        <header>
+            <img class="prev-icon" src="../static/images/prev-icon.png" alt="">
+            <span>推荐我们&nbsp;&nbsp;分享有礼</span>
+        </header>
+        <div class="content">
+            <img src="../static/images/content.png" alt="爱尚中医">
+        </div>
+        <div class="login">
+            <div class="cell-item">
+                <div class="cell-left">姓名</div>
+                <div class="cell-right"><input type="text" pattern="[0-9]*" class="cell-input reg-username" placeholder="请输入姓名"
+                         /></div>
+            </div>
+            <div class="cell-item">
+                <div class="cell-left">手机号</div>
+                <div class="cell-right"><input type="text" pattern="[0-9]*" class="cell-input reg-phone" placeholder="请输入手机号"
+                         /></div>
+            </div>
+            <div class="cell-item">
+                <div class="cell-left">验证码</div>
+                <div class="cell-right"><input type="text" pattern="[0-9]*" class="cell-input reg-code" placeholder="请输入手机号"
+                         /></div>
+                <button class='verify-img send-code'>获取验证码</button>
+            </div>
+            <div class="cell-item">
+                <div class="cell-left">密码</div>
+                <div class="cell-right"><input type="text" pattern="[0-9]*" class="cell-input reg-pass" placeholder="请输入密码"
+                         /></div>
+            </div>
+            <button type="button" class="btn-block btn-primary" onclick="OnRegister()">立即加入</button>
+    </div>
+    <script src="../static/js/webpack/jquery-2.1.4.min.js"></script>
+    <script src="../static/js/webpack/layer/layer.js"></script>
+    <script src="../static/js/webpack/modal.js"></script>
+    <script src="../static/js/webpack/request.js"></script>
+    <script src="../static/js/webpack/common.js"></script>
+    <script src="../static/js/webrequest/register/join.js"></script>
+    <script src="../static/js/webpack/verify.js"></script>
+    <script src="../static/js/webpack/ydui.js"></script>
+    <script type="text/javascript">
+        function OnLayer() {
+            var url = '/pages/H5/user_agreement.html';
+            layer.open({
+                type: 2,
+                title: false,
+                shadeClose: true,
+                closeBtn: 1, //不显示关闭按钮
+                area: ['90%', '90%'],
+                anim: 2,
+                scrollbar: false,
+                content: [url], //iframe的url，no代表不显示滚动条
+            });
+        }
+    </script>
+    <style>
+    </style>
+    <script type="text/javascript">
+        $(function () {
+            $(".footer-info").remove();
+        })
+    </script>
+</body>
+
+</html>

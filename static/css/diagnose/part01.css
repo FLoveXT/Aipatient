@@ -1,0 +1,213 @@
+﻿/* pages/diagnose/part01/part01.wxss */
+body {
+    font-size: 0.28rem;
+}
+
+.item .tit .icon {
+    width: .30rem;
+    height: .30rem;
+}
+
+.item .tit .icon.active {
+    transform: rotate(180deg);
+}
+
+.item {
+    background: #fff;
+    margin-top: .20rem;
+}
+
+.item .edit {
+    line-height: .70rem;
+    text-align: center;
+    border-top: .02rem solid #e8e8e8;
+}
+
+.item .edit .icon {
+    width: .08rem;
+    height: .16rem;
+}
+
+.item .user {
+    padding: 0 .30rem;
+    line-height: .50rem;
+}
+
+.item .user-list {
+    color: #000;
+    font-size: .28rem;
+}
+
+.item .tit {
+    height: 1.00rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 .30rem;
+}
+
+.item .tit .bbtn {
+    border: .02rem solid #bc9761;
+    color: #bc9761;
+    line-height: .45rem;
+    padding: 0 .25rem;
+    border-radius: .10rem;
+    display: inline-block;
+}
+
+.item .wrap {
+    padding: 0 .30rem;
+}
+
+.item .wrap .text {
+    background: #f2f4f8;
+    line-height: .48rem;
+    padding: .25rem;
+    border-radius: .10rem;
+}
+
+.item .num {
+    padding: 0 .30rem;
+    text-align: right;
+    line-height: .80rem;
+}
+
+.item .top {
+    border-bottom: .02rem solid #e8e8e8;
+    padding-bottom: .30rem;
+}
+
+.item .img-cont .img {
+    width: 1.35rem;
+    height: 1.35rem;
+    border-radius: .10rem;
+    margin: .10rem;
+}
+
+.item .img-cont {
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+}
+
+.input-value {
+    width: 100%;
+    height: 100%;
+    min-height: 2.00rem;
+    word-break: break-all;
+}
+
+.user-list {
+    display: none;
+}
+
+.user-list.active {
+    display: block;
+}
+
+.user-list .list {
+    border-top: .02rem solid #e8e8e8;
+    height: 1.00rem;
+    font-size: .28rem;
+    display: flex;
+    align-items: center;
+}
+
+.user-list .bbtn {
+    padding: .20rem 0;
+    border-top: .02rem solid #e8e8e8;
+}
+
+.user-list .bbtn button {
+    font-size: .28rem;
+    color: #fff;
+    background: #bc9761;
+    line-height: .80rem;
+    height: .80rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.user-list .bbtn button .icon {
+    width: .30rem;
+    height: .30rem;
+    margin-right: .20rem;
+}
+
+.exp-pop {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.exp-pop .bg {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+}
+
+.exp-pop .close {
+    width: .48rem;
+    height: .68rem;
+    position: absolute;
+    z-index: 99;
+    right: 0rem;
+    top: -.60rem;
+    z-index: 99;
+}
+
+.exp-pop .img {
+    width: 6.30rem;
+    height: 7.40rem;
+    z-index: 2;
+    max-width: none;
+}
+
+.exp-pop02 .img {
+    width: 6.30rem;
+    height: 6.70rem;
+    z-index: 2;
+    max-width: none;
+}
+
+.postion {
+    position: fixed;
+    z-index: 2;
+    top: 50%;
+    left: 50%;
+    transform: translate3d(-50%, -50%, 0)
+}
+
+.img-cont .img.box {
+    position: relative;
+}
+
+.img-cont .img.box .img-close {
+    width: .30rem;
+    height: .30rem;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.img-cont .img.box .c-img {
+    width: 1.36rem;
+    height: 1.36rem;
+}
+
+.img-cont .img.box input[type=file] {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    z-index: 2;
+}

@@ -1,0 +1,44 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="divport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
+    <title>我的-地址列表</title>
+    <link href="../../static/css/public.css?v=1.0" rel="stylesheet">
+    <link href="../../static/css/swiper.min.css?v=1.0" rel="stylesheet">
+    <link rel="stylesheet" href="../../static/css/ydui.css" />
+    <script src="../../static/js/webpack/reset.js"></script>
+    <script type="text/javascript" src="../../static/js/webpack/ydui.flexible.js"></script>
+</head>
+<body>
+    <div class='page'>
+
+        <div class='btn'>
+            <button bindtap='addAddress'>增加收货人</button>
+        </div>
+    </div>
+
+    <script type="text/html" id="addrlist-div">
+        {{if list===null||list.length===0}}
+        {{else}}
+        {{each list as item }}
+        <div class='item'>
+            <div class='top' data-id='{{item.addressId}}' bindtap='{{isRespone==1?"callback_server":""}}' data-name='{{item.name}}' data-phone='{{item.phoneNumber}}' data-address='{{provinceName}}{{cityName}}{{countyName}}{{townsName}}{{address}}'>
+                <text class='font26 name'>{{item.name}}</text><text class='font24'>{{item.phoneNumber}}</text>
+                <div>{{provinceName}}{{cityName}}{{countyName}}{{townsName}}{{address}}</div>
+            </div>
+            <div class='bottom'>
+                <div class='left'>
+                    <text data-status='{{item.preferred}}' data-id='{{item.addressId}}' bindtap='setActiveInfo' class='t-icon {{item.preferred=="Y"?"active":""}} mr15'></text>设为默认
+                </div>
+                <div class='right'>
+                    <div class='edit' bindtap='editAddress' data-preferred="{{item.preferred}}" data-id="{{item.addressId}}"><image class='icon mr10' src='/images/edit-c-icon.png'></image>编辑</div>
+                    <div class='del' bindtap='DeleteBtn' data-id='{{item.addressId}}'><image class='icon mr10' src='/images/del-cicon.png'></image>删除</div>
+                </div>
+            </div>
+        </div>
+        {{/each}}
+        {{/if}}
+    </script>
+</body>
+</html>

@@ -1,0 +1,87 @@
+﻿.tabs {
+    display: flex;
+    justify-content: space-between;
+    height: .80rem;
+    background: #fff;
+    align-items: center;
+}
+
+    .tabs .tab {
+        width: 50%;
+        text-align: center;
+    }
+
+        .tabs .tab.active .text {
+            color: #bc9761;
+            border-bottom: 0.04rem solid #bc9761;
+            display: inline-block;
+            line-height: .80rem;
+        }
+
+.rule {
+    text-align: right;
+    background: #fff;
+    padding: 0 .30rem;
+    height: .40rem;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    color: #4a73d2;
+}
+
+    .rule .icon {
+        width: .20rem;
+        height: .20rem;
+    }
+
+.ticket {
+    padding: 0 .30rem;
+}
+
+    .ticket .list {
+        height: 2.00rem;
+        width: 6.90rem;
+        display: flex;
+        margin-top: .30rem;
+    }
+
+        .ticket .list .left {
+            width: 2.00rem;
+            height: 2.00rem;
+            position: relative;
+        }
+
+        .ticket .list .right {
+            flex: 1;
+        }
+
+        .ticket .list .img {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+
+        .ticket .list .left .text {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            width: 100%;
+            text-align: center;
+            transform: translate3d(-50%,-50%,0);
+            color: #fff;
+        }
+
+        .ticket .list .right {
+            position: relative;
+        }
+
+            .ticket .list .right .text {
+                position: absolute;
+                top: 50%;
+                left: .35rem;
+                transform: translateY(-50%);
+            }
+
+    .ticket.past .list .right {
+        color: #adadad;
+    }

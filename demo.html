@@ -1,0 +1,81 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <!--使用webkit内核-->
+    <meta name="renderer" content="webkit">
+    <meta name="renderer" content="ie-stand">
+    <!--避免IE使用兼容模式-->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1,IE=9" />
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+    <script src="http://www.jq22.com/jquery/jquery-1.10.2.js"></script>
+    <script src="static/js/webpack/image/fly-zoom.js"></script>
+    <script src="static/js/webpack/template.js"></script>
+</head>
+<body>
+    <div id="test">
+
+    </div>
+
+    <script type="text/html" id="id">
+        <div class="user-cont mt10">
+            <div class="font24">
+                <text class="c888">主诉：</text> 1
+            </div>
+            <div class="font24">
+                <text class="c888">现病史及现在症状：</text> 2
+            </div>
+            <div class="font24">
+                <text class="c888">舌苔照：</text>
+                <div class="img-wrap">
+
+
+                    <div>
+
+                        <img class="img" src="http://dev.pic.5aszy.com/group1/M00/00/1A/rBImBVuYypWAUTLNAAA_w6yiDo0398.jpg">
+
+                    </div>
+
+                </div>
+            </div>
+            <div class="font24">
+                <text class="c888">患处照片、检查报告、化验单：</text>
+                <div class="img-wrap">
+
+
+                    <div>
+
+                        <img class="img" src="http://dev.pic.5aszy.com/group1/M00/00/1A/rBImBVuYypiAHd_gAANy-b9JJOE045.jpg">
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </script>
+
+    <script type="text/javascript">
+
+
+
+
+        ct() 
+
+        function ct() {
+            $("#test").html(template("id"));
+            ss();
+        }
+
+        function ss() {
+            $('#test').FlyZommImg({
+                rollSpeed: 200, //切换速度
+                miscellaneous: false, //是否显示底部辅助按钮
+                slitherCallback: function (direction, DOM) { //左滑动回调 两个参数 第一个动向
+                    console.log(direction, DOM);
+                }
+            });
+        }
+    </script>
+</body>
+</html>

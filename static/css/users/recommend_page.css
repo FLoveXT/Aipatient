@@ -1,0 +1,60 @@
+﻿/* pages/user/recommend/recommend.wxss */
+body {
+    background: -webkit-linear-gradient(#f76e16, #f44728) !important; /* Safari 5.1 - 6.0 */
+    background: -o-linear-gradient(#f76e16, #f44728) !important; /* Opera 11.1 - 12.0 */
+    background: -moz-linear-gradient(#f76e16, #f44728) !important; /* Firefox 3.6 - 15 */
+    background: linear-gradient(#f76e16, #f44728) !important; /* 标准的语法 */
+    padding: 0 .60rem;
+}
+
+.text {
+    color: #f7814a;
+    font-size: .72rem;
+    text-align: center;
+    margin-top: .70rem;
+}
+
+.box {
+    background: #fff;
+    text-align: center;
+    border-radius: .20rem;
+    padding-top: 1.50rem;
+    padding-bottom: 1.20rem;
+    position: relative;
+    top: -.35rem;
+    z-index: 2;
+    box-shadow: 0 0 .10rem .01rem #f54e25;
+}
+
+    .box .tit {
+        font-size: .48rem;
+        color: #bc9761;
+        font-weight: bold;
+    }
+
+    .box .info {
+        color: #8d8d8d;
+        margin: .40rem 0 1.80rem;
+        padding: 0 1.00rem;
+    }
+
+        .box .info .color {
+            color: #d8c5ab;
+        }
+
+    .box .logo {
+        width: 1.22rem;
+        height: 1.76rem;
+    }
+
+.bbtn button {
+    line-height: 1.00rem;
+    height: 1.00rem;
+    font-size: .30rem;
+    color: #fff;
+    background: #bc9761;
+    border-radius: 100rem;
+    box-shadow: 0 0 .15rem .01rem #d44022;
+    margin-top: .10rem;
+    width: 100%;
+}

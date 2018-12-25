@@ -1,0 +1,235 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
+    <title>我的处方单-详情</title>
+    <link href="../../static/css/public.css?v=1.0" rel="stylesheet">
+    <link href="../../static/css/swiper.min.css?v=1.0" rel="stylesheet">
+    <link href="../../static/css/users/order_details.css" rel="stylesheet" />
+    <link rel="stylesheet" href="../../static/css/ydui.css" />
+    <script src="../../static/js/webpack/reset.js"></script>
+    <script type="text/javascript" src="../../static/js/webpack/ydui.flexible.js"></script>
+</head>
+
+<body>
+    <header>
+        <img class="prev-icon if-ai" src="/static/images/prev-icon.png" alt="">
+        <span>我的处方单-详情</span>
+    </header>
+
+    <div class="detail-info">
+
+    </div>
+
+
+
+    <script src="../../static/js/webpack/jquery-2.1.4.min.js"></script>
+    <script src="../../static/js/webpack/modal.js"></script>
+    <script src="../../static/js/webpack/request.js"></script>
+    <script src="../../static/js/webpack/common.js"></script>
+    <script src="../../static/js/webpack/ydui.js"></script>
+    <script src="../../static/js/webrequest/user/order-details.js"></script>
+    <script src="../../static/js/webpack/template.js"></script>
+    <script id="script5" src="/static/js/webpack/vconsole/dist/vconsole.min.js"></script>
+    <script type="text/javascript">
+        var vConsole = new VConsole();
+        vConsole.setOption({ maxLogNumber: 5000 });
+        console.log("Hello World");
+    </script>
+    <script type="text/html" id="detail-div">
+        {{if item===null}}
+        {{else}}
+        <div class='deatail-tit'>
+            <div class='info'>
+                <div class='tit font28 mb15'>基本信息</div>
+                <div class='cont font24'>
+                    <div class='list col'>
+                        <text class='text'>姓名：</text>{{item.name}}
+                    </div>
+                    <div class='list col'>
+                        <text class='text'>性别：</text>{{item.sex}}
+                    </div>
+                    <div class='list col'>
+                        <text class='text'>年龄：</text>{{item.age}}
+                    </div>
+                    <div class='list col'>
+                        <text class='text'>手机：</text>{{item.phoneNumber}}
+                    </div>
+                    <div class='list'>
+                        <text class='text'>既往病史：</text>{{item.medicalHistory}}
+                    </div>
+                    <div class='list'>
+                        <text class='text'>补充描述：</text>{{item.remarks}}
+                    </div>
+                    <div class='list'>
+                        <text class='text'>就诊时间：</text>{{item.applyTime}}
+                    </div>
+                    <div class='list'>
+                        <text class='text'>诊断建议：</text>{{item.adviceDiacrisis}}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {{each item.drugs as p}}
+        <div class='item'>
+            <div class='tit'>
+                <div>
+                    <span class='line'></span> {{p.drugType}}
+                </div>
+                <div data-value="{{p.drugType}}" style="display:{{p.drugType=="新特药"?"none":"block"}}">
+
+                    共
+                    <span class='color'>{{p.drugNum}}</span>味，每贴
+                    <span class='color'>{{p.weight}}g</span>
+                </div>
+            </div>
+            <div class='cont'>
+                <div>
+                    {{each p.drugTemps as cell}}
+                    <div class='list'>{{cell.name}}： {{cell.num}}{{cell.unit}}</div>
+                    {{/each}}
+                </div>
+                <div class='tit'>
+                    <div>药品制作：{{p.supplier}}</div>
+                    <div style="display:{{p.drugType=="新特药"?"none":"block"}}">
+                        共
+                        <span class='color'>{{p.plaster}}</span>贴
+                    </div>
+                </div>
+                <div class='info' style="display:{{p.drugType=="新特药"?"none":"block"}}">
+                    用法用量： {{p.userMethod}} {{p.takingTime}}
+                </div>
+                <div class='info' style="display:{{p.drugType!="新特药"?"none":"block"}}">
+                    用法用量：
+                    {{each p.specialUsemethod as zz}}
+                    <div>{{zz}}</div>
+                    {{/each}}
+                </div>
+            </div>
+        </div>
+        {{/each}}
+
+        {{if item.isHaveFried}}
+        <div class='item single' style="display:{{item.isHaveFried?"block":"none"}}">
+            <div class='tit'>
+                <div>
+                    <span class='line'></span> 是否代煎
+                </div>
+                <div>{{item.isFried}}</div>
+            </div>
+        </div>
+        {{/if}}
+        <div class='item'>
+            <div class='tit'>
+                <div>
+                    <span class='line'></span> 订单金额
+                </div>
+                <div></div>
+            </div>
+            <div class='cont'>
+                <div class='num'>
+                    <div>诊 金： </div>
+                    <div>
+                        <span class='color'>{{item.diagnosisFee}}</span>元
+                    </div>
+                </div>
+                <div class='num'>
+                    <div>药 费： </div>
+                    <div>
+                        <span class='color'>{{item.drugFee}}</span>元
+                    </div>
+                </div>
+                <div class='num'>
+                    <div>制作费： </div>
+                    <div>
+                        <span class='color'>{{item.makeFee}}</span>元
+                    </div>
+                </div>
+                <div class='num'>
+                    <div>运 费：</div>
+                    <div>
+                        <span class='color'>{{item.expressFee}}</span>元
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class='item'>
+            <div class='tit'>
+                <div>
+                    <span class='line'></span> 收货地址
+                </div>
+                <div></div>
+            </div>
+            <div class='bottom'>
+                <div class='mr50 mt25'>
+                    <img class='name mr10' src='../../static/images/man-icon.png'>{{item.consignee}}
+                </div>
+                <div class='mt25'>
+                    <img class='tel mr10' src='../../static/images/tel-icon.png'>{{item.consigneeTel}}
+                </div>
+            </div>
+            <div class='text mt15'>{{item.address}}</div>
+        </div>
+        {{if item.logistics}}
+        <div class='item' style="display:{{item.logistics ?"block":"none"}}">
+            <div class='tit'>
+                <div>
+                    <span class='line'></span> 物流跟踪
+                </div>
+                <div></div>
+            </div>
+            <div class='logistics'>
+                {{if item.logisticsList===null}}
+                {{else}}
+                {{each item.logisticsList as key}}
+                <div class='info-text'>
+                    <text> 物流单号：{{key.logisticsNo}}</text>
+                    <text>物流公司:{{key.logisticsName}}</text>
+                </div>
+                {{each key.data as add index}}
+                <div class='list {{index==0?"new":""}}'>
+                    <div class='top'>
+                        <span class='label'></span>{{add.context}}
+                    </div>
+                    <div>{{add.time}}</div>
+                </div>
+                {{/each}}
+                {{/each}}
+                <div class='line'></div>
+                {{/if}}
+            </div>
+        </div>
+        {{/if}}
+
+
+        {{if item.isPay}}
+        <!-- 待支付 -->
+        <div class='pay-btn'>
+            <span class='pay btn' onclick="goPay()">去支付</span>
+            <span class='cancel btn' onclick="goPayCancel()">取消订单</span>
+        </div>
+        {{/if}}
+        {{if item.isAppraise}}
+        <!-- 已完成 -->
+        <div class='pay-btn'>
+            <span class='cancel btn' onclick="goAppraise()">评价医生</span>
+        </div>
+        {{/if}}
+        {{/if}}
+    </script>
+
+    <script type="text/javascript">
+        $(function () {
+            $(".prev-icon").click(function () {
+                window.location.href = "/pages/users/order.html";
+            });
+        })
+    </script>
+</body>
+
+</html>

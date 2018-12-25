@@ -1,0 +1,73 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
+    <title>收货人信息-编辑</title>
+    <link href="../../static/css/public.css?v=1.0" rel="stylesheet">
+    <link href="../../static/css/swiper.min.css?v=1.0" rel="stylesheet">
+    <link href="../../static/css/users/addr_edit.css" rel="stylesheet" />
+    <link rel="stylesheet" href="../../static/css/ydui.css" />
+    <script src="../../static/js/webpack/reset.js"></script>
+    <script type="text/javascript" src="../../static/js/webpack/ydui.flexible.js"></script>
+</head>
+
+<body>
+    <header>
+        <img class="prev-icon" src="/static/images/prev-icon.png" alt="">
+        <span>编辑收货地址</span>
+    </header>
+    <div class='page'>
+        <div class='edit detail-item'>
+
+        </div>
+    </div>
+
+
+    <script src="/static/js/webpack/jquery-2.1.4.min.js"></script>
+    <script src="/static/js/webpack/modal.js"></script>
+    <script src="/static/js/webpack/request.js"></script>
+    <script src="/static/js/webpack/common.js"></script>
+    <script src="/static/js/webpack/ydui.js"></script>
+    <script src="/static/js/webrequest/user/addr_edit.js"></script>
+    <script src="/static/js/webpack/template.js"></script>
+    <script src="../../static/js/webpack/ydui.citys.js"></script>
+    <script type="text/html" id="detail-div">
+        {{if list===null}}
+        {{else}}
+        <div>
+            <div class='addr-list'>
+                <text class='font28'>收货人</text>
+                <input class='font24' value='{{list.detail.name}}' placeholder='请输入收货人'  id="txtName" />
+            </div>
+            <div class='addr-list'>
+                <text class='font28'>联系方式</text>
+                <input class='font24' type='number' placeholder='请输入联系方式' value='{{list.detail.phoneNumber}}' id="txtPhone" />
+            </div>
+            <div class='addr-list' onclick='chooseArea()'>
+                <text class='font28'>所在地区</text>
+                <input class='font24' id="AddressAreaInput" placeholder='请选择所在地区' value='{{list.detail.provinceName}} {{list.detail.cityName}} {{list.detail.countyName}}' readonly />
+            </div>
+            <div class='addr-list'>
+                <text class='font28'>详细地址</text>
+                <div><input class='font24' value='{{list.detail.address}}' placeholder='请输入详细地址'  id="txtArea" /></div>
+            </div>
+        </div>
+        <div class='bbtn'>
+            {{if list.action=="add"}}
+            <button onclick="Add()">新增保存</button>
+            {{/if}}
+
+            {{if list.action=="edit"}}
+            <button onclick="Update()">修改保存</button>
+            {{/if}}
+
+        </div>
+        {{/if}}
+    </script>
+</body>
+<!---
+       
+    -->
+</html>

@@ -1,0 +1,255 @@
+/* pages/user/message/message.wxss */
+page {
+    padding: 0 .30rem;
+}
+
+.item {
+    margin-top: .30rem;
+}
+
+.item .img {
+    width: 1.00rem;
+    height: 1.00rem;
+    border-radius: 100%;
+    margin-right: .25rem;
+}
+
+.item .icon {
+    width: .14rem;
+    height: .24rem;
+}
+
+.item .time {
+    text-align: center;
+}
+
+.item .time .text {
+    background: #ddd;
+    color: #fff;
+    line-height: .40rem;
+    text-align: center;
+    display: inline-block;
+    border-radius: .40rem;
+    padding: 0 .20rem;
+}
+
+.item .cont {
+    background: #fff;
+    margin-top: .30rem;
+    border-radius: .15rem;
+}
+
+.item .cont .top {
+    padding: .30rem;
+}
+
+.item .cont .info {
+    padding: 0 .30rem;
+    color: #666;
+    line-height: .40rem;
+    padding-bottom: .30rem;
+    border-bottom: 1px solid #e8e8e8;
+}
+
+.item .cont .more {
+    height: .85rem;
+    justify-content: space-between;
+    align-items: center;
+    display: flex;
+    padding: 0 .30rem;
+}
+
+/*mask*/
+.drawer_screen {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    background: #000;
+    opacity: 0.5;
+    overflow: hidden;
+}
+
+/*content*/
+.drawer_box {
+    width: 6.50rem;
+    overflow: hidden;
+    position: fixed;
+    top: 50%;
+    left: 0;
+    z-index: 1001;
+    background: #fafafa;
+    margin: -150px .50rem 0 .50rem;
+    border-radius: 3px;
+}
+
+input {
+    -webkit-appearance: none;
+}
+
+.drawer_title {
+    padding: 15px;
+    font: .20px "microsoft yahei";
+    text-align: center;
+}
+
+.drawer_content {
+    height: 150px;
+    overflow-y: scroll;
+    /*���������Ӹ߶ȿɹ���*/
+}
+
+.btn_ok {
+    padding: 10px;
+    font: 20px "microsoft yahei";
+    text-align: center;
+    color: #3cc51f;
+}
+
+.top {
+    padding-top: 8px;
+}
+
+.bottom {
+    padding-bottom: 8px;
+}
+
+.title {
+    height: 30px;
+    line-height: 30px;
+    width: 1.60rem;
+    text-align: center;
+    display: inline-block;
+    font: 300 .28rem/30px "microsoft yahei";
+}
+
+radio {
+    margin-right: 20px;
+}
+
+.grid {
+    display: -webkit-box;
+    display: box;
+}
+
+.col-0 {
+    -webkit-box-flex: 0;
+    box-flex: 0;
+}
+
+.col-1 {
+    -webkit-box-flex: 1;
+    box-flex: 1;
+}
+
+.fl {
+    float: left;
+}
+
+.fr {
+    float: right;
+}
+
+.radio-group {
+    display: block;
+    width: 100%;
+}
+
+.radio {
+    display: block;
+    border-top: 1px solid #ddd;
+    padding: 5px;
+}
+
+.radio-width {
+    width: 100%;
+    display: block;
+    margin: .10rem 0;
+    box-sizing: border-box;
+    border-bottom: .02rem solid #e8e8e8;
+    padding: .15rem .30rem;
+    text-align: center;
+}
+
+.button button {
+    font-size: .28rem;
+    height: .80rem;
+    line-height: .80rem;
+    background: #e8e8e8;
+    color: #008cf5;
+}
+
+input[type="radio"]{
+    -webkit-appearance:radio;
+}
+.msg-box {
+    position: absolute;
+    background: #fff;
+    width: 2.4rem;
+    height: 1.6rem;
+    right: .25rem;
+    top: 1rem;
+    font-size: .24rem;
+    padding: 0 .1rem;
+    z-index: 99;
+    border-radius: .05rem;
+}
+
+.msg-box:after {
+    display: block;
+    content: "";
+    width: 0;
+    height: 0;
+    border: .2rem solid rgba(0, 0, 0, 0);
+    border-bottom-color: #fff;
+    position: absolute;
+    top: -.36rem;
+    right: .1rem;
+}
+
+.msg-box .msg-list {
+    line-height: .8rem;
+}
+
+.msg-box .msg-list:first-child {
+    border-bottom: 1px solid #e8e8e8;
+}
+
+.msg-box img {
+    width: .3rem;
+    height: auto;
+    align-items: center;
+    margin-right: .1rem;
+}
+
+.bg {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, .5);
+    display: block;
+}
+.msg-wrap{
+    display: none;	
+}
+
+.item .cont .top {
+    padding: 30rpx;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .item .cont .top .left{
+      display: flex;
+      align-items: center;
+  }
+  .item .cont .top .status{
+      color:red;
+  }
+  .item .cont .top .status.active{
+      color: rgb(32, 182, 32);
+  }

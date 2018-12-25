@@ -1,0 +1,108 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
+    <title>找医生</title>
+    <link href="../../static/css/public.css?v=1.0" rel="stylesheet">
+    <link rel="stylesheet" href="../../static/css/home/doctor.css" />
+    <link rel="stylesheet" href="../../static/css/ydui.css" />
+    <script src="../../static/js/webpack/reset.js"></script>
+    <script type="text/javascript" src="../../static/js/webpack/ydui.flexible.js"></script>
+</head>
+<body>
+
+    <div class='header'>
+        <header>
+            <img class="prev-icon" src="/static/images/prev-icon.png" alt="">
+            <span>找医生</span>
+        </header>
+        <div class='input'>
+            <image class='search-icon' src='../../static/images/search-icon.png'></image>
+            <input placeholder='搜医生、科室、病症' id="txtInput" />
+            <button style='' onclick='searchWordChange()'>搜索</button>
+        </div>
+        <div class='option'>
+            <div class='tab mid' onclick='ComprehensiveSort()'>
+                综合排序
+                <image class='icon ml10' src='../../static/images/option-icon.png'></image>
+            </div>
+            <div class='tab mid' onclick='ScoreSort()'>
+                评分排序
+                <image class='icon ml10' src='../../static/images/option-icon.png'></image>
+            </div>
+            <div class='tab mid' onclick="searchInfo()">
+                <span class="search-tit">筛选</span>
+                <image class='choice ml10' src='../../static/images/choice-icon.png'></image>
+
+            </div>
+        </div>
+    </div>
+    <div class='focus-doc'>
+        <div style="display:none" class='font28 title-info'></div>
+        <div class="doctor-list">
+
+        </div>
+    </div>
+
+    <div class="grade-eject-bg"></div>
+    <div class="grade-eject grade-w-roll" style="display:none">
+        <ul class="grade-w" id="gradew"></ul>
+    </div>
+
+    <script src="../../static/js/webpack/jquery-2.1.4.min.js"></script>
+    <script src="../../static/js/webpack/modal.js"></script>
+    <script src="../../static/js/webpack/request.js"></script>
+    <script src="../../static/js/webpack/common.js"></script>
+    <script src="../../static/js/webpack/ydui.js"></script>
+    <script src="../../static/js/webpack/template.js"></script>
+    <script src="../../static/js/webrequest/home/doctor.js"></script>
+    <script type="text/html" id="doctor-div">
+        {{if list===null||list.length===0}}
+        {{else}}
+        {{each list as item }}
+        <div class='item' onclick='goPage("{{item.id}}")' data-id='{{item.id}}'>
+            <div class='top'>
+                <div class='left'>
+                    <image class='user' src='{{item.image}}'></image>
+                </div>
+                <div class='right'>
+                    <div class='info'>
+                        <div class='font30'>
+                            {{item.name}}
+                            <text class='font26'>{{item.titles}}</text>
+                        </div>
+                        <text class='span'>{{item.depart}}</text>
+                    </div>
+                    <div class='mid'>医院机构：{{item.medicalInstitutions}}</div>
+                    <div class='bottom'>
+                        擅长：
+                        {{if item.diseaseExpertise.length>0}}
+                        {{each item.diseaseExpertise as p}}
+                        <text class='label'>{{p}}</text>
+                        {{/each}}
+                        {{/if}}
+                    </div>
+                </div>
+            </div>
+            <div class='btn'>
+                <div class='font30 mid'>
+                    <image class='icon mr10' src='../../static/images/hos-icon.png'></image>{{item.fee}}元/次
+                </div>
+            </div>
+        </div>
+        {{/each}}
+        {{/if}}
+    </script>
+
+
+    <script type="text/html" id="search-div">
+        {{if list===null||list.length===0}}
+        {{else}}
+        {{each list as item }}
+        <li onclick="searchClick(this,'{{item.id}}')" data-name="{{item.name}}">{{item.name}}</li>
+        {{/each}}
+        {{/if}}
+    </script>
+</body>
+</html>

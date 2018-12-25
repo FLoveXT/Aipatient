@@ -1,0 +1,147 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
+    <title>编辑患者信息</title>
+    <link href="../../static/css/public.css?v=1.0" rel="stylesheet">
+    <link href="../../static/css/swiper.min.css?v=1.0" rel="stylesheet">
+    <link href="../../static/css/diagnose/part02.css" rel="stylesheet" />
+    <link href="../../static/js/webpack/datetime/css/rolldate.css" rel="stylesheet" />
+    <link rel="stylesheet" href="../../static/css/ydui.css" />
+    <script src="../../static/js/webpack/reset.js"></script>
+    <script type="text/javascript" src="../../static/js/webpack/ydui.flexible.js"></script>
+</head>
+<body>
+    <header>
+        <!--<img class="prev-icon" src="/static/images/prev-icon.png" alt="">-->
+        <span>编辑患者</span>
+    </header>
+    <div class="body-view"></div>
+
+    <!--模板渲染-->
+    <script type="text/html" id="body-div">
+        {{if item===null}}
+        {{else}}
+        <div class='patient-header'>
+            <image class='icon' src='../../static/images/coll-icon.png'></image>
+            <div class='text'>
+                请认真填写您的真实个人信息，方便医生进行诊断，以下信息 仅您的医生可见。
+            </div>
+        </div>
+        <div class='from mt20'>
+            <div class='list'>
+                <div class='font28'>
+                    <text class='color'>*</text> 姓名：
+                </div>
+                <div class='font24'>
+                    <input placeholder='请输入真实姓名' class="req-name" value='{{item.name}}' />
+                </div>
+            </div>
+            <div class='list'>
+                <div class='font28'>
+                    <text class='color'>*</text> 性别：
+                </div>
+                <div class='font24 right sex-api' onclick="actionsheetOpen()">
+                    <input placeholder='请选择性别' class="req-sex" data-value="{{item.sex=="男"?"M":"F"}}" value='{{item.sex}}' disabled='disabled'>
+                    <image class='more ml20' src='../../static/images/next-icon.png'></image>
+                </div>
+            </div>
+
+            <div class='list' onclick="openDate()">
+                <div class='font28'>
+                    <text class='color'>*</text>生日：
+                </div>
+                <div class='font24 right'>
+                    <input placeholder='请选出生年月' class="req-birthday" value="{{item.birthday}}" id="date10" type="text" />
+                    <image class='more ml20' src='../../static/images/next-icon.png'></image>
+                </div>
+            </div>
+
+            <div class='list'>
+                <div class='font28'>
+                    身高：
+                </div>
+                <div class='font24 right'>
+                    <input placeholder='请输入身高' class="req-height" type='number' value='{{item.height}}' />
+                    <text class='font24 ml10'>cm</text>
+                </div>
+            </div>
+
+            <div class='list'>
+                <div class='font28'>
+                    体重：
+                </div>
+                <div class='font24 right'>
+                    <input placeholder='请输入体重' class="req-weight" type='number' value='{{item.weight}}' />
+                    <text class='font24 ml10'>Kg</text>
+                </div>
+            </div>
+
+            <div class='list'>
+                <div class='font28'>
+                    <text class='color'>*</text>手机：
+                </div>
+                <div class='font24 right'>
+                    <input placeholder='请输入手机号' class="req-phoneNumber" value='{{item.phone}}' type='number'>
+                </div>
+            </div>
+
+            <div class='list'>
+                <div class='font28'>
+                    <text class='color'>*</text>地区：
+                </div>
+                <div class='font24 right' onclick="chooseArea()">
+                    <input placeholder='请选择地区' class="req-address" id="AddressAreaInput" readonly data-address="address" value='{{item.area}}'>
+                    <image class='more ml20' src='../../static/images/next-icon.png'></image>
+                </div>
+            </div>
+        </div>
+
+        <div class='from mt20'>
+            <div class='list'>
+                <div>
+                    <text class='color'>*</text> 是否存在以下既往病史（可多选）
+                </div>
+            </div>
+            <div class='cont cont-active-list'>
+                {{each item.medicalhistoryInfo as p index}}
+                <text onclick="medicalhistoryClick(this,'{{index}}')" class='label {{p.isCheck?"active":""}}' data-index="{{index}}" bindtap='medicalhistoryChange'>{{p.name}}</text>
+                {{/each}}
+            </div>
+        </div>
+
+        <div class='mt20 patient-info'>
+            <div class='font28'>补充说明</div>
+            <textarea class='text mt30 req-textarea' maxlength='{{item.remarkMax}}' placeholder='如有过敏史、遗传史、手术史、可在此处补充填写' value='' onkeyup="checkStrInfo(this)">{{item.remark}}</textarea>
+            <div class='font24 mt20 num'>
+                <text><span class="zev-min">{{item.remarkMin}}</span>/<span class="zev-max">{{item.remarkMax}}</span></text>
+            </div>
+        </div>
+
+        <div class='btn padd30 width100'>
+            <button class='next-btn' onclick="CommintInfo(this)">确定</button>
+        </div>
+
+        {{/if}}
+    </script>
+
+    
+
+    <div class="m-actionsheet">
+        <a href="javascript:void(0)" onclick="actionSheetClick('M')" class="actionsheet-item">男</a>
+        <a href="javascript:void(0)" onclick="actionSheetClick('F')" class="actionsheet-item">女</a>
+        <a href="javascript:;" class="actionsheet-action" onclick="actionsheetClose()">取消</a>
+    </div>
+    <script src="../../static/js/webpack/jquery-2.1.4.min.js"></script>
+    <script src="../../static/js/webpack/modal.js"></script>
+    <script src="../../static/js/webpack/request.js"></script>
+    <script src="../../static/js/webpack/common.js"></script>
+    <script src="../../static/js/webpack/ydui.js"></script>
+    <script src="../../static/js/webpack/template.js"></script>
+    <script src="../../static/js/webrequest/diagnose/part02.js"></script>
+    <script src="../../static/js/webpack/datetime/rolldate.js"></script>
+    <script src="../../static/js/webpack/ydui.citys.js"></script>
+    <script type="text/javascript" src="../../static/js/webpack/layer/layer.js"></script>
+</body>
+</html>

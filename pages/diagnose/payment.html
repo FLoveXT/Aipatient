@@ -1,0 +1,149 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
+    <title>购买在线问诊</title>
+    <link href="../../static/css/public.css?v=1.0" rel="stylesheet">
+    <link href="../../static/css/swiper.min.css?v=1.0" rel="stylesheet">
+    <link href="../../static/css/diagnose/payment.css" rel="stylesheet" />
+    <link rel="stylesheet" href="../../static/css/ydui.css" />
+    <script src="../../static/js/webpack/reset.js"></script>
+    <script type="text/javascript" src="../../static/js/webpack/ydui.flexible.js"></script>
+</head>
+<body style="padding-bottom.8rem">
+    <header>
+        <img class="prev-icon" src="/static/images/prev-icon.png" alt="">
+        <span>购买在线问诊</span>
+    </header>
+    <div class='doc-card'>
+        <div class='item'>
+            <div class='top doctorinfo'>
+
+            </div>
+        </div>
+    </div>
+    <div class='wrap'>
+        <div class='item value-assigment-settings'>
+
+        </div>
+        <div class='item'>
+            <div class='tit'>
+                <div class='font28'>
+                    <text class='line mr15'></text>服务说明
+                </div>
+            </div>
+            <div class='doc-cont'>
+                服务说明 1、医生将与您通过图片、文字、语音和视频交流，根据实际情况辩证开方、给出调理意见。 2、医生将在您发起咨询的24小时内回复您，逾期未回复您可向客服请求协助或退款；建议在服务时段内进行咨询，提前或者逾期咨询，医生可能不能及时回复。
+            </div>
+        </div>
+        <div class='item tickets-list'>
+
+        </div>
+        <div class='item bbtn payment-item'>
+
+        </div>
+    </div>
+
+
+
+    <script src="../../static/js/webpack/jquery-2.1.4.min.js"></script>
+    <script src="../../static/js/webpack/modal.js"></script>
+    <script src="../../static/js/webpack/request.js"></script>
+    <script src="../../static/js/webpack/common.js"></script>
+    <script src="../../static/js/webpack/ydui.js"></script>
+    <script src="../../static/js/webpack/template.js"></script>
+    <script src="../../static/js/webrequest/diagnose/payment.js?v=2"></script>
+    <script type="text/javascript" src="../../static/js/webpack/layer/layer.js"></script>
+    <script src="../../static/js/webpack/vconsole/dist/vconsole.min.js"></script>
+    <script type="text/html" id="doctorinfo-div">
+        {{if item===null||item.length===0}}
+        {{else}}
+        <img class='user' src='{{item.image}}' />
+        <div class='right'>
+            <div class='info'>
+                <div class='font30'>
+                    {{item.name}}
+                    <text class='font26'>{{item.titles}}</text>
+                </div>
+                <text class='span'>{{item.depart}}</text>
+            </div>
+            <div class='mid'>医院机构：{{item.medicalInstitutions}}</div>
+            <div class='bottom'>
+                擅长：
+                {{each item.diseaseExpertise as cell}}
+                <text class='label'>{{cell}}</text>
+                {{/each}}
+            </div>
+        </div>
+        {{/if}}
+    </script>
+
+    <!--问诊初始化设置及选择设置-->
+    <script type="text/html" id="settings-div">
+        {{if item===null||item.length===0}}
+        {{else}}
+        <div class='tit'>
+            <div class='font28'>
+                <text class='line mr15'></text>选择日期
+            </div>
+            <div class='font24 c888' onclick="clickInvoke()">
+                选择其他日期
+                <img class='next ml20' src="../../static/images/next-icon.png" />
+            </div>
+        </div>
+        <div class='time-cont'>
+            <div>
+                {{item.time}} 剩余
+                <text class='color'>{{item.num}}人</text>
+            </div>
+            <div class='color'>￥{{item.fee}}/次</div>
+        </div>
+        {{/if}}
+    </script>
+
+    <!--优惠券-->
+    <script type="text/html" id="ticket-div">
+        {{if item===null||item.length===0}}
+        {{else}}
+        <div class='tit'>
+            <div class='font28'>
+                优惠券
+            </div>
+            <div class='font24 c888' onclick='tocketChange()'>
+                <div>
+                    {{if item.id==""}}
+                    <span><span class='color'>{{item.num}}</span>张可用</span>
+                    {{/if}}
+                    {{if item.id!=""}}
+                    <text class='color' style="{{item.id!=""?"":"display:none"}}">{{item.name}}</text>
+                    {{/if}}
+                    <image class='next ml20' src="../../static/images/next-icon.png"></image>
+                </div>
+            </div>
+        </div>
+        {{/if}}
+    </script>
+
+    <!--支付按钮-->
+    <script type="text/html" id="payment-div">
+        {{if  item===null||item.length===0}}
+        {{else}}
+        <div class='tit'>
+            <div>
+                本次实付
+                <span class='color'>{{item.fee}}</span>元
+            </div>
+            <div class='font24 c888'>
+                <button class='button' onclick="weixinPay()">微信支付</button>
+            </div>
+        </div>
+        {{/if}}
+    </script>
+    <script type="text/javascript">
+        var vConsole = new VConsole();
+        vConsole.setOption({ maxLogNumber: 5000 });
+        console.log("Hello World");
+    </script>
+</body>
+</html>

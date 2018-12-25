@@ -1,0 +1,72 @@
+﻿/* pages/user/appraise_details/appraise_details.wxss */
+body {
+    padding: 0 .30rem;
+}
+
+.item {
+    background: #fff;
+    margin-top: .30rem;
+    padding: .30rem;
+    border-radius: .10rem;
+}
+
+    .item .tit {
+        border-bottom: .02rem solid #e8e8e8;
+        padding-bottom: .30rem;
+        margin-bottom: .20rem;
+    }
+
+    .item .box {
+        text-align: center;
+        padding: .30rem 0;
+        position: relative;
+    }
+
+        .item .box .reset {
+            position: absolute;
+            right: .05rem;
+            top: .32rem;
+            color: #2c4da8;
+        }
+
+        .item .box .star {
+            margin: .30rem 0;
+        }
+
+            .item .box .star .star-icon {
+                display: inline-block;
+                width: .40rem;
+                height: .40rem;
+                background-size: cover;
+                margin: 0 .10rem;
+            }
+
+                .item .box .star .star-icon.active {
+                    background-position: -.39rem 0;
+                }
+
+        .item .box .choice .label {
+            display: inline-block;
+            line-height: .60rem;
+            border: .02rem solid #e8e8e8;
+            padding: 0 .20rem;
+            border-radius: .10rem;
+            margin: .10rem;
+            color: #666;
+        }
+
+            .item .box .choice .label.active {
+                border-color: #fe7e00;
+                background: #fff5eb;
+                color: #fe7e00;
+            }
+
+.bbtn button {
+    line-height: 1.00rem;
+    height: 1.00rem;
+    font-size: .36rem;
+    background: #bc9761;
+    color: #fff;
+    margin: .30rem 0;
+    width: 100%;
+}

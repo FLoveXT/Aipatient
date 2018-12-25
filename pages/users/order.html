@@ -1,0 +1,245 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
+    <title>我的处方单</title>
+    <link href="../../static/css/public.css?v=1.0" rel="stylesheet">
+    <link href="../../static/css/swiper.min.css?v=1.0" rel="stylesheet">
+    <link href="../../static/css/users/order.css" rel="stylesheet" />
+    <link rel="stylesheet" href="../../static/css/ydui.css" />
+    <script src="../../static/js/webpack/reset.js"></script>
+    <script type="text/javascript" src="../../static/js/webpack/ydui.flexible.js"></script>
+</head>
+
+<body>
+    <header>
+        <img class="prev-icon if-ai" src="/static/images/prev-icon.png" alt="">
+        <span>我的处方单</span>
+    </header>
+
+    <!--pages/user/order/order/order.wxml-->
+    <div class='tabs tab-click'>
+        <div class='tab active' data-value='all'>
+            <span class='text'>全部</span>
+        </div>
+        <div class='tab' data-value='wait_pay'>
+            <span class='text'>待支付</span>
+        </div>
+        <div class='tab' data-value='wait_receipt'>
+            <span class='text'>待收货</span>
+        </div>
+        <div class='tab' data-value='complete'>
+            <span class='text'>已完成</span>
+        </div>
+        <div class='tab' data-value='cancel'>
+            <span class='text'>已取消</span>
+        </div>
+        <div class='tab ' data-value="return">
+            <span class='text'>售后咨询</span>
+        </div>
+    </div>
+    <div class='order list01' style="display:none">
+
+    </div>
+    <div class='order list02' style="display:none">
+
+    </div>
+    <div class='order list03' style="display:none">
+
+    </div>
+    <div class='order list04' style="display:none">
+
+    </div>
+    <div class='order list05' style="display:none">
+
+    </div>
+    <script src="../../static/js/webpack/jquery-2.1.4.min.js"></script>
+    <script src="../../static/js/webpack/modal.js"></script>
+    <script src="../../static/js/webpack/request.js"></script>
+    <script src="../../static/js/webpack/common.js"></script>
+    <script src="../../static/js/webpack/ydui.js"></script>
+    <script src="../../static/js/webrequest/user/order.js"></script>
+    <script src="../../static/js/webpack/template.js"></script>
+    <script id="script5" src="/static/js/webpack/vconsole/dist/vconsole.min.js"></script>
+    <script type="text/javascript">
+        var vConsole = new VConsole();
+        vConsole.setOption({ maxLogNumber: 5000 });
+        console.log("Hello World");
+    </script>
+    <script type="text/html" id="list01-div">
+        {{if list===null||list.length===0}}
+        {{else}}
+        {{each list as item}}
+        <div class='list'>
+            <div class='tit font22'>
+                <span>订单号：{{item.orderId}}</span>
+                <span>{{item.orderTime}}</span>
+            </div>
+            <div class='mid'>
+                <div class='font24 left'>
+                    <div>医生：{{item.doctorName}} / 患者：{{item.patientName}}</div>
+                    <div>开放剂型：{{item.decoct}}</div>
+                    <div>失效时间：{{item.invalidTime}}</div>
+                </div>
+                <div class='font20'>
+                    <span class='label' style="{{item.status=="01"?"dispaly:block":"display:none"}}">待支付</span>
+                    <span class='label' style="{{item.status=="02"?"dispaly:block":"display:none"}}">已支付</span>
+                    <span class='label' style="{{item.status=="03"?"dispaly:block":"display:none"}}">订单已完成</span>
+                    <span class='label' style="{{item.status=="04"?"dispaly:block":"display:none"}}">订单未支付过期</span>
+                    <span class='label' style="{{item.status=="05"?"dispaly:block":"display:none"}}">订单取消</span>
+                </div>
+            </div>
+            <div class='bottom'>
+                <div class='font24'>
+                    合计：
+                    <span class='font30 color'>￥{{item.fee}}</span>
+                </div>
+                <div class='right font26' style="{{item.status=="01"?"diaplay:block":"display:none"}}">
+                    <a href="javascript:;" class='pay btn' onclick="goApiLink('{{item.id}}')">去支付</a>
+                    <a href="javascript:;" class='cancel btn ml20' onclick="goCancelPay('{{item.id}}')">取消订单</a>
+                </div>
+                <div class='right font26' style="{{item.status=="02"?"diaplay:block":"display:none"}}">
+                    <a href="javascript:;" class='cancel btn ml20' onclick="getshowdetail('{{item.id}}','{{item.status}}')">查看订单</a>
+                </div>
+            </div>
+        </div>
+        {{/each}}
+        {{/if}}
+    </script>
+
+    <script type="text/html" id="list02-div">
+        {{if list===null||list.length===0}}
+        {{else}}
+        {{each list as item}}
+        <div class='list'>
+            <div class='tit font22'>
+                <span>订单号：{{item.orderId}}</span>
+                <span>{{item.orderTime}}</span>
+            </div>
+            <div class='mid'>
+                <div class='font24 left'>
+                    <div>医生：{{item.doctorName}} / 患者：{{item.patientName}}</div>
+                    <div>开放剂型：{{item.decoct}}</div>
+                    <div>失效时间：{{item.invalidTime}}</div>
+                </div>
+                <div class='font20'>
+                    <span class='label'>待支付</span>
+                </div>
+            </div>
+            <div class='bottom'>
+                <div class='font24'>
+                    合计：
+                    <span class='font30 color'>￥{{item.fee}}</span>
+                </div>
+                <div class='right font26' style="{{item.status=="01"?"diaplay:block":"display:none"}}">
+                    <a href="javascript:;" class='pay btn' onclick="goApiLink('{{item.id}}')">去支付</a>
+                    <a href="javascript:;" class='cancel btn ml20' onclick="goCancelPay('{{item.id}}')">取消订单</a>
+                </div>
+            </div>
+        </div>
+        {{/each}}
+        {{/if}}
+    </script>
+
+    <script type="text/html" id="list03-div">
+        {{if list===null||list.length===0}}
+        {{else}}
+        {{each list as item}}
+        <div class='list'>
+            <div class='tit font22'>
+                <span>订单号：{{item.orderId}}</span>
+                <span>{{item.orderTime}}</span>
+            </div>
+            <div class='mid'>
+                <div class='font24 left'>
+                    <div>医生：{{item.doctorName}} / 患者：{{item.patientName}}</div>
+                    <div>开放剂型：{{item.decoct}}</div>
+                    <div>失效时间：{{item.invalidTime}}</div>
+                </div>
+                <div class='font20'>
+                    <span class='label'>待收货</span>
+                </div>
+            </div>
+            <div class='bottom'>
+                <div class='font24'>
+                    合计：
+                    <span class='font30 color'>￥{{item.fee}}</span>
+                </div>
+                <div class='right font26'>
+                    <text class='cancel btn ml20' data-index='{{index}}' onclick='getshowdetail("{{item.id}}","{{item.status}}")' data-orderid='{{item.id}}' data-status='{{item.status}}'>查看物流</text>
+                </div>
+            </div>
+        </div>
+        {{/each}}
+        {{/if}}
+    </script>
+
+    <script type="text/html" id="list04-div">
+        {{if list===null||list.length===0}}
+        {{else}}
+        {{each list as item}}
+        <div class='list'>
+            <div class='tit font22'>
+                <span>订单号：{{item.orderId}}</span>
+                <span>{{item.orderTime}}</span>
+            </div>
+            <div class='mid'>
+                <div class='font24 left'>
+                    <div>医生：{{item.doctorName}} / 患者：{{item.patientName}}</div>
+                    <div>开放剂型：{{item.decoct}}</div>
+                    <div>失效时间：{{item.invalidTime}}</div>
+                </div>
+                <div class='font20'>
+                    <span class='label'>已完成</span>
+                </div>
+            </div>
+            <div class='bottom'>
+                <div class='font24'>
+                    合计：
+                    <span class='font30 color'>￥{{item.fee}}</span>
+                </div>
+                <div class='right font26'>
+                    <text class='cancel btn ml20' data-index='{{index}}' onclick='getshowdetail("{{item.id}}","{{item.status}}")' data-orderid='{{item.id}}' data-status='{{item.status}}'>查看详情</text>
+                </div>
+            </div>
+        </div>
+        {{/each}}
+        {{/if}}
+    </script>
+
+    <script type="text/html" id="list05-div">
+        {{if list===null||list.length===0}}
+        {{else}}
+        {{each list as item}}
+        <div class='list'>
+            <div class='tit font22'>
+                <span>订单号：{{item.orderId}}</span>
+                <span>{{item.orderTime}}</span>
+            </div>
+            <div class='mid'>
+                <div class='font24 left'>
+                    <div>医生：{{item.doctorName}} / 患者：{{item.patientName}}</div>
+                    <div>开放剂型：{{item.decoct}}</div>
+                    <div>失效时间：{{item.invalidTime}}</div>
+                </div>
+                <div class='font20'>
+                    <span class='label'>已取消</span>
+                </div>
+            </div>
+        </div>
+        {{/each}}
+        {{/if}}
+    </script>
+
+    <script type="text/javascript">
+        $(function () {
+            $(".prev-icon").click(function () {
+                window.location.href = "/pages/users/my.html";
+            });
+        })
+    </script>
+</body>
+
+</html>

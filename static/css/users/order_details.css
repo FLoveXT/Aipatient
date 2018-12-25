@@ -1,0 +1,175 @@
+/* pages/user/order/order_details/order_details.wxss */ 
+.deatail-tit{
+    padding: .30rem;
+}
+.deatail-tit .info{
+    background: #fff;
+    padding: .40rem .30rem;
+}
+.deatail-tit .info .list{
+    display: inline-block;
+    width: 100%;
+    line-height: .45rem;
+}
+.deatail-tit .info .list .text{
+    color: #888;
+}
+.deatail-tit .info .list.col{
+    width: 50%;
+}
+.item .bottom .name{
+    width: .30rem;
+    height: .30rem;
+}
+.item .bottom .tel{
+    width: .19rem;
+    height: .30rem;
+}
+.item{
+    background: #fff;
+    padding-bottom: .30rem;
+    margin-bottom: .20rem;
+}
+.item .tit{
+    padding: 0 .30rem;
+    border-bottom: 1px solid #e8e8e8;
+    height: 1.00rem;
+    display: flex;
+    align-items: center;
+}
+.item .text{
+    padding: 0 .30rem;
+}
+.item .tit .line{
+    display: inline-block;
+    width: .06rem;
+    height: .24rem;
+    background: #bc9761;
+    margin-right: .10rem;
+}
+.item .bottom{
+    display: flex;
+    justify-content: flex-start;
+    padding: 0 .30rem;
+}
+.item .tit{
+    display: flex;
+    justify-content: space-between;
+}
+.item .tit .color{
+    color: #ff7e00;
+}
+.item .cont{
+    padding: .30rem .30rem 0 .30rem;
+}
+.item .cont .list{
+    display: inline-block;
+    width: 50%;
+    margin: .08rem 0;
+    color: #666;
+}
+.item .cont .tit{
+    margin-top: .30rem;
+    border-top: 1px solid #e8e8e8;
+    height: .80rem;
+    padding: 0;
+}
+.item .cont .info{
+    background: #f1f4fb;
+    border:1px solid #dbe3f6;
+    border-radius: .10rem;
+    padding: .30rem;
+    color: #4a73d2;
+    margin-top: .30rem;
+}
+.item .cont .num{
+    display: flex;
+    justify-content: space-between;
+    margin: .08rem 0;
+}
+.item .cont .num .color{
+    color: #ff7e00;
+}
+.item.single .tit{
+    border:none;
+}
+.item.single{
+    padding-bottom: 0;
+}
+.item .logistics{
+    padding: 0 .30rem 0 .70rem;
+    color: #858891;
+    line-height: .40rem;
+    position: relative;
+}
+.item .logistics .list.new{
+    color: #333;
+}
+.item .logistics .line{
+    width: .02rem;
+    height: 100%;
+    background: #e8e8e8;
+    position: absolute;
+    left: .35rem;
+    top: 0rem;
+}
+.item .logistics .list .top{
+    position: relative;
+}
+.item .logistics .list .top .label{
+    display: inline-block;
+    width: .15rem;
+    height: .15rem;
+    background: #b4b5b5;
+    border-radius: 100%;
+    position: absolute;
+    top: .15rem;
+    left: -.40rem;
+    z-index: 2;
+}
+.item .logistics .list{
+    padding: .30rem 0;
+    border-bottom: 1px solid #e8e8e8;
+}
+.item .logistics .list.new .top .label{
+    width: .22rem;
+    height: .22rem;
+    background: #bc9761;
+    position: relative;
+    left: -.45rem;
+    top: .05rem;
+    z-index: 2;
+}
+.item .logistics .list.new .top .label::after{
+    display: block;
+    content:"";
+    width: .30rem;
+    height: .30rem;
+    background: rgba(188, 151, 97, .5);
+    border-radius: 100%;
+    left: 50%;
+    top: 50%;
+    position: absolute;
+    transform: translate3d(-50%,-50%,0);
+}
+.pay-btn{
+    display: flex;
+    height: 1.00rem;
+    align-items: center;
+    background: #fff;
+    padding: 0 .30rem;
+    justify-content: flex-end;
+}
+.pay-btn .btn{
+    background: #ebedf1;
+    color: #333;
+    line-height: .60rem;
+    padding: 0 .30rem;
+    border-radius: .10rem;
+    margin-left: .20rem;
+    height: auto;
+}
+.pay-btn .btn.pay{
+    background: #bc9761;
+    color: #fff;
+}

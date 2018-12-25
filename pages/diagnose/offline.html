@@ -1,0 +1,244 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
+    <title>购买-线下预约面诊</title>
+    <link href="../../static/css/public.css?v=1.0" rel="stylesheet">
+    <link href="../../static/css/swiper.min.css?v=1.0" rel="stylesheet">
+    <link href="../../static/css/diagnose/offline.css" rel="stylesheet" />
+    <link href="../../static/css/radio-mask.css"  rel="stylesheet"/>
+    <link rel="stylesheet" href="../../static/css/ydui.css" />
+    <script src="../../static/js/webpack/reset.js"></script>
+    <script type="text/javascript" src="../../static/js/webpack/ydui.flexible.js"></script>
+</head>
+<body>
+    <header>
+        <img class="prev-icon" src="/static/images/prev-icon.png" alt="">
+        <span>购买-线下预约面诊</span>
+    </header>
+    <div class='doc-card doctorinfo'>
+
+    </div>
+    <div class='wrap '>
+        <div class="lately-info">
+
+        </div>
+
+        <div class='item'>
+            <div class='tit'>
+                <div class='font28'>
+                    <text class='line mr15'></text>服务说明
+                </div>
+            </div>
+            <div class='doc-cont'>
+                服务说明 1、医生将与您通过图片、文字、语音和视频交流，根据实际情况辩证开方、给出调理意见。 2、医生将在您发起咨询的24小时内回复您，逾期未回复您可向客服请求协助或退款；建议在服务时段内进行咨询，提前或者逾期咨询，医生可能不能及时回复。
+            </div>
+        </div>
+        <div class='item tickets-list'>
+
+        </div>
+        <div class='item'>
+            <div class='tit'>
+                <div class='font28'>
+                    <text>*</text>选择患者
+                </div>
+                <div class='font24 c888 xuanze-parient' onclick='selectPatientShowInfo()'>
+                    <span>选择患者</span>
+                    <image class='more ml10' src="/static/images/more-c-icon.png"></image>
+                </div>
+            </div>
+        </div>
+        <div class='item btn payment-item'>
+        </div>
+    </div>
+    <div style="display:none" class='selectPop selectPop-01'>
+        <div class='bg bg-01' bindtap='bgClose'></div>
+        <div class='cont'>
+            <div class='title font30'>选择日期</div>
+            <div class="lately-list" style="overflow: auto; height: 5.5rem;">
+ 
+            </div>
+        </div>
+    </div>
+
+
+    <div style="display:none" class='selectPop selectPop-02'>
+        <div class='bg bg-02' bindtap='bgClose'></div>
+        <div class='cont'>
+            <div class='title font30'>选择患者</div>
+            <div class='list' onclick='goadd()'>
+                <div class='left'>
+                    <div class='info font28'>
+                        <text class=''>+ 新增患者 </text>
+                    </div>
+                </div>
+            </div>
+            <div class="patientList-list" >
+
+            </div>
+
+        </div>
+    </div>
+    <div class="pd50"></div>
+
+    <script src="../../static/js/webpack/jquery-2.1.4.min.js"></script>
+    <script src="../../static/js/webpack/modal.js"></script>
+    <script src="../../static/js/webpack/request.js"></script>
+    <script src="../../static/js/webpack/common.js"></script>
+    <script src="../../static/js/webpack/ydui.js"></script>
+    <script src="../../static/js/webpack/template.js"></script>
+    <script src="../../static/js/webrequest/diagnose/offline.js?v=2"></script>
+    <script type="text/javascript" src="../../static/js/webpack/layer/layer.js"></script>
+    <script src="../../static/js/webpack/vconsole/dist/vconsole.min.js"></script>
+    <script type="text/html" id="doctor-div">
+        {{if item===null}}
+        {{else}}
+        <div class='item'>
+            <div class='top'>
+                <image class='user' src='{{item.image}}'></image>
+                <div class='right'>
+                    <div class='info'>
+                        <div class='font30'>
+                            {{item.name}}
+                            <text class='font26'>{{item.titles}}</text>
+                        </div>
+                        <text class='span'>{{item.depart}}</text>
+                    </div>
+                    <div class='mid'>医院机构：{{item.medicalInstitutions}}</div>
+                    <div class='bottom'>
+                        擅长：
+                        {{if item.diseaseExpertise!=null}}
+                        {{each item.diseaseExpertise as p}}
+                        <text class='label'>{{p}}</text>
+                        {{/each}}
+                        {{/if}}
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{/if}}
+    </script>
+
+    <!--优惠券-->
+    <script type="text/html" id="ticket-div">
+        {{if item===null||item.length===0}}
+        {{else}}
+        <div class='tit'>
+            <div class='font28'>
+                优惠券
+            </div>
+            <div class='font24 c888' onclick='tocketChange()'>
+                <div>
+                    {{if item.id==""}}
+                    <span><span class='color'>{{item.num}}</span>张可用</span>
+                    {{/if}}
+                    {{if item.id!=""}}
+                    <text class='color' style="{{item.id!=""?"":"display:none"}}">{{item.name}}</text>
+                    {{/if}}
+                    <image class='next ml20' src="/static/images/next-icon.png"></image>
+                </div>
+            </div>
+        </div>
+        {{/if}}
+    </script>
+
+
+
+    <script id="lately-div" type="text/html">
+        {{if item===null}}
+        {{else}}
+        <div class='item'>
+            <div class='tit'>
+                <div class='font28'>
+                    <text class='line mr15'></text>选择日期
+                </div>
+                <div class='font24 c888' onclick="ChooseOtherDateTime()">
+                    选择其他日期
+                    <image class='next ml20' src="/static/images/next-icon.png"></image>
+                </div>
+            </div>
+            <div class='time-cont'>
+                <div>
+                    {{item.latelypageTime}} 剩余
+                    <text class='color'>{{item.latelyquota}}人</text>
+                </div>
+                <div class='color'>￥{{item.latelyFee}}/次</div>
+            </div>
+        </div>
+        <div class='item'>
+            <div class='tit'>
+                <div class='font28'>
+                    <text class='line mr15'></text>面诊地址
+                </div>
+            </div>
+            <div class='doc-cont'>
+                {{item.latelyaddress}}
+            </div>
+        </div>
+        {{/if}}
+    </script>
+
+    <script id="latelylist-div" type="text/html">
+        {{if list===null||list.length===0}}
+        {{else}}
+        {{each list as item}}
+        <div class='list' onclick='latelyChange(this,"{{item.pageTime}}","{{item.quota}}","{{item.address}}","{{item.id}}","{{item.fee}}")'>
+            <div class='left'>
+                <div class='time font26'>{{item.pageTime}}</div>
+                <div class='info font24'>
+                    可与预约数：
+                    <text>{{item.quota}}</text>人 费用：
+                    <text>{{item.fee}}</text>元/人
+                </div>
+            </div>
+            <image class='icon' src='/static/images/true-icon.png'></image>
+        </div>
+        {{/each}}
+        {{/if}}
+    </script>
+
+
+    <!--支付按钮-->
+    <script type="text/html" id="payment-div">
+        {{if  item===null||item.length===0}}
+        {{else}}
+        <div class='tit'>
+            <div>
+                本次实付
+                <span class='color'>{{item.latelyFee}}</span>元
+            </div>
+            <div class='font24 c888'>
+                <button class='button' onclick="weixinPay()">微信支付</button>
+            </div>
+        </div>
+        {{/if}}
+    </script>
+
+    <script type="text/html" id="patientList-div">
+        {{if  list===null}}
+        {{else}}
+        {{each list as item}}
+        <div class='list' data-name='{{item.name}}' data-sex='{{item.sex}}' data-age='{{item.age}}' onclick='PatientSelect("{{item.name}}","{{item.sex}}","{{item.age}}","{{item.id}}")' data-id='{{item.id}}'>
+            <div class='left'>
+                <div class='info font28'>
+                    <text class=''>{{item.name}}  {{item.sex}}   {{item.age}}   </text>
+                </div>
+            </div>
+            <image class='icon' src='/static/images/true-icon.png'></image>
+        </div>
+        {{/each}}
+        {{/if}}
+    </script>
+
+    <script type="text/javascript">
+        var vConsole = new VConsole();
+        vConsole.setOption({ maxLogNumber: 5000 });
+        console.log("Hello World");
+    </script>
+</body>
+</html>
+<!--
+   
+
+   -->

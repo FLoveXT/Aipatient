@@ -1,0 +1,101 @@
+﻿body {
+    background: #fff !important;
+}
+
+.img-header .user {
+    width: 1.50rem;
+    height: 1.50rem;
+    border-radius: 100%;
+}
+
+.img-header .photo-icon {
+    width: .21rem;
+    height: .18rem;
+    margin-right: .10rem;
+    margin-top: .15rem;
+}
+
+.img-header {
+    text-align: center;
+    padding: .80rem 0;
+    position: relative;
+}
+.img-header .upload img{
+    width: .21rem;
+    height: .18rem;
+    margin-right: .10rem;
+    margin-top: .15rem;
+}
+.img-header .upload input{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9;
+    opacity: 0;
+}
+.form {
+    padding: 0 .30rem;
+}
+
+.form .list {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin: .50rem 0;
+    padding-left: .20rem;
+}
+.form .list label{
+    margin-left: .2rem;
+}
+.form .list input[type='text'],.form .list input[type='number'] {
+    flex: 1;
+    border-bottom: .02rem solid #e8e8e8;
+    margin-left: .10rem;
+    padding: .10rem ;
+}
+
+.form .list radio {
+    margin-right: .20rem;
+    margin-left: .20rem;
+}
+
+.bbtn button {
+    background: #bc9761;
+    color: #fff;
+    font-size: .30rem;
+    height: .90rem;
+    line-height: .90rem;
+    width: 100%;
+    border-radius: .15rem;
+}
+/* 
+input[type="checkbox"] {
+    appearance: none;
+    -webkit-appearance: none;
+    outline: none;
+    display: none
+}
+
+label {
+    display: inline-block;
+    cursor: pointer;
+    margin-left: .1rem;
+}
+
+label input[type="checkbox"]+span {
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    background: url(http://sandbox.runjs.cn/uploads/rs/216/0y89gzo2/checkbox_01.gif) no-repeat;
+        background-position: 0 0;
+}
+
+label input[type="checkbox"]:checked + span {
+    background-position: 0 -21px
+} */
+input[type="radio"]{
+    -webkit-appearance:radio;
+    margin-right: .1rem;
+}

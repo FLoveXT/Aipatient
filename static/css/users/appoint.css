@@ -1,0 +1,84 @@
+/* pages/user/appoint/appoint.wxss */
+.tabs {
+    display: flex;
+    justify-content: space-between;
+    height: .80rem;
+    background: #fff;
+    align-items: center;
+}
+
+.tabs .tab {
+    width: 50%;
+    text-align: center;
+}
+
+.tabs .tab.active .text {
+    color: #bc9761;
+    border-bottom: .04rem solid #bc9761;
+    display: inline-block;
+    line-height: .80rem;
+}
+
+.new-appoint .item {
+    margin-top: .20rem;
+    background: #fff;
+}
+
+.new-appoint .item .top {
+    padding: .30rem .30rem .10rem;
+    line-height: .40rem;
+}
+
+.new-appoint .item .top .info {
+    background: #f5f6f8;
+    padding: .30rem;
+    border-radius: .10rem;
+    margin: .30rem 0;
+    color: #858891;
+}
+
+.new-appoint .item .top .info .color {
+    color: #bc9761;
+}
+
+.new-appoint .item .btn {
+    height: 1.00rem;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    border-top: 1px solid #e8e8e8;
+    padding: 0 .30rem;
+}
+
+.new-appoint .item .btn .button {
+    background: #ebedf1;
+    line-height: .60rem;
+    margin-left: .20rem;
+    padding: 0 .30rem;
+    border-radius: .10rem;
+    font-size: .26rem;
+}
+
+.new-appoint .item .btn .button.pay {
+    background: #bc9761;
+    color: #fff;
+}
+
+.new-appoint .bottom {
+    text-align: right;
+    padding: 0 .30rem;
+    border-top: 1px solid #e8e8e8;
+}
+
+.new-appoint .bottom text {
+    height: .60rem;
+    display: flex;
+    align-items: center;
+    background: #ebedf1;
+    display: inline-block;
+    width: 1.70rem;
+    line-height: .60rem;
+    text-align: center;
+    margin: .20rem 0;
+    border-radius: .10rem;
+}

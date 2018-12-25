@@ -1,0 +1,258 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
+    <title>填写问诊单-患者信息</title>
+    <link href="../../static/css/public.css?v=1.0" rel="stylesheet">
+    <link rel="stylesheet" href="../../static/css/diagnose/part01.css" />
+    <link rel="stylesheet" href="../../static/css/ydui.css" />
+    <script src="../../static/js/webpack/reset.js"></script>
+    <script type="text/javascript" src="../../static/js/webpack/ydui.flexible.js"></script>
+</head>
+
+<body>
+    <header>
+        <img class="prev-icon" src="/static/images/prev-icon.png" alt="">
+        <span>填写问诊单-患者信息</span>
+    </header>
+
+    <div>
+        <div class='item patients-list'>
+
+        </div>
+        <div class='item'>
+            <div class='top zhusu-item'>
+                <div class='tit'>
+                    <text class='font28'>主诉</text>
+                    <div class='font24'>
+                        <text class='bbtn' onclick='chiefcomplaintBtnChange()'>查看示例</text>
+                    </div>
+                </div>
+                <div class='wrap'>
+
+                    <div class='text c888 '>
+                        <label>
+                            <textarea class='input-value' onkeyup='checkStrchiefComplaint(this,1)' placeholder='初诊患者：请描述主要症状（3个左右），以及持续时 间。复诊患者：请描述上次用药后的变化。'></textarea>
+                        </label>
+                    </div>
+
+                </div>
+                <div class='num font24 c888'>
+                    <span class="zev-min-zs">0</span>/25
+                </div>
+            </div>
+            <div>
+                <div class='tit'>
+                    <text class='font28'>现病史及现在症状</text>
+                </div>
+                <div class='wrap'>
+
+                    <div class='text c888'>
+                        <label>
+                            <textarea class='input-value' placeholder='围绕主诉：按症状出现的先后，详细描述从起病倒就诊时疾病的发生、发展及其变化的经过和诊疗情况，已经现在还有那些不舒服的全部变现'
+                                onkeyup='checkStrchiefComplaint(this,2)'></textarea>
+                        </label>
+                    </div>
+
+                </div>
+                <div class='num font24 c888'>
+                    <span class="zev-min-bs">0</span>/250
+                </div>
+            </div>
+        </div>
+        <div class='item'>
+            <div class='top'>
+                <div class='tit'>
+                    <text class='font28'>上传照片</text>
+                </div>
+                <div class='wrap'>
+                    <div class='top'>
+                        <div class='pic-text c888'>请上传舌苔和舌底照片，如患者是0-3岁儿童，可上传三关手纹（即双手食指）照片代替。</div>
+                        <div class='pic-box mt10'>
+                            <div class='img-cont shetai-list'>
+                                <!--第一张-->
+                                <div class='img box' style="display:none" id="uploadFirst1_1">
+                                    <image class='img-close' onclick='closeClearImages(this,1,"uploadFirst1_1","uploadFirst1_2")'
+                                        data-img="casePic01" src='../../static/images/img-close.png'></image>
+                                    <image class='c-img' src=''></image>
+                                </div>
+                                <div class="img box" id="uploadFirst1_2">
+                                    <input type="file" id="file01" onclick="uploadFirst(this,1,'file01')" accept="image/*" />
+                                    <image class='img' src='../../static/images/upload-icon.png' data-img="casePic01"
+                                        ontap="changeImg"></image>
+                                </div>
+
+                                <!--第二张-->
+                                <div class='img box' style="display:none" id="uploadFirst2_1">
+                                    <image class='img-close' onclick='closeClearImages(this,2,"uploadFirst2_1","uploadFirst2_2")'
+                                        data-img="casePic01" src='../../static/images/img-close.png'></image>
+                                    <image class='c-img' src=''></image>
+                                </div>
+                                <div class="img box" id="uploadFirst2_2">
+                                    <input type="file" id="file02" onclick="uploadFirst(this,2,'file02')" accept="image/*" />
+                                    <image class='img' src='../../static/images/upload-icon.png' data-img="casePic01"
+                                        ontap="changeImg"></image>
+                                </div>
+
+                                <!--第三张-->
+                                <div class='img box' style="display:none" id="uploadFirst3_1">
+                                    <image class='img-close' onclick='closeClearImages(this,2,"uploadFirst3_1","uploadFirst3_2")'
+                                        data-img="casePic01" src='../../static/images/img-close.png'></image>
+                                    <image class='c-img' src=''></image>
+                                </div>
+                                <div class="img box" id="uploadFirst3_2">
+                                    <input type="file" id="file03" onclick="uploadFirst(this,3,'file03')" accept="image/*" />
+                                    <image class='img' src='../../static/images/upload-icon.png' data-img="casePic01"
+                                        ontap="changeImg"></image>
+                                </div>
+
+                                <image class='img pop' onclick='uploadPhotoDemoBtnChange()' src='../../static/images/pic-pop.png'></image>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class='pic-text c888 mt25'>上传病患处照片、检查报告、化验单。</div>
+                        <div class='pic-box mt25'>
+                            <div class='img-cont binghuan-list'>
+                                <!--第一张-->
+                                <div class='img box' style="display:none" id="uploadLast1_1">
+                                    <image class='img-close' onclick='closeClearImages(this,1,"uploadLast1_1","uploadLast1_2")'
+                                        data-img="casePic01" src='../../static/images/img-close.png'></image>
+                                    <image class='c-img' src=''></image>
+                                </div>
+                                <div class="img box" id="uploadLast1_2">
+                                    <input type="file" id="file04" onclick="uploadLast(this,1,'file04')" accept="image/*" />
+                                    <image class='img' src='../../static/images/upload-icon.png' data-img="casePic01"
+                                        ontap="changeImg"></image>
+                                </div>
+
+                                <!--第二张-->
+                                <div class='img box' style="display:none" id="uploadLast2_1">
+                                    <image class='img-close' onclick='closeClearImages(this,2,"uploadLast2_1","uploadLast2_2")'
+                                        data-img="casePic01" src='../../static/images/img-close.png'></image>
+                                    <image class='c-img' src=''></image>
+                                </div>
+                                <div class="img box" id="uploadLast2_2">
+                                    <input type="file" id="file05" onclick="uploadLast(this,2,'file05')" accept="image/*" />
+                                    <image class='img' src='../../static/images/upload-icon.png' data-img="casePic01"
+                                        ontap="changeImg"></image>
+                                </div>
+
+                                <!--第三张-->
+                                <div class='img box' style="display:none" id="uploadLast3_1">
+                                    <image class='img-close' onclick='closeClearImages(this,2,"uploadLast3_1","uploadLast3_2")'
+                                        data-img="casePic01" src='../../static/images/img-close.png'></image>
+                                    <image class='c-img' src=''></image>
+                                </div>
+                                <div class="img box" id="uploadLast3_2">
+                                    <input type="file" id="file06" onclick="uploadLast(this,3,'file06')" accept="image/*" />
+                                    <image class='img' src='../../static/images/upload-icon.png' data-img="casePic01"
+                                        ontap="changeImg"></image>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class='bbtn padd30'>
+        <button class='next-btn' onclick='commmitInfo()'>下一步</button>
+    </div>
+
+    <!-- 弹窗 -->
+    <!-- 上传图片示例 -->
+    <div class='exp-pop01 exp-pop' style="display:none">
+        <div class='postion'>
+            <image class='close' onclick='hideExpPop(this)' src='../../static/images/close-c.png'></image>
+            <image class='img' src='../../static/images/showImg.png'></image>
+        </div>
+        <div class='bg' onclick='hideExpPop(this)'></div>
+    </div>
+
+    <div class='exp-pop02 exp-pop' style="display:none">
+        <div class='postion'>
+            <image class='close' onclick='hideExpPop(this)' src='../../static/images/close-c.png'></image>
+            <image class='img' src='../../static/images/exp-img02.png'></image>
+        </div>
+        <div class='bg' onclick='hideExpPop(this)'></div>
+    </div>
+
+    <script src="../../static/js/webpack/jquery-2.1.4.min.js"></script>
+    <script src="../../static/js/webpack/modal.js"></script>
+    <script src="../../static/js/webpack/request.js"></script>
+    <script src="../../static/js/webpack/common.js"></script>
+    <script src="../../static/js/webpack/ydui.js"></script>
+    <script src="../../static/js/webpack/template.js"></script>
+    <script src="../../static/js/webrequest/diagnose/writeStep.js"></script>
+    <script src="../../static/js/webrequest/diagnose/part01.js"></script>
+
+    <script src="../../static/js/webpack/layer/layer.js"></script>
+    <script src="../../static/js/webpack/FileUpload/js/vendor/jquery.ui.widget.js"></script>
+    <script src="../../static/js/webpack/FileUpload/js/jquery.iframe-transport.js"></script>
+    <script src="../../static/js/webpack/FileUpload/js/jquery.fileupload.js"></script>
+
+    <!--选择患者列表-->
+    <script type="text/html" id="patients-div">
+        {{if list===null}}
+        {{else}}
+        <div class='tit'>
+            <text class='font28'>{{list.clickPatienValue}}</text>
+            <div class='font24 c888' onclick='showList()'>
+                请选择
+                <img class='icon ml10 ' src='../../static/images/more-c-icon.png' />
+            </div>
+        </div>
+
+        <div style='overflow-y:auto;height:5.00rem;' class='user user-list user-show'>
+            <div class="user-list-show">
+                {{each list.patientsList as item }}
+                <div class='list font28' data-name='{{item.name}}' data-sex='{{item.sex}}' data-age='{{item.age}}' data-id='{{item.id}}' onclick='clickPatienTab(this)'>{{item.name}} {{item.sex}} {{item.age}}</div>
+                {{/each}}
+            </div>
+            <div class='bbtn'>
+                <button onclick='addPatientsInfo()'>
+                    <image class='icon' src='../../static/images/adddddd.png'></image> 新建患者
+                </button>
+            </div>
+        </div>
+
+        <div class='user user-info-detail' data-info="{{list.patientInfo}}" style="{{list.patientInfo.isShow?"":"display:none"}}">
+            <div class='list font24'>
+                <text class='c888'>身高： </text>{{list.patientInfo.height}}cm
+            </div>
+            <div class='list font24'>
+                <text class='c888'>体重： </text>{{list.patientInfo.weight}}kg
+            </div>
+            <div class='list font24'>
+                <text class='c888'>手机： </text>{{list.patientInfo.phone}}
+            </div>
+            <div class='list font24'>
+                <text class='c888'>地址： </text>{{list.patientInfo.address}}
+            </div>
+            <div class='list font24'>
+                <text class='c888'>既往病史： </text>{{list.patientInfo.history}}
+            </div>
+            <div class='list font24'>
+                <text class='c888'>补充描述： </text>{{list.patientInfo.remark}}
+            </div>
+            <div class='font24 edit mt30 c888' onclick='updatePatientInfo()'>
+                修改信息
+                <image class='icon' src='../../static/images/next-icon.png'></image>
+            </div>
+        </div>
+        {{/if}}
+    </script>
+
+    <!--主诉内容-->
+    <script type="text/html" id="zhusu-div">
+        {{if item===null||item.length===0}}
+        {{else}}
+
+        {{/if}}
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,62 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
+    <title>我的优惠券-选择</title>
+    <link href="../../static/css/public.css?v=1.0" rel="stylesheet">
+    <link href="../../static/css/swiper.min.css?v=1.0" rel="stylesheet">
+    <link href="../../static/css/diagnose/ticket.css" rel="stylesheet" />
+    <link rel="stylesheet" href="../../static/css/ydui.css" />
+    <script src="../../static/js/webpack/reset.js"></script>
+    <script type="text/javascript" src="../../static/js/webpack/ydui.flexible.js"></script>
+    <style>
+        .active-s {
+          background-color:#ff0000;
+        }
+    </style>
+</head>
+<body>
+
+    <div class='btn font28 nousing' style="width:100%" onclick='noUsingTicketInfo(this)'>不使用优惠券</div>
+    <div class='ticket ticket-list'>
+        
+    </div>
+
+    <script src="../../static/js/webpack/jquery-2.1.4.min.js"></script>
+    <script src="../../static/js/webpack/modal.js"></script>
+    <script src="../../static/js/webpack/request.js"></script>
+    <script src="../../static/js/webpack/common.js"></script>
+    <script src="../../static/js/webpack/ydui.js"></script>
+    <script src="../../static/js/webpack/template.js"></script>
+    <script src="../../static/js/webrequest/diagnose/ticket.js?v=1"></script>
+    <script type="text/javascript" src="../../static/js/webpack/layer/layer.js"></script>
+    <script type="text/html" id="ticket-div">
+        {{if list===null||list.length==0}}
+        {{else}}
+        {{each list as item}}
+        <div class='list' onclick='ticketClick(this)' data-pay='{{item.couponId}}' data-name='{{item.name}}'>
+            <text class='cho-icon on'></text>
+            <div class='left'>
+                <image class='img' src='../../static/images/tiket.png'></image>
+                <div class='text'>
+                    <div class='top font60'>
+                        <text class='font36'>￥</text>{{item.money}}
+                    </div>
+                    <div class='font22'>满{{item.minMoney}}使用</div>
+                </div>
+            </div>
+            <div class='right'>
+                <image class='img' src='../../static/images/tiket-r.png'></image>
+                <div class='text'>
+                    <div class='font28'>{{item.name}}</div>
+                    <div class='font22 mt15 mb15'>{{type}}</div>
+                    <div class='font22'>{{item.startTime}}至{{item.endTime}}   </div>
+                </div>
+            </div>
+        </div>
+        {{/each}}
+        {{/if}}
+    </script>
+</body>
+</html>

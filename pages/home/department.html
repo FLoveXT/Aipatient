@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
+    <title>科室列表页</title>
+    <link href="../../static/css/public.css?v=1.0" rel="stylesheet">
+    <link rel="stylesheet" href="../../static/css/home/department.css" />
+    <link rel="stylesheet" href="../../static/css/ydui.css" />
+    <script src="../../static/js/webpack/reset.js"></script>
+    <script type="text/javascript" src="../../static/js/webpack/ydui.flexible.js"></script>
+</head>
+<body>
+    <header>
+        <img class="prev-icon" src="/static/images/prev-icon.png" alt="">
+        <span>科室列表</span>
+    </header>
+    <div class='cont depart-list'>
+
+    </div>
+
+    <script src="../../static/js/webpack/jquery-2.1.4.min.js"></script>
+    <script src="../../static/js/webpack/modal.js"></script>
+    <script src="../../static/js/webpack/request.js"></script>
+    <script src="../../static/js/webpack/common.js"></script>
+    <script src="../../static/js/webpack/ydui.js"></script>
+    <script src="../../static/js/webpack/template.js"></script>
+    <script src="../../static/js/webrequest/all/department.js"></script>
+    <script type="text/html" id="depart-div">
+        {{if list===null||list.length===0}}
+        {{else}}
+        {{each list as item }}
+        <a href='/pages/home/doctor.html?types=keshi&id={{item.departId}}&name={{item.departName}}' class='dep'>
+            <img class='img' src='{{item.departPic}}' />
+            <text class='font28'>{{item.departName}}</text>
+        </a>
+        {{/each}}
+        {{/if}}
+    </script>
+</body>
+</html>
